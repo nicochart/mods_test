@@ -18,7 +18,7 @@ displayName="Bedrock Sword"
 # "homepage" du mod
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
 
-#logoFile="examplemod.png"
+logoFile="bedrock_sword.png"
 
 credits="Premier mod de nicochart"
 authors="nicochart"

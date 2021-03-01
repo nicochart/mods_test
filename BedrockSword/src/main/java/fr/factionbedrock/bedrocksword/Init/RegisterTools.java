@@ -1,5 +1,6 @@
 package fr.factionbedrock.bedrocksword.Init;
 
+import fr.factionbedrock.bedrocksword.bedrocksword;
 import fr.factionbedrock.bedrocksword.Tools.BasisToolMaterial;
 import fr.factionbedrock.bedrocksword.Tools.Sword;
 import net.minecraft.item.Item;
@@ -10,7 +11,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@EventBusSubscriber(modid = "bedrocksword", bus = Bus.MOD)
+@EventBusSubscriber(modid = bedrocksword.MODID, bus = Bus.MOD)
 public class RegisterTools
 {
 	 public static final Sword bedrockSword = new Sword(BasisToolMaterial.bedrock, new Item.Properties().group(ItemGroup.COMBAT)); //TOOLS
@@ -20,7 +21,7 @@ public class RegisterTools
 	 {
 	        IForgeRegistry<Item> registry = event.getRegistry();
 	        
-	        bedrockSword.setRegistryName("bedrocksword", "bedrock_sword");
+	        bedrockSword.setRegistryName(bedrocksword.MODID, "bedrock_sword");
 	        registry.registerAll(bedrockSword);
 	 }
 }

@@ -24,7 +24,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 
 
-@Mod("bedrocksword") 
+@Mod(bedrocksword.MODID) 
 
 public class bedrocksword
 {
