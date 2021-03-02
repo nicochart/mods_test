@@ -20,7 +20,6 @@ public class BasisToolMaterial
 					() -> Ingredient.fromItems(Blocks.BEDROCK) //Ingrédient de réparation (Enclume)
 			);
 	
-	//substitude to IItemTier
 	private static class ToolMaterial implements IItemTier
 	{
 

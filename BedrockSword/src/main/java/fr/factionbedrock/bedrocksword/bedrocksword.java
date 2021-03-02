@@ -38,13 +38,6 @@ public class bedrocksword
 	public static IItemTier bedrock;
 	public static Item bedrock_sword;
 	
-	/*
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		
-	}*/
-	
 	
 	/*Code du ExampleMod*/
 	
