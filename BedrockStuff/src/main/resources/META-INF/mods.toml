@@ -9,7 +9,7 @@ license="All rights reserved"
 [[mods]]
 modId="bedrockstuff"
 version="${file.jarVersion}"
-displayName="Bedrock Sword"
+displayName="Bedrock Stuff"
 
 # Lien de requete de maj
 #updateJSONURL="https://change.me.example.invalid/updates.json" 

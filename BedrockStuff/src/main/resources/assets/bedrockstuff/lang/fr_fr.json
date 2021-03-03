@@ -1,7 +1,7 @@
 {
-  "item.bedrockstuff.bedrock_sword" : "Épée en Bedrock",
-  "item.bedrockstuff.bedrock_helmet" : "Casque en Bedrock",
-  "item.bedrockstuff.bedrock_chestplate" : "Plastron en Bedrock",
-  "item.bedrockstuff.bedrock_leggings" : "Jambières en Bedrock",
-  "item.bedrockstuff.bedrock_boots" : "Bottes en Bedrock"
+  "item.bedrockstuff.bedrock_sword" : "§8Épée en Bedrock",
+  "item.bedrockstuff.bedrock_helmet" : "§8Casque en Bedrock",
+  "item.bedrockstuff.bedrock_chestplate" : "§8Plastron en Bedrock",
+  "item.bedrockstuff.bedrock_leggings" : "§8Jambières en Bedrock",
+  "item.bedrockstuff.bedrock_boots" : "§8Bottes en Bedrock"
 }
