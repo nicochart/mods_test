@@ -1,7 +1,8 @@
 {
-  "item.bedrocksword.bedrock_sword" : "Bedrock Sword",
-  "item.bedrockstuff.bedrock_helmet" : "Bedrock Helmet",
-  "item.bedrockstuff.bedrock_chestplate" : "Bedrock Chestplate",
-  "item.bedrockstuff.bedrock_leggings" : "Bedrock Leggings",
-  "item.bedrockstuff.bedrock_boots" : "Bedrock Boots"
+  "item.bedrocksword.bedrock_sword" : "§8Bedrock Sword",
+  "item.bedrockstuff.bedrock_helmet" : "§8Bedrock Helmet",
+  "item.bedrockstuff.bedrock_chestplate" : "§8Bedrock Chestplate",
+  "item.bedrockstuff.bedrock_leggings" : "§8Bedrock Leggings",
+  "item.bedrockstuff.bedrock_boots" : "§8Bedrock Boots",
+  "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore"
 }

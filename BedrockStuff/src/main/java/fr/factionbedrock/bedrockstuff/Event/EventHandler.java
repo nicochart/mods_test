@@ -16,7 +16,7 @@ public class EventHandler
 	 {
 		 if(event.getCategory() != Biome.Category.THEEND && event.getCategory() != Biome.Category.NETHER)
 		 {
-			 for (int i = 0; i < 100; i++)
+			 for (int i = 0; i < 5; i++)
 			 {
                  event.getGeneration().withFeature(GenerationStage.Decoration.UNDERGROUND_ORES, GenOverworldOres.BEDROCK_ORE);
              }

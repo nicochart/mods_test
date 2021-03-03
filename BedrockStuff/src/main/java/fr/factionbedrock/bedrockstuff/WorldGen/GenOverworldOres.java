@@ -13,7 +13,7 @@ public class GenOverworldOres
 			RegisterBlocks.bedrockOre.getDefaultState(), //Block enregistré à configurer
 			3, //Taille de Filon
 			0, //Hauteur minimum
-			9, //Hauteur maximum
+			8, //Hauteur maximum
 			2 //Chance d'apparition (Nombre de fillons par chunks)
 	);
 	
