@@ -2,7 +2,7 @@ package fr.factionbedrock.bedrockstuff.Basis;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.Blocks;
+import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
@@ -13,14 +13,13 @@ public class BasisToolMaterial
 			new ToolMaterial
 			(
 					5, //Niveau de minage
-					4048, //durabilité
-					9.5F, //efficacité
-					24.0, //Dégats d'attaque
-					10, //Enchantabilité
-					() -> Ingredient.fromItems(Blocks.BEDROCK) //Ingrédient de réparation (Enclume)
+					2810, //durabilité
+					10.0F, //efficacité
+					6.0, //Dégats d'attaque
+					15, //Enchantabilité
+					() -> Ingredient.fromItems(RegisterItems.bedrockIngot) //Ingrédient de réparation (Enclume)
 			);
 	
-	//substitude to IItemTier
 	private static class ToolMaterial implements IItemTier
 	{
 

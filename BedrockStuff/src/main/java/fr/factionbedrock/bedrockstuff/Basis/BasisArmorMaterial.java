@@ -3,7 +3,7 @@ package fr.factionbedrock.bedrockstuff.Basis;
 import java.util.function.Supplier;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
-import net.minecraft.block.Blocks;
+import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;
@@ -21,16 +21,16 @@ public class BasisArmorMaterial
 					33, 
 					new int[]
 						{
-							6, //Protection des Bottes
-							12, //Pantalon
-							16, //Plastron
-							6 //Casque
+							4, //Protection des Bottes
+							7, //Pantalon
+							10, //Plastron
+							3 //Casque
 						},
-					12, //Enchantabilité
+					15, //Enchantabilité
 					SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, //Son lorsqu'on équipe
 					4, //Robustesse
-					1.0F, //Resistance au recul
-					() -> Ingredient.fromItems(Blocks.BEDROCK) //Matériaux de réparation
+					0.1F, //Resistance au recul
+					() -> Ingredient.fromItems(RegisterItems.bedrockIngot) //Matériaux de réparation
 			);
 	
 	private static class ArmorMaterial implements IArmorMaterial
