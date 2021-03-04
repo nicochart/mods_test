@@ -4,5 +4,7 @@
   "item.bedrockstuff.bedrock_chestplate" : "§8Bedrock Chestplate",
   "item.bedrockstuff.bedrock_leggings" : "§8Bedrock Leggings",
   "item.bedrockstuff.bedrock_boots" : "§8Bedrock Boots",
+  "item.bedrockstuff.bedrock_scrap" : "§8Bedrock Scrap",
+  "item.bedrockstuff.bedrock_ingot" : "§8Bedrock Ingot",
   "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore"
 }

@@ -4,5 +4,7 @@
   "item.bedrockstuff.bedrock_chestplate" : "§8Plastron en Bedrock",
   "item.bedrockstuff.bedrock_leggings" : "§8Jambières en Bedrock",
   "item.bedrockstuff.bedrock_boots" : "§8Bottes en Bedrock",
+  "item.bedrockstuff.bedrock_scrap" : "§8Fragment de Bedrock",
+  "item.bedrockstuff.bedrock_ingot" : "§8Lingot de Bedrock",
   "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock"
 }

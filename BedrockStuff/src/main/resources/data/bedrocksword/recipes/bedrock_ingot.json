@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:diamond"
+        },
+        {
+            "item": "bedrockstuff:bedrock_scrap"
+        },
+        {
+            "item": "bedrockstuff:bedrock_scrap"
+        },
+        {
+            "item": "minecraft:diamond"
+        },
+        {
+            "item": "bedrockstuff:bedrock_scrap"
+        },
+        {
+            "item": "bedrockstuff:bedrock_scrap"
+        },
+        {
+            "item": "minecraft:diamond"
+        },
+        {
+            "item": "minecraft:diamond"
+        }
+    ],
+    "result": {
+        "item": "bedrockstuff:bedrock_ingot",
+        "count": 1
+    }
+}

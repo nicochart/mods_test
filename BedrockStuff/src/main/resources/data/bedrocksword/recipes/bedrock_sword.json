@@ -7,14 +7,14 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:bedrock"
+            "item": "bedrockstuff:bedrock_ingot"
         },
         "/": {
             "item": "minecraft:stick"
         }
     },
     "result": {
-        "item": "bedrocksword:bedrock_sword",
+        "item": "bedrockstuff:bedrock_sword",
         "count": 1
     }
 }
