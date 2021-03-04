@@ -18,7 +18,7 @@ public class BasisArmorMaterial
 	public final static IArmorMaterial bedrock = new ArmorMaterial
 			(
 					BedrockStuff.MODID + ":bedrock", //Nom du matériau
-					33, 
+					42, //Facteur de dégats, permet de calculer la durabilité avec le Max_Damage_Array 
 					new int[]
 						{
 							4, //Protection des Bottes
