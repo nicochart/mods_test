@@ -11,30 +11,24 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-public class OverworldOres extends Block //Any ore added in overworld (Stone sound, xp loot, ..)
+public class BedrockOre extends Block
 {
-	public OverworldOres()
+	public BedrockOre()
 	{
-        super(Properties.create(Material.ROCK, MaterialColor.STONE).hardnessAndResistance(3F,3F).sound(SoundType.STONE));
+        super(Properties.create(Material.ROCK, MaterialColor.STONE).hardnessAndResistance(100F,100F).sound(SoundType.STONE));
     }
-
-    public OverworldOres(Properties properties)
-    {
-        super(properties);
-    }
-
 
     @Nullable
     @Override
     public ToolType getHarvestTool(BlockState state) {return ToolType.PICKAXE;}
 
     @Override
-    public int getHarvestLevel(BlockState state) {return 2;}
+    public int getHarvestLevel(BlockState state) {return 4;}
 
     @Override
     public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch)
     {
-       if (silktouch == 0) return 7;
-       else return 0;
+       if (silktouch == 0) return 0; //xp drop si la pioche n'a pas silktouch
+       else return 0; //si la pioche a silktouch: pas d'xp drop
     }
 }

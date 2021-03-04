@@ -1,7 +1,7 @@
 package fr.factionbedrock.bedrockstuff.Register;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
-import fr.factionbedrock.bedrockstuff.Blocks.OverworldOres;
+import fr.factionbedrock.bedrockstuff.Blocks.BedrockOre;
 import fr.factionbedrock.bedrockstuff.Item.ItemFromBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -15,7 +15,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 @EventBusSubscriber(modid = BedrockStuff.MODID, bus = Bus.MOD)
 public class RegisterBlocks
 {
-	public static final Block bedrockOre = new OverworldOres();
+	public static final Block bedrockOre = new BedrockOre();
 	
 	@SubscribeEvent
     public static void register(Register<Block> event)

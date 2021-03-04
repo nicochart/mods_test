@@ -12,7 +12,7 @@ public class BasisToolMaterial
 	public static final IItemTier bedrock =
 			new ToolMaterial
 			(
-					3, //Niveau de minage
+					5, //Niveau de minage
 					4048, //durabilité
 					9.5F, //efficacité
 					24.0, //Dégats d'attaque
