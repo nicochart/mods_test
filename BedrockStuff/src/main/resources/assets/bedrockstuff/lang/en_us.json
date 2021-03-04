@@ -1,5 +1,9 @@
 {
   "item.bedrocksword.bedrock_sword" : "§8Bedrock Sword",
+  "item.bedrockstuff.bedrock_axe" : "§8Bedrock Axe",
+  "item.bedrockstuff.bedrock_shovel" : "§8Bedrock Shovel",
+  "item.bedrockstuff.bedrock_pickaxe" : "§8Bedrock Pickaxe",
+  "item.bedrockstuff.bedrock_hoe" : "§8Bedrock Hoe",
   "item.bedrockstuff.bedrock_helmet" : "§8Bedrock Helmet",
   "item.bedrockstuff.bedrock_chestplate" : "§8Bedrock Chestplate",
   "item.bedrockstuff.bedrock_leggings" : "§8Bedrock Leggings",

@@ -1,12 +1,12 @@
 {
     "type": "minecraft:smithing",
     "base": {
-        "item": "minecraft:netherite_sword"
+        "item": "minecraft:netherite_boots"
     },
     "addition": {
         "item": "bedrockstuff:bedrock_ingot"
     },
     "result": {
-        "item": "bedrockstuff:bedrock_sword"
+        "item": "bedrockstuff:bedrock_boots"
     }
 }

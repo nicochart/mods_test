@@ -1,5 +1,9 @@
 {
   "item.bedrockstuff.bedrock_sword" : "§8Épée en Bedrock",
+  "item.bedrockstuff.bedrock_axe" : "§8Hache en Bedrock",
+  "item.bedrockstuff.bedrock_shovel" : "§8Pelle en Bedrock",
+  "item.bedrockstuff.bedrock_pickaxe" : "§8Pioche en Bedrock",
+  "item.bedrockstuff.bedrock_hoe" : "§8Houe en Bedrock",
   "item.bedrockstuff.bedrock_helmet" : "§8Casque en Bedrock",
   "item.bedrockstuff.bedrock_chestplate" : "§8Plastron en Bedrock",
   "item.bedrockstuff.bedrock_leggings" : "§8Jambières en Bedrock",
