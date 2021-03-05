@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "newdim:blocks/newtree_log_top",
+    "side": "newdim:blocks/newtree_log"
+  }
+}
