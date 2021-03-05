@@ -1,4 +1,4 @@
-package fr.factionbedrock.bedrockstuff;
+package fr.factionbedrock.newdim;
 
 import java.util.stream.Collectors;
 
@@ -20,17 +20,19 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(BedrockStuff.MODID) 
+@Mod(NewDimension.MODID) 
 
-public class BedrockStuff
+public class NewDimension
 {
-	public static final String MODID = "bedrockstuff";
-	public static final String NAME = "Bedrock Sword";
+	public static final String MODID = "newdim";
+	public static final String NAME = "New Dimension";
 	public static final String VERSION = "1.0";
 	
 	private static Logger LOGGER = LogManager.getLogger();
 	
-    public BedrockStuff() {
+	/*Code du ExampleMod*/
+	
+    public NewDimension() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -59,7 +61,7 @@ public class BedrockStuff
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo(MODID, "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
@@ -72,8 +74,8 @@ public class BedrockStuff
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // say something when the server starts
-        LOGGER.info("Bedrock Stuff mod successfuly loaded ! Enjoy !");
+        // do something when the server starts
+        LOGGER.info("HELLO from server starting");
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD

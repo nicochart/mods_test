@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+
+license="All rights reserved"
+
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+
+### Modlist
+[[mods]]
+modId="bedrocksword"
+version="${file.jarVersion}"
+displayName="Bedrock Sword"
+
+# Lien de requete de maj
+#updateJSONURL="https://change.me.example.invalid/updates.json" 
+
+
+# "homepage" du mod
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+
+logoFile="bedrock_sword.png"
+
+credits="Premier mod de nicochart"
+authors="nicochart"
+description='''
+Just adds a Bedrock Sword
+'''
+
+### Dependances
+[[dependencies.bedrocksword]] #optionnel
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE" #BEFORE, AFTER, NONE
+    side="BOTH" #BOTH, CLIENT or SERVER
+[[dependencies.bedrocksword]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.4,1.17)" #1.17 non inclu
+    ordering="NONE"
+    side="BOTH"
