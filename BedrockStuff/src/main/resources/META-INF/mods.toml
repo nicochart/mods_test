@@ -24,17 +24,18 @@ credits="Premier mod de nicochart"
 authors="nicochart"
 description='''
 Just adds some Bedrock Stuff
-And soon Bedrock Ore
+Bedrock Ore, Scrap, Ingot
+Bedrock Tools and Armor
 '''
 
 ### Dependances
-[[dependencies.bedrocksword]] #optionnel
+[[dependencies.bedrockstuff]] #optionnel
     modId="forge"
     mandatory=true
     versionRange="[36,)"
     ordering="NONE" #BEFORE, AFTER, NONE
     side="BOTH" #BOTH, CLIENT or SERVER
-[[dependencies.bedrocksword]]
+[[dependencies.bedrockstuff]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.4,1.17)" #1.17 non inclu

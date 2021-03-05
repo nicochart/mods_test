@@ -7,9 +7,9 @@ license="All rights reserved"
 
 ### Modlist
 [[mods]]
-modId="bedrocksword"
+modId="newdim"
 version="${file.jarVersion}"
-displayName="Bedrock Sword"
+displayName="New Dimension"
 
 # Lien de requete de maj
 #updateJSONURL="https://change.me.example.invalid/updates.json" 
@@ -23,17 +23,17 @@ logoFile="bedrock_sword.png"
 credits="Premier mod de nicochart"
 authors="nicochart"
 description='''
-Just adds a Bedrock Sword
+Trying to add a new dimension
 '''
 
 ### Dependances
-[[dependencies.bedrocksword]] #optionnel
+[[dependencies.newdim]] #optionnel
     modId="forge"
     mandatory=true
     versionRange="[36,)"
     ordering="NONE" #BEFORE, AFTER, NONE
     side="BOTH" #BOTH, CLIENT or SERVER
-[[dependencies.bedrocksword]]
+[[dependencies.newdim]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.4,1.17)" #1.17 non inclu
