@@ -17,6 +17,8 @@ public class GenOverworldOres
 			2 //Chance d'apparition (Nombre de fillons par chunks)
 	);
 	
+	/*Bedrock Ore is generated in Event/EventHandler.java*/
+	
 	public static ConfiguredFeature<?,?> OverworldOres(BlockState blockState, int oreVeinSize, int minHeight, int maxHeight, int chance)
 	{
         return Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, blockState, oreVeinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minHeight,0,maxHeight))).square().chance(chance);

@@ -67,7 +67,7 @@ public class BedrockStuff
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo(MODID, "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)
@@ -80,8 +80,8 @@ public class BedrockStuff
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        // say something when the server starts
+        LOGGER.info("Bedrock Stuff mod successfuly loaded ! Enjoy !");
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
