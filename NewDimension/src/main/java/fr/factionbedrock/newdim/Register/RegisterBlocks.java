@@ -44,8 +44,8 @@ public class RegisterBlocks
     /*---------*/
 		
 	//newchest
-	public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(Material.ROCK,10f,10f,SoundType.STONE,0,ToolType.PICKAXE));
-		
+	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
+	
 	private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item)
 	{
         RegistryObject<T> register = BLOCKS.register(name, block);
