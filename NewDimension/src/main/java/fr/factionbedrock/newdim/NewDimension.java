@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.Register.RegisterBlocks;
 import fr.factionbedrock.newdim.Register.RegisterItems;
+import fr.factionbedrock.newdim.Register.RegisterTileEntityTypes;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -44,6 +45,7 @@ public class NewDimension
 				RegisterBiomes.BIOMES,
 				RegisterBlocks.BLOCKS,
 				RegisterItems.ITEMS,
+				RegisterTileEntityTypes.TILE_ENTITY_TYPES
 		};
 		for (DeferredRegister<?> register : registers) {register.register(bus);}
     }
