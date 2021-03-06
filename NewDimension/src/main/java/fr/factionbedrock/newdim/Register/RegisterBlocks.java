@@ -1,17 +1,24 @@
 package fr.factionbedrock.newdim.Register;
 
 import fr.factionbedrock.newdim.NewDimension;
+import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.AbstractBlock.Properties;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 
 import java.util.Objects;
@@ -35,6 +42,9 @@ public class RegisterBlocks
 		public static final RegistryObject<Block> NEWTREE_PLANKS = register("newtree_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
 	
     /*---------*/
+		
+		//public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(AbstractBlock.Properties.from(Blocks.CHEST)));
+		public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(Material.ROCK,10f,10f,SoundType.STONE,0,ToolType.PICKAXE));
 		
 	private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item)
 	{

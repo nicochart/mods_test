@@ -1,25 +1,18 @@
 package fr.factionbedrock.newdim;
 
-import java.util.stream.Collectors;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.Register.RegisterBlocks;
 import fr.factionbedrock.newdim.Register.RegisterItems;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -48,7 +41,7 @@ public class NewDimension
 		
 		DeferredRegister<?>[] registers =
 		{
-				//NewDimBiomes.BIOMES,
+				RegisterBiomes.BIOMES,
 				RegisterBlocks.BLOCKS,
 				RegisterItems.ITEMS,
 		};
