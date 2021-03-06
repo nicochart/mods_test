@@ -43,8 +43,8 @@ public class RegisterBlocks
 	
     /*---------*/
 		
-		//public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(AbstractBlock.Properties.from(Blocks.CHEST)));
-		public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(Material.ROCK,10f,10f,SoundType.STONE,0,ToolType.PICKAXE));
+	//newchest
+	public static final RegistryObject<ChestBlock> NEWCHEST = register("newchest", () -> new NewDimChestBlock(Material.ROCK,10f,10f,SoundType.STONE,0,ToolType.PICKAXE));
 		
 	private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item)
 	{
