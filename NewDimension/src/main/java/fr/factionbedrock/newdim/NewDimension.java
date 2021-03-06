@@ -3,14 +3,18 @@ package fr.factionbedrock.newdim;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.factionbedrock.newdim.Client.Renderer.NewChestTileEntityRenderer;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.Register.RegisterBlocks;
 import fr.factionbedrock.newdim.Register.RegisterItems;
 import fr.factionbedrock.newdim.Register.RegisterTileEntityTypes;
 import net.minecraft.block.Blocks;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -50,16 +54,19 @@ public class NewDimension
 		for (DeferredRegister<?> register : registers) {register.register(bus);}
     }
 
+    
     private void setup(FMLCommonSetupEvent event)
     {
         // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    	
     }
 
+    @OnlyIn(Dist.CLIENT)
     private void clientSetup(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+    	
+    	//Chests render
+        ClientRegistry.bindTileEntityRenderer(RegisterTileEntityTypes.CHEST.get(), NewChestTileEntityRenderer::new);
     }
 
     @SubscribeEvent
