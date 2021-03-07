@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import fr.factionbedrock.bedrockchest.Registry.RegisterBlocks;
 import fr.factionbedrock.bedrockchest.Registry.RegisterItems;
+import fr.factionbedrock.bedrockchest.Registry.RegisterTileEntityTypes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
@@ -47,7 +48,8 @@ public class BedrockChest
 		DeferredRegister<?>[] registers =
 		{
 				RegisterBlocks.BLOCKS,
-				RegisterItems.ITEMS
+				RegisterItems.ITEMS,
+				RegisterTileEntityTypes.TILE_ENTITY_TYPES
 		};
 		for (DeferredRegister<?> register : registers) {register.register(bus);}
     }
