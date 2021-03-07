@@ -3,14 +3,17 @@ package fr.factionbedrock.bedrockchest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import fr.factionbedrock.bedrockchest.Client.PhysicalClientSide;
 import fr.factionbedrock.bedrockchest.Registry.RegisterBlocks;
 import fr.factionbedrock.bedrockchest.Registry.RegisterItems;
 import fr.factionbedrock.bedrockchest.Registry.RegisterTileEntityTypes;
+import fr.factionbedrock.bedrockchest.Server.PhysicalServerSide;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -32,18 +35,20 @@ public class BedrockChest
 	
 	private static Logger LOGGER = LogManager.getLogger();
 	
+	public static final IPhysicalSide SIDE = 
+			DistExecutor.safeRunForDist(() -> PhysicalClientSide::new, () -> PhysicalServerSide::new);
 	
 	/*Code du ExampleMod*/
 	
     public BedrockChest()
     {
-    	IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-        
-    	bus.addListener(this::setup);
-		bus.addListener(this::clientSetup);
+    	IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    	IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+    	
+    	modEventBus.addListener(this::setup);
+    	modEventBus.addListener(this::clientSetup);
 		
-		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-		//forgeBus.addListener(EventPriority.NORMAL, NewDimStructures::addDimensionalSpacing);
+		SIDE.setup(modEventBus, forgeEventBus);
 		
 		DeferredRegister<?>[] registers =
 		{
@@ -51,7 +56,7 @@ public class BedrockChest
 				RegisterItems.ITEMS,
 				RegisterTileEntityTypes.TILE_ENTITY_TYPES
 		};
-		for (DeferredRegister<?> register : registers) {register.register(bus);}
+		for (DeferredRegister<?> register : registers) {register.register(modEventBus);}
     }
 
     
