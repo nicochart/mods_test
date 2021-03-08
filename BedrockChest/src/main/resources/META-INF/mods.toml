@@ -18,12 +18,12 @@ displayName="Bedrock Chest"
 # "homepage" du mod
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
 
-logoFile="bedrock_sword.png"
+logoFile="bedrock_chest.png"
 
 credits="Premier mod de nicochart"
 authors="nicochart"
 description='''
-Trying to add a chest
+Add a Bedrock Chest
 '''
 
 ### Dependances
