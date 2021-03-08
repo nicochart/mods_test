@@ -1,8 +1,6 @@
 {
     "parent": "builtin/entity",
-    "textures": {
-        "particle": "blocks/newtree_planks"
-    },
+    "__comment": "Inutile de preciser les particules ici",
     "display": {
         "gui": {
             "rotation": [ 30, 45, 0 ],

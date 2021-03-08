@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bedrockchest:block/bedrock_chest"
+    }
+  }
+}
