@@ -4,7 +4,6 @@ import fr.factionbedrock.bedrockchest.Registry.RegisterItemGroup;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.Item.Properties;
 
 public class BedrockChestItem extends Item
 {

@@ -12,6 +12,9 @@ import net.minecraft.item.ItemStack;
 
 public class BedrockChestItemTileEntityRenderer extends ItemStackTileEntityRenderer
 {
+	/*Called in RegisterItems, when creating "item" corresponding to block chest
+	  Code Source: Better End*/
+	
 	private BedrockChestTileEntity chest;
 
 	@Override

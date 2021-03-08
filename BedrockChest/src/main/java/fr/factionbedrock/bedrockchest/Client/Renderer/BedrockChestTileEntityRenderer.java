@@ -35,7 +35,8 @@ import net.minecraft.world.World;
 
 public class BedrockChestTileEntityRenderer<T extends TileEntity & IChestLid> extends TileEntityRenderer<BedrockChestTileEntity>
 {
-		//Called in PhysicalClientSide to register renderer, which is called in Main class
+		/*Called in PhysicalClientSide to register renderer, which is called in Main class
+		  Code Source: Better End*/
 		private static final HashMap<Block, RenderType[]> LAYERS = Maps.newHashMap();
 		private static RenderType[] defaultLayer;
 
