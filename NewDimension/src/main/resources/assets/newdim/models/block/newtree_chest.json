@@ -2,7 +2,7 @@
     "parent": "block/block",
     "textures": {
         "texture": "newdim:entity/newtree_chest/newtree_chest",
-        "particle": "newdim:blocks/newtree_planks"
+        "particle": "newdim:block/newtree_planks"
     },
     "elements": [
         {   "from": [ 1, 0, 1 ],

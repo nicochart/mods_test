@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "newdim:blocks/newtree_planks"
+    "all": "newdim:block/newtree_planks"
   }
 }

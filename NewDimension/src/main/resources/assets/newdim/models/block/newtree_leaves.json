@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "newdim:blocks/newtree_leaves"
+    "all": "newdim:block/newtree_leaves"
   }
 }
