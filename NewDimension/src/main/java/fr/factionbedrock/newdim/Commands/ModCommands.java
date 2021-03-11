@@ -11,11 +11,11 @@ public class ModCommands
 {
 	public static void register(CommandDispatcher<CommandSource> dispatcher)
 	{
-        LiteralCommandNode<CommandSource> cmdTut = dispatcher.register(
+        LiteralCommandNode<CommandSource> cmdNewDim = dispatcher.register(
                 Commands.literal(NewDimension.MODID)
                         .then(TpNewDim.register(dispatcher))
         );
 
-        dispatcher.register(Commands.literal("tut").redirect(cmdTut));
+        dispatcher.register(Commands.literal("newdim").redirect(cmdNewDim));
     }
 }

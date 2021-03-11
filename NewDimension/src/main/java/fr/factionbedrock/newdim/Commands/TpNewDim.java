@@ -6,7 +6,7 @@ import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-import fr.factionbedrock.newdim.Register.RegisterDimensions;
+import fr.factionbedrock.newdim.World.ModDimensions;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.Entity;
@@ -34,20 +34,20 @@ public class TpNewDim implements Command<CommandSource>
         ServerPlayerEntity player = context.getSource().asPlayer();
         int x = player.getPosition().getX();
         int z = player.getPosition().getZ();
-        if (player.getEntityWorld().getDimensionKey().equals(RegisterDimensions.NEW_DIMENSION))
+        if (player.getEntityWorld().getDimensionKey().equals(ModDimensions.NEW_DIMENSION))
         {
             ServerWorld world = player.getServer().getWorld(World.OVERWORLD);
             TeleportationTools.teleport(player, world, new BlockPos(x, 200, z));
         }
         else
         {
-            ServerWorld world = player.getServer().getWorld(RegisterDimensions.NEW_DIMENSION);
+            ServerWorld world = player.getServer().getWorld(ModDimensions.NEW_DIMENSION);
             TeleportationTools.teleport(player, world, new BlockPos(x, 200, z));
         }
         return 0;
     }
     
-    public static class TeleportationTools
+    private static class TeleportationTools
     {
         public static void teleport(ServerPlayerEntity entity, ServerWorld destination, BlockPos pos)
         {

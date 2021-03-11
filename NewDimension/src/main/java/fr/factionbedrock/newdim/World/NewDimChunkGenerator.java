@@ -19,12 +19,14 @@ import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 
-public class NewDimChunkGenerator extends ChunkGenerator {
+public class NewDimChunkGenerator extends ChunkGenerator
+{
 
     public static final MapCodec<NewDimChunkGenerator> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
             .xmap(NewDimChunkGenerator::new, NewDimChunkGenerator::getBiomeRegistry);
 
-    public NewDimChunkGenerator(Registry<Biome> registry) {
+    public NewDimChunkGenerator(Registry<Biome> registry)
+    {
         super(new NewDimBiomeProvider(registry), new DimensionStructuresSettings(false));
     }
 
@@ -33,7 +35,8 @@ public class NewDimChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public void generateSurface(WorldGenRegion region, IChunk chunk) {
+    public void generateSurface(WorldGenRegion region, IChunk chunk)
+    {
         BlockState bedrock = Blocks.BEDROCK.getDefaultState();
         BlockState stone = Blocks.STONE.getDefaultState();
         ChunkPos chunkpos = chunk.getPos();
@@ -62,27 +65,17 @@ public class NewDimChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    protected Codec<? extends ChunkGenerator> func_230347_a_() {
-        return CODEC.codec();
-    }
+    protected Codec<? extends ChunkGenerator> func_230347_a_() {return CODEC.codec();}
 
     @Override
-    public ChunkGenerator func_230349_a_(long seed) {
-        return new NewDimChunkGenerator(getBiomeRegistry());
-    }
+    public ChunkGenerator func_230349_a_(long seed) {return new NewDimChunkGenerator(getBiomeRegistry());}
 
     @Override
-    public void func_230352_b_(IWorld world, StructureManager structureManager, IChunk chunk) {
-
-    }
+    public void func_230352_b_(IWorld world, StructureManager structureManager, IChunk chunk) {}
 
     @Override
-    public int getHeight(int x, int z, Heightmap.Type heightmapType) {
-        return 0;
-    }
+    public int getHeight(int x, int z, Heightmap.Type heightmapType) {return 0;}
 
     @Override
-    public IBlockReader func_230348_a_(int p_230348_1_, int p_230348_2_) {
-        return new Blockreader(new BlockState[0]);
-    }
+    public IBlockReader func_230348_a_(int p_230348_1_, int p_230348_2_) {return new Blockreader(new BlockState[0]);}
 }

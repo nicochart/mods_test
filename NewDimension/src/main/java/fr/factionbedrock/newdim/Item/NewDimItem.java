@@ -1,6 +1,6 @@
 package fr.factionbedrock.newdim.Item;
 
-import fr.factionbedrock.newdim.Register.RegisterItemGroup;
+import fr.factionbedrock.newdim.Setup.ModSetup;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
@@ -9,13 +9,13 @@ public class NewDimItem extends Item
 {
 	public NewDimItem() {
         super(new Properties()
-                .group(RegisterItemGroup.GROUP)
+                .group(ModSetup.ITEM_GROUP)
         );
     }
 
     public NewDimItem(Rarity rarity) {
         super(new Properties()
-                .group(RegisterItemGroup.GROUP)
+                .group(ModSetup.ITEM_GROUP)
                 .rarity(rarity)
         );
     }
@@ -23,6 +23,6 @@ public class NewDimItem extends Item
     public NewDimItem(Food food) {
         super(new Properties()
                 .food(food)
-                .group(RegisterItemGroup.GROUP));
+                .group(ModSetup.ITEM_GROUP));
     }
 }

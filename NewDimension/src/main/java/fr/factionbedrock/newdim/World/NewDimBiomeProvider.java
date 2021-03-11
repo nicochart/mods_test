@@ -14,7 +14,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class NewDimBiomeProvider extends BiomeProvider {
+public class NewDimBiomeProvider extends BiomeProvider
+{
 
     public static final MapCodec<NewDimBiomeProvider> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
             .xmap(NewDimBiomeProvider::new, NewDimBiomeProvider::getBiomeRegistry);
@@ -23,37 +24,29 @@ public class NewDimBiomeProvider extends BiomeProvider {
     private final Registry<Biome> biomeRegistry;
     private static final List<RegistryKey<Biome>> SPAWN = Collections.singletonList(Biomes.PLAINS);
 
-    public NewDimBiomeProvider(Registry<Biome> biomeRegistry) {
+    public NewDimBiomeProvider(Registry<Biome> biomeRegistry)
+    {
         super(getStartBiomes(biomeRegistry));
         this.biomeRegistry = biomeRegistry;
         biome = biomeRegistry.getOrDefault(Biomes.PLAINS.getLocation());
     }
 
-    private static List<Biome> getStartBiomes(Registry<Biome> registry) {
+    private static List<Biome> getStartBiomes(Registry<Biome> registry)
+    {
         return SPAWN.stream().map(s -> registry.getOrDefault(s.getLocation())).collect(Collectors.toList());
     }
 
-    public Registry<Biome> getBiomeRegistry() {
-        return biomeRegistry;
-    }
+    public Registry<Biome> getBiomeRegistry() {return biomeRegistry;}
 
     @Override
-    public boolean hasStructure(Structure<?> structure) {
-        return false;
-    }
+    public boolean hasStructure(Structure<?> structure) {return false;}
 
     @Override
-    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {
-        return CODEC.codec();
-    }
+    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {return CODEC.codec();}
 
     @Override
-    public BiomeProvider getBiomeProvider(long seed) {
-        return this;
-    }
+    public BiomeProvider getBiomeProvider(long seed) {return this;}
 
     @Override
-    public Biome getNoiseBiome(int x, int y, int z) {
-        return biome;
-    }
+    public Biome getNoiseBiome(int x, int y, int z) {return biome;}
 }
