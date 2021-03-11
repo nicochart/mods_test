@@ -7,10 +7,10 @@
   ],
   "key": {
     "#": {
-      "tag": "newdim:newtree_planks"
+      "tag": "newdim:newtree_log"
     }
   },
   "result": {
-    "item": "newdim:newchest"
+    "item": "newdim:newtree_planks"
   }
 }

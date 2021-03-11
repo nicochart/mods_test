@@ -2,6 +2,8 @@ package fr.factionbedrock.newdim.World;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+
+import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -39,6 +41,8 @@ public class NewDimChunkGenerator extends ChunkGenerator
     {
         BlockState bedrock = Blocks.BEDROCK.getDefaultState();
         BlockState stone = Blocks.STONE.getDefaultState();
+        BlockState lime_concrete = Blocks.LIME_CONCRETE.getDefaultState();
+        BlockState newtree_planks = Registration.NEWTREE_PLANKS.get().getDefaultState();
         ChunkPos chunkpos = chunk.getPos();
 
         BlockPos.Mutable pos = new BlockPos.Mutable();
@@ -58,7 +62,7 @@ public class NewDimChunkGenerator extends ChunkGenerator
                 int realz = chunkpos.z * 16 + z;
                 int height = (int) (65 + Math.sin(realx / 20.0f)*10 + Math.cos(realz / 20.0f)*10);
                 for (int y = 1 ; y < height ; y++) {
-                    chunk.setBlockState(pos.setPos(x, y, z), stone, false);
+                    chunk.setBlockState(pos.setPos(x, y, z), stone, false); //newtree_planks does not work
                 }
             }
         }
