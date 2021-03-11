@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.Register.RegisterBlocks;
+import fr.factionbedrock.newdim.Register.RegisterDimensions;
 import fr.factionbedrock.newdim.Register.RegisterItems;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -52,8 +53,7 @@ public class NewDimension
     
     private void setup(FMLCommonSetupEvent event)
     {
-        // some preinit code
-    	
+    	RegisterDimensions.registerDimensionStuff();
     }
 
     @OnlyIn(Dist.CLIENT)

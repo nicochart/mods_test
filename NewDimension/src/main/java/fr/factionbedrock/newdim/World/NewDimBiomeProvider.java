@@ -1,58 +1,59 @@
 package fr.factionbedrock.newdim.World;
 
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryLookupCodec;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.Attributes;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.provider.BiomeProvider;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.gen.feature.structure.Structure;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-public class NewDimBiomeProvider extends NewNetherBiomeProvider {
+public class NewDimBiomeProvider extends BiomeProvider {
 
-    public static final MapCodec<NewNetherBiomeProvider> PACKET_CODEC = RecordCodecBuilder.mapCodec(
-            (instance) -> instance.group(
-                    Codec.LONG.fieldOf("seed")
-                            .orElseGet(NewDimSeed::getSeed)
-                            .forGetter((netherProvider) -> netherProvider.seed),
-                            RecordCodecBuilder.<Pair<Biome.Attributes, Supplier<Biome>>>create((biomeAttributes) -> {
-                   	         return biomeAttributes.group(Biome.Attributes.CODEC.fieldOf("parameters").forGetter(Pair::getFirst), Biome.BIOME_CODEC.fieldOf("biome").forGetter(Pair::getSecond)).apply(biomeAttributes, Pair::of);
-                   	      })
-                            .listOf().fieldOf("biomes")
-                            .forGetter((netherProvider) -> netherProvider.biomeAttributes),
-                    NewNetherBiomeProvider.Noise.CODEC.fieldOf("temperature_noise")
-                            .forGetter((netherProvider) -> netherProvider.temperatureNoise),
-                    NewNetherBiomeProvider.Noise.CODEC.fieldOf("humidity_noise")
-                            .forGetter((netherProvider) -> netherProvider.humidityNoise),
-                    NewNetherBiomeProvider.Noise.CODEC.fieldOf("altitude_noise")
-                            .forGetter((netherProvider) -> netherProvider.altitudeNoise),
-                    NewNetherBiomeProvider.Noise.CODEC.fieldOf("weirdness_noise")
-                            .forGetter((netherProvider) -> netherProvider.weirdnessNoise))
-                    .apply(instance, NewNetherBiomeProvider::new));
+    public static final MapCodec<NewDimBiomeProvider> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
+            .xmap(NewDimBiomeProvider::new, NewDimBiomeProvider::getBiomeRegistry);
 
-    public static final Codec<NewNetherBiomeProvider> CODEC = NewNetherBiomeProvider.CODEC;
+    private final Biome biome;
+    private final Registry<Biome> biomeRegistry;
+    private static final List<RegistryKey<Biome>> SPAWN = Collections.singletonList(Biomes.PLAINS);
 
-	private List<Pair<Attributes, Supplier<Biome>>> parameters;
-	private Optional<Pair<Registry<Biome>, Preset>> preset;
-	private NewDimBiomeProvider(long seed, List<Pair<Biome.Attributes, Supplier<Biome>>> biomeAttributes, Optional<Pair<Registry<Biome>, NewNetherBiomeProvider.Preset>> netherProviderPreset)
-    {
-        super(seed, biomeAttributes, netherProviderPreset);
+    public NewDimBiomeProvider(Registry<Biome> biomeRegistry) {
+        super(getStartBiomes(biomeRegistry));
+        this.biomeRegistry = biomeRegistry;
+        biome = biomeRegistry.getOrDefault(Biomes.PLAINS.getLocation());
     }
 
-    protected Codec<? extends BiomeProvider> codec()
-    {
-        return CODEC;
+    private static List<Biome> getStartBiomes(Registry<Biome> registry) {
+        return SPAWN.stream().map(s -> registry.getOrDefault(s.getLocation())).collect(Collectors.toList());
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public BiomeProvider withSeed(long seed) {
-        return new NewDimBiomeProvider(seed, this.parameters, this.preset);
+    public Registry<Biome> getBiomeRegistry() {
+        return biomeRegistry;
+    }
+
+    @Override
+    public boolean hasStructure(Structure<?> structure) {
+        return false;
+    }
+
+    @Override
+    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {
+        return CODEC.codec();
+    }
+
+    @Override
+    public BiomeProvider getBiomeProvider(long seed) {
+        return this;
+    }
+
+    @Override
+    public Biome getNoiseBiome(int x, int y, int z) {
+        return biome;
     }
 }

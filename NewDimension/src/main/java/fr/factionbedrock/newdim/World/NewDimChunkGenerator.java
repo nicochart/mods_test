@@ -1,52 +1,88 @@
 package fr.factionbedrock.newdim.World;
 
-import com.google.common.base.Supplier;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKeyCodec;
+import net.minecraft.util.registry.RegistryLookupCodec;
+import net.minecraft.world.Blockreader;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.biome.provider.BiomeProvider;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.ChunkGenerator;
-import net.minecraft.world.gen.NoiseChunkGenerator;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
-import net.minecraft.world.gen.settings.NoiseSettings;
-import net.minecraft.world.gen.DimensionSettings;
-import net.minecraft.world.gen.Heightmap.Type;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class NewDimChunkGenerator extends NewNoiseChunkGenerator
-{
-	public static final Codec<NewNoiseChunkGenerator> CODEC = RecordCodecBuilder.create((p_236091_0_) -> {
-	      return p_236091_0_.group(BiomeProvider.CODEC.fieldOf("biome_source").forGetter((p_236096_0_) -> {
-	         return p_236096_0_.getBiomeProvider();
-	      }), Codec.LONG.fieldOf("seed").stable().forGetter((p_236093_0_) -> {
-	         return p_236093_0_.field_236084_w_;
-	      }), DimensionSettings.field_236098_b_.fieldOf("settings").forGetter((p_236090_0_) -> {
-	         return p_236090_0_.field_236080_h_;
-	      })).apply(p_236091_0_, p_236091_0_.stable(NewNoiseChunkGenerator::new));
-	   });
-	
-    public NewDimChunkGenerator(BiomeProvider biomeProvider, long seed, Supplier<DimensionSettings> dimensionSettingsSupplier) {
-        super(biomeProvider, seed, dimensionSettingsSupplier);
+public class NewDimChunkGenerator extends ChunkGenerator {
+
+    public static final MapCodec<NewDimChunkGenerator> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
+            .xmap(NewDimChunkGenerator::new, NewDimChunkGenerator::getBiomeRegistry);
+
+    public NewDimChunkGenerator(Registry<Biome> registry) {
+        super(new NewDimBiomeProvider(registry), new DimensionStructuresSettings(false));
+    }
+
+    public Registry<Biome> getBiomeRegistry() {
+        return ((NewDimBiomeProvider)biomeProvider).getBiomeRegistry();
+    }
+
+    @Override
+    public void generateSurface(WorldGenRegion region, IChunk chunk) {
+        BlockState bedrock = Blocks.BEDROCK.getDefaultState();
+        BlockState stone = Blocks.STONE.getDefaultState();
+        ChunkPos chunkpos = chunk.getPos();
+
+        BlockPos.Mutable pos = new BlockPos.Mutable();
+
+        int x;
+        int z;
+
+        for (x = 0; x < 16; x++) {
+            for (z = 0; z < 16; z++) {
+                chunk.setBlockState(pos.setPos(x, 0, z), bedrock, false);
+            }
+        }
+
+        for (x = 0; x < 16; x++) {
+            for (z = 0; z < 16; z++) {
+                int realx = chunkpos.x * 16 + x;
+                int realz = chunkpos.z * 16 + z;
+                int height = (int) (65 + Math.sin(realx / 20.0f)*10 + Math.cos(realz / 20.0f)*10);
+                for (int y = 1 ; y < height ; y++) {
+                    chunk.setBlockState(pos.setPos(x, y, z), stone, false);
+                }
+            }
+        }
     }
 
     @Override
     protected Codec<? extends ChunkGenerator> func_230347_a_() {
-        return CODEC;
+        return CODEC.codec();
     }
 
-    //func_230349_a_ = withSeed
-    @OnlyIn(Dist.CLIENT)
     @Override
-    public ChunkGenerator func_230349_a_(long p_230349_1_) {
-        return new NewNoiseChunkGenerator(this.biomeProvider.getBiomeProvider(p_230349_1_), p_230349_1_, this.field_236080_h_);
-     }
+    public ChunkGenerator func_230349_a_(long seed) {
+        return new NewDimChunkGenerator(getBiomeRegistry());
+    }
+
+    @Override
+    public void func_230352_b_(IWorld world, StructureManager structureManager, IChunk chunk) {
+
+    }
+
+    @Override
+    public int getHeight(int x, int z, Heightmap.Type heightmapType) {
+        return 0;
+    }
+
+    @Override
+    public IBlockReader func_230348_a_(int p_230348_1_, int p_230348_2_) {
+        return new Blockreader(new BlockState[0]);
+    }
 }
