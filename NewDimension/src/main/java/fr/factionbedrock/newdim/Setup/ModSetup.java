@@ -27,9 +27,15 @@ public class ModSetup {
 
     public static void init(final FMLCommonSetupEvent event)
     {
-        Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(NewDimension.MODID, "chunkgen"),NewDimChunkGenerator.CODEC.codec());
-        Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "biomes"),NewDimBiomeProvider.CODEC.codec());
+        event.enqueueWork(() ->
+        {
+        	Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(NewDimension.MODID, "newdimchunkgen"),
+                    NewDimChunkGenerator.CODEC);
+            Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "biomes"),
+                    NewDimBiomeProvider.CODEC);
+        });
     }
+
 
     @SubscribeEvent
     public static void serverLoad(RegisterCommandsEvent event) {

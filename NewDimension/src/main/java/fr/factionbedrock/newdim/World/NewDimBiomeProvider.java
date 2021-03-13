@@ -1,7 +1,6 @@
 package fr.factionbedrock.newdim.World;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
@@ -16,9 +15,8 @@ import java.util.stream.Collectors;
 
 public class NewDimBiomeProvider extends BiomeProvider
 {
-
-    public static final MapCodec<NewDimBiomeProvider> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
-            .xmap(NewDimBiomeProvider::new, NewDimBiomeProvider::getBiomeRegistry);
+	public static final Codec<NewDimBiomeProvider> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
+            .xmap(NewDimBiomeProvider::new, NewDimBiomeProvider::getBiomeRegistry).codec();
 
     private final Biome biome;
     private final Registry<Biome> biomeRegistry;
@@ -42,7 +40,7 @@ public class NewDimBiomeProvider extends BiomeProvider
     public boolean hasStructure(Structure<?> structure) {return false;}
 
     @Override
-    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {return CODEC.codec();}
+    protected Codec<? extends BiomeProvider> getBiomeProviderCodec() {return CODEC;}
 
     @Override
     public BiomeProvider getBiomeProvider(long seed) {return this;}

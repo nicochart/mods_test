@@ -1,8 +1,10 @@
 package fr.factionbedrock.newdim.World;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+import fr.factionbedrock.newdim.NewDimension;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -23,18 +25,31 @@ import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 
 public class NewDimChunkGenerator extends ChunkGenerator
 {
+    private static final Codec<Settings> SETTINGS_CODEC = RecordCodecBuilder.create(instance -> instance.group
+    (
+         Codec.INT.fieldOf("base").forGetter(Settings::getBaseHeight),
+         Codec.FLOAT.fieldOf("verticalvariance").forGetter(Settings::getVerticalVariance),
+         Codec.FLOAT.fieldOf("horizontalvariance").forGetter(Settings::getHorizontalVariance)
+    ).apply(instance, Settings::new));
 
-    public static final MapCodec<NewDimChunkGenerator> CODEC = RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY)
-            .xmap(NewDimChunkGenerator::new, NewDimChunkGenerator::getBiomeRegistry);
+    public static final Codec<NewDimChunkGenerator> CODEC = RecordCodecBuilder.create(instance -> instance.group
+    (
+         RegistryLookupCodec.getLookUpCodec(Registry.BIOME_KEY).forGetter(NewDimChunkGenerator::getBiomeRegistry),
+         SETTINGS_CODEC.fieldOf("settings").forGetter(NewDimChunkGenerator::getSettings)
+    ).apply(instance, NewDimChunkGenerator::new));
 
-    public NewDimChunkGenerator(Registry<Biome> registry)
+    private final Settings settings;
+
+    public NewDimChunkGenerator(Registry<Biome> registry, Settings settings)
     {
         super(new NewDimBiomeProvider(registry), new DimensionStructuresSettings(false));
+        this.settings = settings;
+        NewDimension.LOGGER.info("Chunk generator settings: " + settings.getBaseHeight() + ", " + settings.getHorizontalVariance() + ", " + settings.getVerticalVariance());
     }
 
-    public Registry<Biome> getBiomeRegistry() {
-        return ((NewDimBiomeProvider)biomeProvider).getBiomeRegistry();
-    }
+    public Settings getSettings() {return settings;}
+
+    public Registry<Biome> getBiomeRegistry() {return ((NewDimBiomeProvider)biomeProvider).getBiomeRegistry();}
 
     @Override
     public void generateSurface(WorldGenRegion region, IChunk chunk)
@@ -50,29 +65,36 @@ public class NewDimChunkGenerator extends ChunkGenerator
         int x;
         int z;
 
-        for (x = 0; x < 16; x++) {
-            for (z = 0; z < 16; z++) {
+        for (x = 0; x < 16; x++)
+        {
+            for (z = 0; z < 16; z++)
+            {
                 chunk.setBlockState(pos.setPos(x, 0, z), bedrock, false);
             }
         }
 
-        for (x = 0; x < 16; x++) {
-            for (z = 0; z < 16; z++) {
+        int baseHeight = settings.getBaseHeight();
+        float verticalVariance = settings.getVerticalVariance();
+        float horizontalVariance = settings.getHorizontalVariance();
+        for (x = 0; x < 16; x++)
+        {
+            for (z = 0; z < 16; z++)
+            {
                 int realx = chunkpos.x * 16 + x;
                 int realz = chunkpos.z * 16 + z;
-                int height = (int) (65 + Math.sin(realx / 20.0f)*10 + Math.cos(realz / 20.0f)*10);
+                int height = (int) (baseHeight + Math.sin(realx / horizontalVariance)*verticalVariance + Math.cos(realz / horizontalVariance)*verticalVariance);
                 for (int y = 1 ; y < height ; y++) {
                     chunk.setBlockState(pos.setPos(x, y, z), newtree_planks, false);
-                } /*The problem does not come from the block. When a player logout IN the dimension, the dimension doesn't register on next world load.. Idk why*/
+                }
             }
         }
     }
 
     @Override
-    protected Codec<? extends ChunkGenerator> func_230347_a_() {return CODEC.codec();}
+    protected Codec<? extends ChunkGenerator> func_230347_a_() {return this.CODEC;}
 
     @Override
-    public ChunkGenerator func_230349_a_(long seed) {return new NewDimChunkGenerator(getBiomeRegistry());}
+    public ChunkGenerator func_230349_a_(long seed) {return new NewDimChunkGenerator(getBiomeRegistry(), settings);}
 
     @Override
     public void func_230352_b_(IWorld world, StructureManager structureManager, IChunk chunk) {}
@@ -82,4 +104,24 @@ public class NewDimChunkGenerator extends ChunkGenerator
 
     @Override
     public IBlockReader func_230348_a_(int p_230348_1_, int p_230348_2_) {return new Blockreader(new BlockState[0]);}
+
+    private static class Settings
+    {
+        private final int baseHeight;
+        private final float verticalVariance;
+        private final float horizontalVariance;
+
+        public Settings(int baseHeight, float verticalVariance, float horizontalVariance)
+        {
+            this.baseHeight = baseHeight;
+            this.verticalVariance = verticalVariance;
+            this.horizontalVariance = horizontalVariance;
+        }
+
+        public float getVerticalVariance() {return verticalVariance;}
+
+        public int getBaseHeight() {return baseHeight;}
+
+        public float getHorizontalVariance() {return horizontalVariance;}
+    }
 }
