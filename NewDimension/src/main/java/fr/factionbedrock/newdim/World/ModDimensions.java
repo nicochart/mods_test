@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 
 public class ModDimensions
 {
-	public static final RegistryKey<DimensionType> NEW_DIMENSION_TYPE = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("newdim"));
-    public static final RegistryKey<World> NEW_DIMENSION = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("newdim"));
+	public static final RegistryKey<DimensionType> NEW_DIMENSION_TYPE = RegistryKey.getOrCreateKey(Registry.DIMENSION_TYPE_KEY, name("newdimension"));
+    public static final RegistryKey<World> NEW_DIMENSION = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, name("newdimension"));
     
     private static ResourceLocation name(String name)
     {

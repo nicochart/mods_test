@@ -35,17 +35,14 @@ public class Registration {
 		//logs
 		public static final RegistryObject<RotatedPillarBlock> NEWTREE_LOG = BLOCKS.register("newtree_log", () -> new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG)));
 		public static final RegistryObject<Item> NEWTREE_LOG_ITEM = ITEMS.register("newtree_log", () -> new BlockItem(NEWTREE_LOG.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
-		//BUG HERE (maybe):  Item tag not found
 		
 		//leaves
 		public static final RegistryObject<Block> NEWTREE_LEAVES = BLOCKS.register("newtree_leaves", () -> new LeavesBlock(AbstractBlock.Properties.from(Blocks.OAK_LEAVES)));
 		public static final RegistryObject<Item> NEWTREE_LEAVES_ITEM = ITEMS.register("newtree_leaves", () -> new BlockItem(NEWTREE_LEAVES.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
-		//BUG HERE : Item tag not found
 		
 		//planks
 		public static final RegistryObject<Block> NEWTREE_PLANKS = BLOCKS.register("newtree_planks", () -> new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS)));
 		public static final RegistryObject<Item> NEWTREE_PLANKS_ITEM = ITEMS.register("newtree_planks", () -> new BlockItem(NEWTREE_PLANKS.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
-		//BUG HERE : Item tag not found
 	/*---------*/
     
 	//newchest
