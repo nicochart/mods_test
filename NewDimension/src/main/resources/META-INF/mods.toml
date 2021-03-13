@@ -18,12 +18,12 @@ displayName="New Dimension"
 # "homepage" du mod
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
 
-logoFile="bedrock_sword.png"
+logoFile="new_dimension.png"
 
-credits="Premier mod de nicochart"
+credits="Premier mod de Dimension de nicochart"
 authors="nicochart"
 description='''
-Trying to add a new dimension
+Adds a new dimension
 '''
 
 ### Dependances
