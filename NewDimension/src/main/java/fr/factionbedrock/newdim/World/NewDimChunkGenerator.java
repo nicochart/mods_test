@@ -62,8 +62,8 @@ public class NewDimChunkGenerator extends ChunkGenerator
                 int realz = chunkpos.z * 16 + z;
                 int height = (int) (65 + Math.sin(realx / 20.0f)*10 + Math.cos(realz / 20.0f)*10);
                 for (int y = 1 ; y < height ; y++) {
-                    chunk.setBlockState(pos.setPos(x, y, z), stone, false); //newtree_planks does not work
-                }
+                    chunk.setBlockState(pos.setPos(x, y, z), newtree_planks, false);
+                } /*The problem does not come from the block. When a player logout IN the dimension, the dimension doesn't register on next world load.. Idk why*/
             }
         }
     }
