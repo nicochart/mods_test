@@ -1,0 +1,11 @@
+  "type": "newdim:newdimension",
+  "generator":
+  {
+    "type": "newdim:newdimchunkgen",
+    "settings":
+    {
+      "base": 65,
+      "verticalvariance": 16,
+      "horizontalvariance": 10
+    }
+  }
