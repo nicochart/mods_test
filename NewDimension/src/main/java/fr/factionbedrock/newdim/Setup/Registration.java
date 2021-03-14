@@ -45,6 +45,9 @@ public class Registration {
 		public static final RegistryObject<Item> NEWTREE_PLANKS_ITEM = ITEMS.register("newtree_planks", () -> new BlockItem(NEWTREE_PLANKS.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	/*---------*/
     
+	public static final RegistryObject<Block> NEWDIMSTONE = BLOCKS.register("newdimstone", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE)));
+	public static final RegistryObject<Item> NEWDIMSTONE_ITEM = ITEMS.register("newdimstone", () -> new BlockItem(NEWDIMSTONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+		
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));

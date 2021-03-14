@@ -2,5 +2,6 @@
   "item.newdim.bedrock_ingot" : "§8Bedrock Ingot",
   "block.newdim.newtree_log" : "Newtree Log",
   "block.newdim.newtree_leaves" : "Newtree Leaves",
-  "block.newdim.newtree_planks" : "Newtree Planks"
+  "block.newdim.newtree_planks" : "Newtree Planks",
+  "block.newdim.newdimstone" : "Newdim Stone"
 }

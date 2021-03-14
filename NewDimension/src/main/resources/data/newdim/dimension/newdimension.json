@@ -10,7 +10,7 @@
       "sea_level": 0,
       "disable_mob_generation": false,
       "default_block": {
-        "Name": "minecraft:stone",
+        "Name": "newdim:newdimstone",
         "Properties": {
           "double_drops": "true"
         }

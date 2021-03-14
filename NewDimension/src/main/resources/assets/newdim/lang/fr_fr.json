@@ -2,5 +2,6 @@
   "item.newdim.bedrock_ingot" : "§8Lingot de Bedrock",
   "block.newdim.newtree_log" : "Buche de Newtree",
   "block.newdim.newtree_leaves" : "Feuilles de Newtree",
-  "block.newdim.newtree_planks" : "Planches de Newtree"
+  "block.newdim.newtree_planks" : "Planches de Newtree",
+  "block.newdim.newdimstone" : "Pierre de Newdim"
 }
