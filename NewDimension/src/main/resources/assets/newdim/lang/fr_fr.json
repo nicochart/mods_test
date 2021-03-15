@@ -3,5 +3,8 @@
   "block.newdim.newtree_log" : "Buche de Newtree",
   "block.newdim.newtree_leaves" : "Feuilles de Newtree",
   "block.newdim.newtree_planks" : "Planches de Newtree",
-  "block.newdim.newdimstone" : "Pierre de Newdim"
+  "block.newdim.newdimstone" : "Pierre de Newdim",
+  "block.newdim.newdim_dirt" : "Terre de Newdim",
+  "block.newdim.newdim_grass_block" : "Herbe de Newdim",
+  "block.newdim.newdim_quicksoil" : "Sable Glissant de Newdim"
 }

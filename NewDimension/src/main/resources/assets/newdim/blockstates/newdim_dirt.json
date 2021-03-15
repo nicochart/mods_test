@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "newdim:block/newdim_dirt"
+      },
+      {
+        "model": "newdim:block/newdim_dirt",
+        "y": 90
+      },
+      {
+        "model": "newdim:block/newdim_dirt",
+        "y": 180
+      },
+      {
+        "model": "newdim:block/newdim_dirt",
+        "y": 270
+      }
+    ]
+  }
+}

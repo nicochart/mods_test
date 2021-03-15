@@ -1,7 +1,9 @@
 package fr.factionbedrock.newdim.Setup;
 
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
+import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
 import fr.factionbedrock.newdim.Item.NewDimItem;
+import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -11,6 +13,9 @@ import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.tags.ITag;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -24,11 +29,13 @@ public class Registration {
 
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
 
     public static void init()
     {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     
     /*NEW TREE*/
@@ -47,10 +54,23 @@ public class Registration {
     
 	public static final RegistryObject<Block> NEWDIMSTONE = BLOCKS.register("newdimstone", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE)));
 	public static final RegistryObject<Item> NEWDIMSTONE_ITEM = ITEMS.register("newdimstone", () -> new BlockItem(NEWDIMSTONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
-		
+	
+	public static final RegistryObject<Block> NEWDIM_GRASS = BLOCKS.register("newdim_grass_block", () -> new NewDimGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
+	public static final RegistryObject<Item> NEWDIM_GRASS_ITEM = ITEMS.register("newdim_grass_block", () -> new BlockItem(NEWDIM_GRASS.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> NEWDIM_DIRT = BLOCKS.register("newdim_dirt", () -> new Block(AbstractBlock.Properties.from(Blocks.DIRT)));
+	public static final RegistryObject<Item> NEWDIM_DIRT_ITEM = ITEMS.register("newdim_dirt", () -> new BlockItem(NEWDIM_DIRT.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> NEWDIM_QUICKSOIL = BLOCKS.register("newdim_quicksoil", () -> new Block(AbstractBlock.Properties.from(Blocks.SAND).harvestTool(ToolType.SHOVEL).slipperiness(1.1F)));
+	public static final RegistryObject<Item> NEWDIM_QUICKSOIL_ITEM = ITEMS.register("newdim_quicksoil", () -> new BlockItem(NEWDIM_QUICKSOIL.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
 	public static final RegistryObject<Item> BEDROCK_INGOT = ITEMS.register("bedrock_ingot", NewDimItem::new);
+	
+	
+	//features
+	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
 }

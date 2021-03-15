@@ -1,0 +1,22 @@
+{
+  "type": "default",
+  "config":
+  {
+    "top_material":
+    {
+      "Name": "newdim:newdim_grass_block",
+      "Properties":
+      {
+        "snowy": "false"
+      }
+    },
+    "under_material":
+    {
+      "Name": "newdim:newdim_dirt"
+    },
+    "underwater_material":
+    {
+      "Name": "newdim:newdim_dirt"
+    }
+  }
+}

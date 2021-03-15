@@ -60,7 +60,7 @@
     "biome_source": {
       "seed": 0,
       "type": "fixed",
-      "biome": "minecraft:plains"
+      "biome": "newdim:newdimbiome" //minecraft:plains si on veux des plaines
     }
   }
 }

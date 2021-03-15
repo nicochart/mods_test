@@ -3,5 +3,8 @@
   "block.newdim.newtree_log" : "Newtree Log",
   "block.newdim.newtree_leaves" : "Newtree Leaves",
   "block.newdim.newtree_planks" : "Newtree Planks",
-  "block.newdim.newdimstone" : "Newdim Stone"
+  "block.newdim.newdimstone" : "Newdim Stone",
+  "block.newdim.newdim_dirt" : "Newdim Dirt",
+  "block.newdim.newdim_grass_block" : "Newdim Grass",
+  "block.newdim.newdim_quicksoil" : "Newdim Quicksoil"
 }

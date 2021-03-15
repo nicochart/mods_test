@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "newdim:block/newdim_quicksoil"
+  }
+}

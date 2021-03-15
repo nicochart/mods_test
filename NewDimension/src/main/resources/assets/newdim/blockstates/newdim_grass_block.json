@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "newdim:block/newdim_grass_block"
+      },
+      {
+        "model": "newdim:block/newdim_grass_block",
+        "y": 90
+      },
+      {
+        "model": "newdim:block/newdim_grass_block",
+        "y": 180
+      },
+      {
+        "model": "newdim:block/newdim_grass_block",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "newdim:block/newdim_grass_block_snow"
+    }
+  }
+}
