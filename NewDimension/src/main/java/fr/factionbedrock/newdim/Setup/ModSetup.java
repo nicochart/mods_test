@@ -29,6 +29,8 @@ public class ModSetup {
     {
         event.enqueueWork(() ->
         {
+        	Registration.registerConfiguredFeatures();
+        	
         	Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(NewDimension.MODID, "newdimchunkgen"),
                     NewDimChunkGenerator.CODEC);
             Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "biomes"),

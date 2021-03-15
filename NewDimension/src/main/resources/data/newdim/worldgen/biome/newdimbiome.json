@@ -23,7 +23,7 @@
   },
   "features": [
     [
-      //"newdim:newdim_quicksoil"
+      "newdim:newdim_quicksoil"
     ],
     [
       //"minecraft:water_lake"

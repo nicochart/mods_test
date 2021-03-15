@@ -1,5 +1,4 @@
 { 
-  //Vanilla Plains on Skylands ! (Thx The Aether)
   "type": "newdim:newdimension",
   "generator": {
     "type": "minecraft:noise",
