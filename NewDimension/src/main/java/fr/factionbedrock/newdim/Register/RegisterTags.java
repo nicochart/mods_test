@@ -12,7 +12,8 @@ public class RegisterTags
 	{
 		public static final ITag.INamedTag<Block> NEWDIM_STONE = tag("newdimstone");
 
-		private static ITag.INamedTag<Block> tag(String name) {
+		private static ITag.INamedTag<Block> tag(String name)
+		{
 			return BlockTags.makeWrapperTag(new ResourceLocation(NewDimension.MODID, name).toString());
 		}
 	}
