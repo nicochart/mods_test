@@ -80,7 +80,7 @@ public class Registration {
 	 
 	 public static void registerConfiguredFeatures()
 	 {
-		 register("newdim_quicksoil", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(10)); //func_242731_b(10)=count(10)
+		 register("newdim_quicksoil", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
 	 }
 	
 	 private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature)

@@ -31,12 +31,26 @@ public class NewDimQuicksoilFeature extends Feature<NoFeatureConfig> {
                         reader.getBlockState(pos).getBlock() == Registration.NEWDIM_DIRT.get()));
         if (doesProtrude)
         {
-            for(int x = pos.getX() - 3; x < pos.getX() + 4; x++) {
-                for(int z = pos.getZ() - 3; z < pos.getZ() + 4; z++)
+        	/*Quelques maths pour décider de la taille du plan de quicksoil*/
+        	double Decision= Math.random();
+        	int Min,Max;
+        	if (Decision > 0.8) //grand (20% des cas)
+        	{
+        		Min=4;Max=7;
+        	}
+        	else //petit (80% des cas)
+        	{
+        		Min=2;Max=4;
+        	}
+        	int Sizex = Min + (int)(Math.random() * ((Max - Min) + 1));
+        	int Sizez = Min + (int)(Math.random() * ((Max - Min) + 1));
+        	/*Placement du quicksoil*/
+            for(int x = pos.getX() - Sizex; x < pos.getX() + Sizex+1; x++) {
+                for(int z = pos.getZ() - Sizez; z < pos.getZ() + Sizez+1; z++)
                 {
                     BlockPos newPos = new BlockPos(x, pos.getY(), z);
 
-                    if((x - pos.getX()) * (x - pos.getX()) + (z - pos.getZ()) * (z - pos.getZ()) < 12)
+                    if((x - pos.getX()) * (x - pos.getX()) + (z - pos.getZ()) * (z - pos.getZ()) < Sizex*Sizez-1)
                     {
                         reader.setBlockState(newPos, Registration.NEWDIM_QUICKSOIL.get().getDefaultState(), 0);
                     }
