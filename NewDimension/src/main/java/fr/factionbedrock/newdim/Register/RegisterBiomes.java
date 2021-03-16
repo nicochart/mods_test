@@ -17,15 +17,15 @@ public class RegisterBiomes
 {
 	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, NewDimension.MODID);
 	
-	//Forêt dense de la nouvelle dimension (avec les nouveaux arbres)
-	public static final RegistryKey<Biome> NEWDIM_DENSE_FOREST = register("newdim_dense_forest");
-	//Plaine de la nouvelle dimension
-    public static final RegistryKey<Biome> NEWDIM_PLAIN = register("newdim_plain");
+	//Biome de base (avec les nouveaux arbres (bientôt))
+	public static final RegistryKey<Biome> NEWDIMBIOME = register("newdimbiome");
+	//Océan de quicksoil de la nouvelle dimension
+    public static final RegistryKey<Biome> NEWDIM_QUICKSOILOCEAN = register("newdim_quicksoilocean");
     
     public static void toDictionary()
     {
-        BiomeDictionary.addTypes(NEWDIM_DENSE_FOREST, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
-        BiomeDictionary.addTypes(NEWDIM_PLAIN, BiomeDictionary.Type.HOT, BiomeDictionary.Type.PLAINS);
+        BiomeDictionary.addTypes(NEWDIMBIOME, BiomeDictionary.Type.HOT, BiomeDictionary.Type.FOREST);
+        BiomeDictionary.addTypes(NEWDIM_QUICKSOILOCEAN, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
     }    
 	
 	private static ResourceLocation name(String name)

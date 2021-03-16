@@ -1,0 +1,22 @@
+{
+  "type": "default",
+  "config":
+  {
+    "top_material":
+    {
+      "Name": "newdim:newdim_quicksoil",
+      "Properties":
+      {
+        "snowy": "false"
+      }
+    },
+    "under_material":
+    {
+      "Name": "newdim:newdim_quicksoil"
+    },
+    "underwater_material":
+    {
+      "Name": "newdim:newdim_quicksoil"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "precipitation": "none",
+  "category": "none",
+  "depth": 0.125,
+  "scale": 0.05,
+  "temperature": 0.8,
+  "temperature_modifier": "none",
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 15983981,
+    "sky_color": 16310555,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 11665355,
+    "foliage_color": 11665355,
+    "grass_color_modifier": "none"
+  },
+  "surface_builder": "newdim:newdim_quicksoil_block",
+  "carvers": {
+    "air": [
+
+    ]
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      //ores
+    ],
+    [],
+    [
+      //other features?
+    ],
+    []
+  ],
+  "starts": [
+
+  ],
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:zombie",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 100,
+        "minCount": 4,
+        "maxCount": 4
+      }
+    ],
+    "creature": [
+      {
+        "type": "minecraft:pig",
+        "weight": 30,
+        "minCount": 3,
+        "maxCount": 4
+      },
+      {
+        "type": "minecraft:cow",
+        "weight": 29,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "player_spawn_friendly": false,
+  "spawn_costs": {
+
+  }
+}

@@ -9,10 +9,7 @@
       "sea_level": 0,
       "disable_mob_generation": false,
       "default_block": {
-        "Name": "newdim:newdimstone",
-        "Properties": {
-          "double_drops": "true"
-        }
+        "Name": "newdim:newdimstone"
       },
       "default_fluid": {
         "Name": "minecraft:water",
@@ -35,15 +32,15 @@
           "offset": 1
         },
         "bottom_slide": {
-          "target": -30,
+          "target": -20,
           "size": 7,
           "offset": 1
         },
         "sampling": {
           "xz_scale": 2,
-          "xz_factor": 80,
-          "y_scale": 1,
-          "y_factor": 80
+          "xz_factor": 100,
+          "y_scale": 2,
+          "y_factor": 200
         },
         "size_vertical": 2,
         "size_horizontal": 2,
@@ -58,8 +55,8 @@
     },
     "biome_source": {
       "seed": 0,
-      "type": "fixed",
-      "biome": "newdim:newdimbiome" //minecraft:plains si on veux des plaines
-    }
+      "type": "fixed", //newdim:newdimbiomeprovider
+      "biome": "newdim:newdimbiome" //,"newdim_quicksoilocean"]
+    } //je n'arrive pour l'instant pas à mettre plusieurs biomes
   }
 }

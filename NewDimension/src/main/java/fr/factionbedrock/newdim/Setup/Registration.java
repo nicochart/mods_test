@@ -3,6 +3,7 @@ package fr.factionbedrock.newdim.Setup;
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
 import fr.factionbedrock.newdim.Item.NewDimItem;
+import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -40,6 +41,7 @@ public class Registration {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     
     /*NEW TREE*/

@@ -33,7 +33,7 @@ public class ModSetup {
         	
         	Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(NewDimension.MODID, "newdimchunkgen"),
                     NewDimChunkGenerator.CODEC);
-            Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "biomes"),
+            Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "newdimbiomeprovider"),
                     NewDimBiomeProvider.CODEC);
         });
     }
