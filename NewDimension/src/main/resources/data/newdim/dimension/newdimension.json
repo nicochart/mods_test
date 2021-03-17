@@ -55,8 +55,8 @@
     },
     "biome_source": {
       "seed": 0,
-      "type": "fixed", //newdim:newdimbiomeprovider
-      "biome": "newdim:newdimbiome" //,"newdim_quicksoilocean"]
-    } //je n'arrive pour l'instant pas à mettre plusieurs biomes
+      "type": "fixed",
+      "biome": "newdim:newdimbiome"
+    }
   }
 }
