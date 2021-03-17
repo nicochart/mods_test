@@ -6,5 +6,6 @@
   "block.newdim.newdimstone" : "Newdim Stone",
   "block.newdim.newdim_dirt" : "Newdim Dirt",
   "block.newdim.newdim_grass_block" : "Newdim Grass",
-  "block.newdim.newdim_quicksoil" : "Newdim Quicksoil"
+  "block.newdim.newdim_quicksoil" : "Newdim Quicksoil",
+  "block.newdim.newdim_white_aercloud" : "White Newdim Aercloud"
 }

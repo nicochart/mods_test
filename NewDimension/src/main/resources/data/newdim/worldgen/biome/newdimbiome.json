@@ -37,7 +37,8 @@
     ],
     [],
     [
-      "newdim:newdim_basictree" //natural features (?)
+      "newdim:newdim_basictree", //natural features (?)
+      "newdim:newdim_white_aercloud"
     ],
     []
   ],

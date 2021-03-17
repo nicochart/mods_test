@@ -1,10 +1,12 @@
 package fr.factionbedrock.newdim.Setup;
 
+import fr.factionbedrock.newdim.Block.NewDimAercloudBlock;
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
+import fr.factionbedrock.newdim.World.Features.NewDimWhiteAercloudFeature;
 import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -78,6 +80,9 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIM_QUICKSOIL = BLOCKS.register("newdim_quicksoil", () -> new Block(AbstractBlock.Properties.from(Blocks.SAND).harvestTool(ToolType.SHOVEL).slipperiness(1.1F)));
 	public static final RegistryObject<Item> NEWDIM_QUICKSOIL_ITEM = ITEMS.register("newdim_quicksoil", () -> new BlockItem(NEWDIM_QUICKSOIL.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	public static final RegistryObject<Block> NEWDIM_WHITE_AERCLOUD = BLOCKS.register("newdim_white_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.create(Material.ICE).hardnessAndResistance(0.2F).sound(SoundType.CLOTH).harvestTool(ToolType.HOE).notSolid()));
+	public static final RegistryObject<Item> NEWDIM_WHITE_AERCLOUD_ITEM = ITEMS.register("newdim_white_aercloud", () -> new BlockItem(NEWDIM_WHITE_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
@@ -88,22 +93,32 @@ public class Registration {
 	//features
 	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
 	 
+	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("cold_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));
+	 
 	 public static void registerConfiguredFeatures()
 	 {
 		 register("newdim_quicksoil", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
-	 
+		 register("newdim_white_aercloud", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
+		 
 		 register("newdim_basictree", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
 				       (
 				          new SimpleBlockStateProvider(NEWTREE_LOG.get().getDefaultState()),
 	                      new SimpleBlockStateProvider(NEWTREE_LEAVES.get().getDefaultState()),
-	                      new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), //func_242252_a()=fixed()
-	                      new StraightTrunkPlacer(4, 2, 0),
+	                      new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), //rayon,décalage,hauteur		func_242252_a()=fixed()
+	                      new StraightTrunkPlacer(4, 2, 0), //hauteur de base, randomizer1, randomizer2
 	                      new TwoLayerFeature(1, 0, 1)
 	                   )
 				     ).setIgnoreVines().build()
 				    ).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
 				 );
+	 
+	 /*
+	    .withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT) = placement basique
+	    .range(256).square().func_242731_b(1) = semble similaire au placement basique
+	  	.range(256).square().func_242731_b(10) = beaucoup beaucoup d'arbres (vraiment beaucoup)
+	  	
+	 */
 	 /*
 	    This is the tree generated when a new chunk is loaded
 	    The tree that grows from a sapling is defined in the class newdim/World/Tree/NewDimBasicTree
