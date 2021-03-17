@@ -5,6 +5,7 @@ import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
+import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -16,9 +17,16 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureSpread;
+import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.TwoLayerFeature;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -83,6 +91,25 @@ public class Registration {
 	 public static void registerConfiguredFeatures()
 	 {
 		 register("newdim_quicksoil", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
+	 
+		 register("newdim_basictree", Feature.TREE.withConfiguration
+				    ((new BaseTreeFeatureConfig.Builder
+				       (
+				          new SimpleBlockStateProvider(NEWTREE_LOG.get().getDefaultState()),
+	                      new SimpleBlockStateProvider(NEWTREE_LEAVES.get().getDefaultState()),
+	                      new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), //func_242252_a()=fixed()
+	                      new StraightTrunkPlacer(4, 2, 0),
+	                      new TwoLayerFeature(1, 0, 1)
+	                   )
+				     ).setIgnoreVines().build()
+				    ).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
+				 );
+	 /*
+	    This is the tree generated when a new chunk is loaded
+	    The tree that grows from a sapling is defined in the class newdim/World/Tree/NewDimBasicTree
+	    DON'T FORGET : To make the tree generate, newdim_grass need to be in the "dirt" forge tag !
+	    See resources/data/forge/tags/blocks/dirt.json
+	 */
 	 }
 	
 	 private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature)

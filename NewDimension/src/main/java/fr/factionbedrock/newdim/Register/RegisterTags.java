@@ -11,6 +11,8 @@ public class RegisterTags
 	public static class Blocks
 	{
 		public static final ITag.INamedTag<Block> NEWDIM_STONE = tag("newdimstone");
+		
+		public static final ITag.INamedTag<Block> NEWDIM_DIRT = tag("newdim_dirt");
 
 		private static ITag.INamedTag<Block> tag(String name)
 		{

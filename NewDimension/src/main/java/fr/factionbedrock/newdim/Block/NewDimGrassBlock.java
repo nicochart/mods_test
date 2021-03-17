@@ -1,10 +1,13 @@
 package fr.factionbedrock.newdim.Block;
 
+import fr.factionbedrock.newdim.Register.RegisterTags;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.block.*;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraft.world.server.ServerWorld;
@@ -17,6 +20,21 @@ public class NewDimGrassBlock extends GrassBlock
 	{
 		super(properties);
 		this.setDefaultState(this.getDefaultState());
+	}
+	
+	@Override
+	public void onPlantGrow(BlockState state, IWorld world, BlockPos pos, BlockPos source)
+	{
+		if (state.isIn(RegisterTags.Blocks.NEWDIM_DIRT))
+		{
+			world.setBlockState(pos, state, 2);
+		}
+	}
+	
+	@Override
+	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder)
+	{
+		super.fillStateContainer(builder);
 	}
 	
 

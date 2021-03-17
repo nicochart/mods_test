@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values":
+  [
+    "#newdim:newdim_dirt" //nécéssaire pour faire comprendre au jeu que les arbres peuvent pousser sur les blocs qui ont ce tag !
+  ]
+}

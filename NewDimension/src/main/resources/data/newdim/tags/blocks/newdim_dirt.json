@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values":
+  [
+    "newdim:newdim_grass_block",
+    "newdim:newdim_dirt"
+  ]
+}
