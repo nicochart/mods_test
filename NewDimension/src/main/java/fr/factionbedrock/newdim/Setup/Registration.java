@@ -107,8 +107,12 @@ public class Registration {
 	 /*
 	    This is the tree generated when a new chunk is loaded
 	    The tree that grows from a sapling is defined in the class newdim/World/Tree/NewDimBasicTree
-	    DON'T FORGET : To make the tree generate, newdim_grass need to be in the "dirt" forge tag !
-	    See resources/data/forge/tags/blocks/dirt.json
+	    DON'T FORGET : - To make the tree generate, newdim_grass need to be in the "dirt" forge tag !
+	    				 See resources/data/forge/tags/blocks/dirt.json
+	    			   - To avoid leaves from decaying next to logs, newdim_log need to be in the "logs_that_burn" minecraft tag
+	    			     See resources/data/minecraft/tags/blocks/logs_that_burn.json
+	    			   - By the way, place newdim_leaves in the "leaves" minecraft tag
+	    			     See resources/data/minecraft/tags/blocks/leaves.json
 	 */
 	 }
 	
