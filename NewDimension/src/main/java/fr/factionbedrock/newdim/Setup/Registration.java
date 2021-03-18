@@ -1,10 +1,14 @@
 package fr.factionbedrock.newdim.Setup;
 
 import fr.factionbedrock.newdim.Block.NewDimAercloudBlock;
+import fr.factionbedrock.newdim.Block.NewDimBlueAercloudBlock;
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
+import fr.factionbedrock.newdim.Block.NewDimQuicksoilAercloudBlock;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
+import fr.factionbedrock.newdim.World.Features.NewDimBlueAercloudFeature;
+import fr.factionbedrock.newdim.World.Features.NewDimGoldenAercloudFeature;
 import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
 import fr.factionbedrock.newdim.World.Features.NewDimWhiteAercloudFeature;
 import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
@@ -83,6 +87,15 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIM_WHITE_AERCLOUD = BLOCKS.register("newdim_white_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.create(Material.ICE).hardnessAndResistance(0.2F).sound(SoundType.CLOTH).harvestTool(ToolType.HOE).notSolid()));
 	public static final RegistryObject<Item> NEWDIM_WHITE_AERCLOUD_ITEM = ITEMS.register("newdim_white_aercloud", () -> new BlockItem(NEWDIM_WHITE_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	public static final RegistryObject<Block> NEWDIM_QUICKSOIL_AERCLOUD = BLOCKS.register("newdim_quicksoil_aercloud",	() -> new NewDimQuicksoilAercloudBlock(AbstractBlock.Properties.create(Material.ICE).hardnessAndResistance(0.4F).sound(SoundType.SAND).harvestTool(ToolType.SHOVEL).slipperiness(1.03F).notSolid()));
+	public static final RegistryObject<Item> NEWDIM_QUICKSOIL_AERCLOUD_ITEM = ITEMS.register("newdim_quicksoil_aercloud", () -> new BlockItem(NEWDIM_QUICKSOIL_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> NEWDIM_BLUE_AERCLOUD = BLOCKS.register("newdim_blue_aercloud",	() -> new NewDimBlueAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
+	public static final RegistryObject<Item> NEWDIM_BLUE_AERCLOUD_ITEM = ITEMS.register("newdim_blue_aercloud", () -> new BlockItem(NEWDIM_BLUE_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> NEWDIM_GOLDEN_AERCLOUD = BLOCKS.register("newdim_golden_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
+	public static final RegistryObject<Item> NEWDIM_GOLDEN_AERCLOUD_ITEM = ITEMS.register("newdim_golden_aercloud", () -> new BlockItem(NEWDIM_GOLDEN_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
@@ -93,14 +106,20 @@ public class Registration {
 	//features
 	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
 	 
-	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("cold_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));
+	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("white_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));
+	 
+	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_BLUE_AERCLOUD_FEATURE = FEATURES.register("blue_aercloud", () -> new NewDimBlueAercloudFeature(NoFeatureConfig.field_236558_a_));
+	 
+	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GOLDEN_AERCLOUD_FEATURE = FEATURES.register("golden_aercloud", () -> new NewDimGoldenAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
 	 public static void registerConfiguredFeatures()
 	 {
-		 register("newdim_quicksoil", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
-		 register("newdim_white_aercloud", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
+		 register("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
+		 register("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
+		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
+		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 
-		 register("newdim_basictree", Feature.TREE.withConfiguration
+		 register("newdim_basictree_feature", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
 				       (
 				          new SimpleBlockStateProvider(NEWTREE_LOG.get().getDefaultState()),

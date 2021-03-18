@@ -23,7 +23,7 @@
   },
   "features": [
     [
-      "newdim:newdim_quicksoil"
+      "newdim:newdim_quicksoil_feature"
     ],
     [
       //"minecraft:water_lake"
@@ -37,8 +37,10 @@
     ],
     [],
     [
-      "newdim:newdim_basictree", //natural features (?)
-      "newdim:newdim_white_aercloud"
+      "newdim:newdim_basictree_feature", //natural features (?)
+      "newdim:newdim_white_aercloud_feature",
+      "newdim:newdim_blue_aercloud_feature",
+      "newdim:newdim_golden_aercloud_feature"
     ],
     []
   ],

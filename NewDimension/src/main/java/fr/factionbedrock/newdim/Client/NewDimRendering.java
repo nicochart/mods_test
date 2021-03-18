@@ -18,7 +18,10 @@ public class NewDimRendering
 	public static void registerBlockRenderLayers()
 	{
 		RenderType translucent = RenderType.getTranslucent();
-        render(() -> Registration.NEWDIM_WHITE_AERCLOUD.get(), translucent);
+		render(() -> Registration.NEWDIM_WHITE_AERCLOUD.get(), translucent);
+		render(() -> Registration.NEWDIM_QUICKSOIL_AERCLOUD.get(), translucent);
+		render(() -> Registration.NEWDIM_BLUE_AERCLOUD.get(), translucent);
+		render(() -> Registration.NEWDIM_GOLDEN_AERCLOUD.get(), translucent);
 	}
 	
 	private static void render(Supplier<? extends Block> block, RenderType render)
