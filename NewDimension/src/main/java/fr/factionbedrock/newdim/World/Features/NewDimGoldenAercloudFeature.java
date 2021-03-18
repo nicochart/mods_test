@@ -45,7 +45,6 @@ public class NewDimGoldenAercloudFeature extends Feature<NoFeatureConfig>
                 }
             }
         }
-
         return false;
     }
 }

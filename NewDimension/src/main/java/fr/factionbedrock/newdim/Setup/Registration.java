@@ -9,6 +9,7 @@ import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.NewDimBlueAercloudFeature;
 import fr.factionbedrock.newdim.World.Features.NewDimGoldenAercloudFeature;
+import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilAercloudFeature;
 import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
 import fr.factionbedrock.newdim.World.Features.NewDimWhiteAercloudFeature;
 import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
@@ -104,7 +105,9 @@ public class Registration {
 	
 	
 	//features
-	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
+	
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_AERCLOUD_FEATURE = FEATURES.register("newdim_quicksoil_aercloud", () -> new NewDimQuicksoilAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
 	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("white_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
@@ -115,6 +118,7 @@ public class Registration {
 	 public static void registerConfiguredFeatures()
 	 {
 		 register("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
+		 register("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(5));
 		 register("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
 		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
 		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));

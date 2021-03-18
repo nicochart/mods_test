@@ -1,8 +1,9 @@
 package fr.factionbedrock.newdim.World.Features;
 
+import java.util.Random;
+
 import com.mojang.serialization.Codec;
 
-import fr.factionbedrock.newdim.Register.RegisterTags;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ISeedReader;
@@ -10,12 +11,9 @@ import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
-import java.util.Random;
-
-public class NewDimQuicksoilFeature extends Feature<NoFeatureConfig>
+public class NewDimQuicksoilAercloudFeature extends Feature<NoFeatureConfig>
 {
-
-    public NewDimQuicksoilFeature(Codec<NoFeatureConfig> codec)
+    public NewDimQuicksoilAercloudFeature(Codec<NoFeatureConfig> codec)
     {
         super(codec);
     }
@@ -29,8 +27,7 @@ public class NewDimQuicksoilFeature extends Feature<NoFeatureConfig>
                         reader.getBlockState(pos.north(3)).isAir() ||
                         reader.getBlockState(pos.south(3)).isAir() ||
                         reader.getBlockState(pos.east(3)).isAir()) &&
-                (reader.getBlockState(pos).isIn(RegisterTags.Blocks.NEWDIM_STONE) ||
-                        reader.getBlockState(pos).getBlock() == Registration.NEWDIM_DIRT.get()));
+                (reader.getBlockState(pos).getBlock() == Registration.NEWDIMSTONE.get()));
         if (doesProtrude)
         {
         	/*Quelques maths pour décider de la taille du plan de quicksoil*/
@@ -38,11 +35,11 @@ public class NewDimQuicksoilFeature extends Feature<NoFeatureConfig>
         	int Min,Max;
         	if (Decision > 0.8) //grand (20% des cas)
         	{
-        		Min=4;Max=7;
+        		Min=4;Max=6;
         	}
         	else //petit (80% des cas)
         	{
-        		Min=2;Max=4;
+        		Min=3;Max=4;
         	}
         	int Sizex = Min + (int)(Math.random() * ((Max - Min) + 1));
         	int Sizez = Min + (int)(Math.random() * ((Max - Min) + 1));
@@ -54,10 +51,9 @@ public class NewDimQuicksoilFeature extends Feature<NoFeatureConfig>
 
                     if((x - pos.getX()) * (x - pos.getX()) + (z - pos.getZ()) * (z - pos.getZ()) < Sizex*Sizez-1)
                     {
-                        reader.setBlockState(newPos, Registration.NEWDIM_QUICKSOIL.get().getDefaultState(), 0);
+                        reader.setBlockState(newPos, Registration.NEWDIM_QUICKSOIL_AERCLOUD.get().getDefaultState(), 0);
                     }
                 }
-
             }
         }
         return false;
