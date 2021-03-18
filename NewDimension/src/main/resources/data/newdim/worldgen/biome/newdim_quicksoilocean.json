@@ -8,7 +8,7 @@
   "downfall": 0.0,
   "effects": {
     "fog_color": 15983981,
-    "sky_color": 16310555,
+    "sky_color": 14807197,
     "water_color": 4159204,
     "water_fog_color": 329011,
     "grass_color": 11665355,
@@ -22,7 +22,9 @@
     ]
   },
   "features": [
-    [],
+    [
+       "newdim:newdim_quicksoil_feature"
+    ],
     [],
     [],
     [],
@@ -33,7 +35,10 @@
     ],
     [],
     [
-      //other features?
+       "newdim:newdim_white_aercloud_feature",
+       "newdim:newdim_blue_aercloud_feature",
+       "newdim:newdim_quicksoil_aecloud_feature",
+       "newdim:newdim_golden_aercloud_feature"
     ],
     []
   ],

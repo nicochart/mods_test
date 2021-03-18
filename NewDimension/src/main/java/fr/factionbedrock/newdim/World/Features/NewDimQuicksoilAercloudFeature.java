@@ -27,7 +27,8 @@ public class NewDimQuicksoilAercloudFeature extends Feature<NoFeatureConfig>
                         reader.getBlockState(pos.north(3)).isAir() ||
                         reader.getBlockState(pos.south(3)).isAir() ||
                         reader.getBlockState(pos.east(3)).isAir()) &&
-                (reader.getBlockState(pos).getBlock() == Registration.NEWDIMSTONE.get()));
+                (reader.getBlockState(pos).getBlock() == Registration.NEWDIMSTONE.get()) ||
+                 reader.getBlockState(pos).getBlock() == Registration.NEWDIM_QUICKSOIL.get());
         if (doesProtrude)
         {
         	/*Quelques maths pour décider de la taille du plan de quicksoil*/
