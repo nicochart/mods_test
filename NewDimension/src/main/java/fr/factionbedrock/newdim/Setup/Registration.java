@@ -12,12 +12,14 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ChestBlock;
+import net.minecraft.block.FlowerBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
@@ -106,6 +108,15 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIM_BERRY_BUSH_STEM = BLOCKS.register("newdim_berry_bush_stem", () -> new NewDimBerryBushStemBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.2F).harvestTool(ToolType.AXE).sound(SoundType.PLANT).doesNotBlockMovement()));
 	public static final RegistryObject<Item> NEWDIM_BERRY_BUSH_STEM_ITEM = ITEMS.register("newdim_berry_bush_stem", () -> new BlockItem(NEWDIM_BERRY_BUSH_STEM.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	//flowers
+	
+	public static final RegistryObject<Block> PURPLE_FLOWER = BLOCKS.register("purple_flower", () -> new FlowerBlock(Effects.BLINDNESS, 4, AbstractBlock.Properties.from(Blocks.DANDELION)));
+	public static final RegistryObject<Item> PURPLE_FLOWER_ITEM = ITEMS.register("purple_flower", () -> new BlockItem(PURPLE_FLOWER.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> WHITE_FLOWER = BLOCKS.register("white_flower", () -> new FlowerBlock(Effects.SLOW_FALLING, 12, AbstractBlock.Properties.from(Blocks.DANDELION)));
+	public static final RegistryObject<Item> WHITE_FLOWER_ITEM = ITEMS.register("white_flower", () -> new BlockItem(WHITE_FLOWER.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
@@ -164,7 +175,10 @@ public class Registration {
 		 
 		  register("newdim_classicbiome_flowers", Feature.FLOWER.withConfiguration(
 	                (new BlockClusterFeatureConfig.Builder(
-	                     (new WeightedBlockStateProvider()).addWeightedBlockstate(NEWDIM_BERRY_BUSH.get().getDefaultState(), 1), SimpleBlockPlacer.PLACER))
+	                     (new WeightedBlockStateProvider())
+	                     .addWeightedBlockstate(PURPLE_FLOWER.get().getDefaultState(), 1)
+	                     .addWeightedBlockstate(WHITE_FLOWER.get().getDefaultState(), 1)
+	                     .addWeightedBlockstate(NEWDIM_BERRY_BUSH.get().getDefaultState(), 1), SimpleBlockPlacer.PLACER))
 	                        .tries(64).whitelist(ImmutableSet.of(NEWDIM_GRASS.get())).build())
 				  			.withPlacement(Features.Placements.VEGETATION_PLACEMENT)
 				  			.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(2));

@@ -12,5 +12,7 @@
   "block.newdim.newdim_blue_aercloud" : "Blue Newdim Aercloud",
   "block.newdim.newdim_golden_aercloud" : "Golden Newdim Aercloud",
   "block.newdim.newdim_berry_bush_stem" : "Newdim Berry Bush",
-  "block.newdim.newdim_berry_bush" : "Newdim Berry Bush"
+  "block.newdim.newdim_berry_bush" : "Newdim Berry Bush",
+  "block.newdim.white_flower" : "White Flower",
+  "block.newdim.purple_flower" : "Purple Flower"
 }
