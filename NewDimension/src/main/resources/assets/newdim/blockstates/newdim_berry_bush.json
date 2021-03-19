@@ -1,0 +1,9 @@
+{
+  "variants":
+  {
+    "":
+    {
+      "model": "newdim:block/newdim_berry_bush"
+    }
+  }
+}

@@ -1,17 +1,12 @@
 package fr.factionbedrock.newdim.Setup;
 
-import fr.factionbedrock.newdim.Block.NewDimAercloudBlock;
-import fr.factionbedrock.newdim.Block.NewDimBlueAercloudBlock;
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
-import fr.factionbedrock.newdim.Block.NewDimQuicksoilAercloudBlock;
+import fr.factionbedrock.newdim.Block.Aercloud.*;
+import fr.factionbedrock.newdim.Block.Bushes.*;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
-import fr.factionbedrock.newdim.World.Features.NewDimBlueAercloudFeature;
-import fr.factionbedrock.newdim.World.Features.NewDimGoldenAercloudFeature;
-import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilAercloudFeature;
-import fr.factionbedrock.newdim.World.Features.NewDimQuicksoilFeature;
-import fr.factionbedrock.newdim.World.Features.NewDimWhiteAercloudFeature;
+import fr.factionbedrock.newdim.World.Features.*;
 import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,11 +16,15 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
+import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureSpread;
@@ -44,6 +43,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 
 import static fr.factionbedrock.newdim.NewDimension.MODID;
+
+import com.google.common.collect.ImmutableSet;
 
 public class Registration {
 
@@ -97,6 +98,14 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIM_GOLDEN_AERCLOUD = BLOCKS.register("newdim_golden_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
 	public static final RegistryObject<Item> NEWDIM_GOLDEN_AERCLOUD_ITEM = ITEMS.register("newdim_golden_aercloud", () -> new BlockItem(NEWDIM_GOLDEN_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	//bushes
+	public static final RegistryObject<Block> NEWDIM_BERRY_BUSH = BLOCKS.register("newdim_berry_bush", () -> new NewDimBerryBushBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.2F).sound(SoundType.PLANT).harvestTool(ToolType.HOE).notSolid()
+			.setAllowsSpawn((state, reader, pos, entity) -> (entity == EntityType.OCELOT || entity == EntityType.PARROT)).setSuffocates((state, reader, pos) -> false).setBlocksVision((state, reader, pos) -> false)));
+	public static final RegistryObject<Item> NEWDIM_BERRY_BUSH_ITEM = ITEMS.register("newdim_berry_bush", () -> new BlockItem(NEWDIM_BERRY_BUSH.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	public static final RegistryObject<Block> NEWDIM_BERRY_BUSH_STEM = BLOCKS.register("newdim_berry_bush_stem", () -> new NewDimBerryBushStemBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.2F).harvestTool(ToolType.AXE).sound(SoundType.PLANT).doesNotBlockMovement()));
+	public static final RegistryObject<Item> NEWDIM_BERRY_BUSH_STEM_ITEM = ITEMS.register("newdim_berry_bush_stem", () -> new BlockItem(NEWDIM_BERRY_BUSH_STEM.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	//newchest
 	public static final RegistryObject<ChestBlock> NEWTREE_CHEST = BLOCKS.register("newtree_chest", () -> new NewDimChestBlock(Material.WOOD,10f,10f,SoundType.WOOD,0,ToolType.AXE));
 	public static final RegistryObject<Item> NEWTREE_CHEST_ITEM = ITEMS.register("newtree_chest", () -> new BlockItem(NEWTREE_CHEST.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
@@ -118,7 +127,7 @@ public class Registration {
 	 public static void registerConfiguredFeatures()
 	 {
 		 register("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
-		 register("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(5));
+		 register("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
 		 register("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
 		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
 		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
@@ -152,6 +161,14 @@ public class Registration {
 	    			   - By the way, place newdim_leaves in the "leaves" minecraft tag
 	    			     See resources/data/minecraft/tags/blocks/leaves.json
 	 */
+		 
+		  register("newdim_classicbiome_flowers", Feature.FLOWER.withConfiguration(
+	                (new BlockClusterFeatureConfig.Builder(
+	                     (new WeightedBlockStateProvider()).addWeightedBlockstate(NEWDIM_BERRY_BUSH.get().getDefaultState(), 1), SimpleBlockPlacer.PLACER))
+	                        .tries(64).whitelist(ImmutableSet.of(NEWDIM_GRASS.get())).build())
+				  			.withPlacement(Features.Placements.VEGETATION_PLACEMENT)
+				  			.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(2));
+		  //func_242731_b = count     |     addWeightedBlockstate(blockStateIn, weightIn)
 	 }
 	
 	 private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature)

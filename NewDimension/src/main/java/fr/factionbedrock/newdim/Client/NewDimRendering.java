@@ -18,10 +18,14 @@ public class NewDimRendering
 	public static void registerBlockRenderLayers()
 	{
 		RenderType translucent = RenderType.getTranslucent();
+		RenderType cutout = RenderType.getCutout();
+		
 		render(() -> Registration.NEWDIM_WHITE_AERCLOUD.get(), translucent);
 		render(() -> Registration.NEWDIM_QUICKSOIL_AERCLOUD.get(), translucent);
 		render(() -> Registration.NEWDIM_BLUE_AERCLOUD.get(), translucent);
 		render(() -> Registration.NEWDIM_GOLDEN_AERCLOUD.get(), translucent);
+        render(() -> Registration.NEWDIM_BERRY_BUSH.get(), cutout);
+        render(() -> Registration.NEWDIM_BERRY_BUSH_STEM.get(), cutout);
 	}
 	
 	private static void render(Supplier<? extends Block> block, RenderType render)

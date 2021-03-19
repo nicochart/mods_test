@@ -52,7 +52,7 @@ public class NewDimQuicksoilAercloudFeature extends Feature<NoFeatureConfig>
 
                     if((x - pos.getX()) * (x - pos.getX()) + (z - pos.getZ()) * (z - pos.getZ()) < Sizex*Sizez-1)
                     {
-                        reader.setBlockState(newPos, Registration.NEWDIM_QUICKSOIL_AERCLOUD.get().getDefaultState(), 0);
+                        reader.setBlockState(newPos, Registration.NEWDIM_QUICKSOIL_AERCLOUD.get().getDefaultState(), 1);
                     }
                 }
             }

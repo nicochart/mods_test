@@ -10,5 +10,7 @@
   "block.newdim.newdim_white_aercloud" : "Aercloud Blanc de Newdim",
   "block.newdim.newdim_quicksoil_aercloud" : "Aercloud de Sable Glissant de Newdim",
   "block.newdim.newdim_blue_aercloud" : "Aercloud Bleu de Newdim",
-  "block.newdim.newdim_golden_aercloud" : "Aercloud Doré de Newdim"
+  "block.newdim.newdim_golden_aercloud" : "Aercloud Doré de Newdim",
+  "block.newdim.newdim_berry_bush_stem" : "Arbuste de Newdim",
+  "block.newdim.newdim_berry_bush" : "Arbuste de Newdim"
 }
