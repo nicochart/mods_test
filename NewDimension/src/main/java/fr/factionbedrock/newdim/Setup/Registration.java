@@ -128,20 +128,21 @@ public class Registration {
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
 	
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_AERCLOUD_FEATURE = FEATURES.register("newdim_quicksoil_aercloud", () -> new NewDimQuicksoilAercloudFeature(NoFeatureConfig.field_236558_a_));
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("white_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));	 
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_BLUE_AERCLOUD_FEATURE = FEATURES.register("blue_aercloud", () -> new NewDimBlueAercloudFeature(NoFeatureConfig.field_236558_a_));	 
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GOLDEN_AERCLOUD_FEATURE = FEATURES.register("golden_aercloud", () -> new NewDimGoldenAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
-	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("white_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_FLOATING_BUSH_FEATURE = FEATURES.register("newdim_floating_bush", () -> new NewDimFloatingBushFeature(NoFeatureConfig.field_236558_a_));
 	 
-	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_BLUE_AERCLOUD_FEATURE = FEATURES.register("blue_aercloud", () -> new NewDimBlueAercloudFeature(NoFeatureConfig.field_236558_a_));
-	 
-	 public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GOLDEN_AERCLOUD_FEATURE = FEATURES.register("golden_aercloud", () -> new NewDimGoldenAercloudFeature(NoFeatureConfig.field_236558_a_));
-	 
-	 public static void registerConfiguredFeatures()
-	 {
+	public static void registerConfiguredFeatures()
+	{
 		 register("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
 		 register("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
 		 register("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
 		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
 		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
+		 
+		 register("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(15));
 		 
 		 register("newdim_basictree_feature", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
