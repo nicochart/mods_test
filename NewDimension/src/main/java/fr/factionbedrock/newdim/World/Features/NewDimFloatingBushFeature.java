@@ -3,6 +3,7 @@ package fr.factionbedrock.newdim.World.Features;
 import com.mojang.serialization.Codec;
 
 import fr.factionbedrock.newdim.NewDimension;
+import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -23,26 +24,28 @@ public class NewDimFloatingBushFeature extends Feature<NoFeatureConfig> {
     private static final ResourceLocation BUSH = new ResourceLocation(NewDimension.MODID, "floating_bush");
 
     public NewDimFloatingBushFeature(Codec<NoFeatureConfig> codec) {super(codec);}
-
+    
     @Override
     public boolean generate(ISeedReader reader, ChunkGenerator generator, Random rand, BlockPos pos, NoFeatureConfig config)
     {
         Rotation rotation = Rotation.randomRotation(rand);
         TemplateManager templatemanager = reader.getWorld().getServer().getTemplateManager();
-        Template tree = templatemanager.getTemplateDefaulted(BUSH);
+        Template bush = templatemanager.getTemplateDefaulted(BUSH);
         ChunkPos chunkpos = new ChunkPos(pos);
         MutableBoundingBox mutableboundingbox = new MutableBoundingBox(chunkpos.getXStart(), 0, chunkpos.getZStart(), chunkpos.getXEnd(), 256, chunkpos.getZEnd());
         PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(mutableboundingbox).setRandom(rand).addProcessor(BlockIgnoreStructureProcessor.AIR_AND_STRUCTURE_BLOCK);
-        BlockPos blockpos = tree.transformedSize(rotation);
-        int x = rand.nextInt(16 - blockpos.getX());
-        int z = rand.nextInt(16 - blockpos.getZ());
+        BlockPos blockpos = bush.transformedSize(rotation);
+        int x = rand.nextInt(16 - blockpos.getX()); //le random permet de ne pas toujours poser au coin d'un chunk
+        int z = rand.nextInt(16 - blockpos.getZ()); //le random permet de ne pas toujours poser au coin d'un chunk
 
-        int y = Math.max(Math.min(reader.getHeight(Heightmap.Type.OCEAN_FLOOR_WG, pos.getX() + x, pos.getZ() + z) + rand.nextInt(20)+40, 200), 100);
-
-        BlockPos blockpos1 = tree.getZeroPositionWithTransform(pos.add(x, y, z), Mirror.NONE, rotation);
-        tree.func_237146_a_(reader, blockpos1, blockpos1, placementsettings, rand, 4);
-        IntegrityProcessor integrityprocessor = new IntegrityProcessor(0.2F);
-        placementsettings.clearProcessors().addProcessor(integrityprocessor);
-        return true;
+        int y = reader.getHeight(Heightmap.Type.OCEAN_FLOOR_WG, pos.getX() + x, pos.getZ() + z);
+        
+        if (y>60)
+        {
+        	BlockPos blockpos1 = bush.getZeroPositionWithTransform(pos.add(x, y, z), Mirror.NONE, rotation);
+        	bush.func_237146_a_(reader, blockpos1, blockpos1, placementsettings, rand, 4);
+        	return true;
+    	}
+    	return false;
     }
 }

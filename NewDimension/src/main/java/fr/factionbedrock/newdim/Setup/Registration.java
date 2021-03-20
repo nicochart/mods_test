@@ -142,7 +142,7 @@ public class Registration {
 		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
 		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 
-		 register("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(15));
+		 register("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
 		 
 		 register("newdim_basictree_feature", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
