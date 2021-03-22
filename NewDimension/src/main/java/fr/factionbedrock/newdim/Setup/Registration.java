@@ -4,6 +4,7 @@ import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
 import fr.factionbedrock.newdim.Block.Aercloud.*;
 import fr.factionbedrock.newdim.Block.Bushes.*;
+import fr.factionbedrock.newdim.Entity.NewDimEntity;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.*;
@@ -17,6 +18,7 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Effects;
@@ -53,12 +55,14 @@ public class Registration {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
+    private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
 
     public static void init()
     {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     
@@ -203,6 +207,12 @@ public class Registration {
 				  			.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).func_242731_b(2));
 		  //func_242731_b = count     |     addWeightedBlockstate(blockStateIn, weightIn)
 	 }
+	
+	
+	//entities
+	public static final EntityType<NewDimEntity> NEWDIM_ENTITY_TYPE = EntityType.Builder.create(NewDimEntity::new, EntityClassification.MONSTER)
+            .size(0.8F,2.5F).build("newdim_entity");
+    public static final RegistryObject<EntityType<NewDimEntity>> NEWDIM_ENTITY = ENTITIES.register("newdim_entity", () -> NEWDIM_ENTITY_TYPE);
 	
 	 private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature)
 	 {

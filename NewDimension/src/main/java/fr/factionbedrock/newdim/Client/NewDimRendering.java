@@ -3,12 +3,14 @@ package fr.factionbedrock.newdim.Client;
 import com.google.common.base.Supplier;
 
 import fr.factionbedrock.newdim.NewDimension;
+import fr.factionbedrock.newdim.Client.EntityRender.NewDimEntityRender;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = NewDimension.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -34,4 +36,9 @@ public class NewDimRendering
 	{
         RenderTypeLookup.setRenderLayer(block.get(), render);
     }
+	
+	public static void registerEntityRenderers()
+	{
+		RenderingRegistry.registerEntityRenderingHandler(Registration.NEWDIM_ENTITY.get(), NewDimEntityRender::new);
+	}
 }

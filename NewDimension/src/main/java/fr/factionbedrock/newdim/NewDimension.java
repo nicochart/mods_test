@@ -31,5 +31,6 @@ public class NewDimension
     public void clientSetup(FMLClientSetupEvent event)
     {
     	NewDimRendering.registerBlockRenderLayers();
+    	NewDimRendering.registerEntityRenderers();
     }
 }
