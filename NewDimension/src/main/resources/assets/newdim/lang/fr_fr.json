@@ -14,5 +14,12 @@
   "block.newdim.newdim_berry_bush_stem" : "Arbuste de Newdim",
   "block.newdim.newdim_berry_bush" : "Arbuste de Newdim",
   "block.newdim.white_flower" : "Fleur blanche",
-  "block.newdim.purple_flower" : "Fleur violette"
+  "block.newdim.purple_flower" : "Fleur violette",
+  "block.newdim.bronze_dongeon_stone" : "Roche de Donjon Bronze",
+  "block.newdim.light_bronze_dongeon_stone" : "Roche Lumineuse de Donjon Bronze"",
+  "block.newdim.angelic_stone" : "Pierre Angélique",
+  "block.newdim.light_angelic_stone" : "Pierre Angélique Lumineuse",
+  "block.newdim.hellfire_stone" : "Pierre des Enfers",
+  "block.newdim.light_hellfire_stone" : "Pierre des Enfers Lumineuse",
+  "block.newdim.newdim_stone_bricks" : "Briques de Pierre de Newdim"
 }

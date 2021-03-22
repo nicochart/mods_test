@@ -79,6 +79,9 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIMSTONE = BLOCKS.register("newdimstone", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE)));
 	public static final RegistryObject<Item> NEWDIMSTONE_ITEM = ITEMS.register("newdimstone", () -> new BlockItem(NEWDIMSTONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	public static final RegistryObject<Block> NEWDIMSTONE_BRICKS = BLOCKS.register("newdim_stone_bricks", () -> new Block(AbstractBlock.Properties.from(Blocks.STONE_BRICKS).hardnessAndResistance(0.5F, 10.0F).harvestTool(ToolType.PICKAXE)));
+	public static final RegistryObject<Item> NEWDIMSTONE_BRICKS_ITEM = ITEMS.register("newdim_stone_bricks", () -> new BlockItem(NEWDIMSTONE_BRICKS.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	public static final RegistryObject<Block> NEWDIM_GRASS = BLOCKS.register("newdim_grass_block", () -> new NewDimGrassBlock(AbstractBlock.Properties.from(Blocks.GRASS_BLOCK).harvestTool(ToolType.SHOVEL)));
 	public static final RegistryObject<Item> NEWDIM_GRASS_ITEM = ITEMS.register("newdim_grass_block", () -> new BlockItem(NEWDIM_GRASS.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
@@ -99,6 +102,21 @@ public class Registration {
 	
 	public static final RegistryObject<Block> NEWDIM_GOLDEN_AERCLOUD = BLOCKS.register("newdim_golden_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
 	public static final RegistryObject<Item> NEWDIM_GOLDEN_AERCLOUD_ITEM = ITEMS.register("newdim_golden_aercloud", () -> new BlockItem(NEWDIM_GOLDEN_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
+	//dungeons blocks
+	public static final RegistryObject<Block> BRONZE_DONGEON_STONE = BLOCKS.register("bronze_dongeon_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
+	public static final RegistryObject<Block> LIGHT_BRONZE_DONGEON_STONE = BLOCKS.register("light_bronze_dongeon_stone", () -> new Block(AbstractBlock.Properties.from(BRONZE_DONGEON_STONE.get()).setLightLevel((state) -> 11)));
+	public static final RegistryObject<Block> ANGELIC_STONE = BLOCKS.register("angelic_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
+	public static final RegistryObject<Block> LIGHT_ANGELIC_STONE = BLOCKS.register("light_angelic_stone", () -> new Block(AbstractBlock.Properties.from(ANGELIC_STONE.get()).setLightLevel((state) -> 11)));
+	public static final RegistryObject<Block> HELLFIRE_STONE  = BLOCKS.register("hellfire_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
+	public static final RegistryObject<Block> LIGHT_HELLFIRE_STONE = BLOCKS.register("light_hellfire_stone", () -> new Block(AbstractBlock.Properties.from(HELLFIRE_STONE.get()).setLightLevel((state) -> 11)));
+	
+	public static final RegistryObject<Item> BRONZE_DONGEON_STONE_ITEM = ITEMS.register("bronze_dongeon_stone", () -> new BlockItem(BRONZE_DONGEON_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> LIGHT_BRONZE_DONGEON_STONE_ITEM = ITEMS.register("light_bronze_dongeon_stone", () -> new BlockItem(LIGHT_BRONZE_DONGEON_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> ANGELIC_STONE_ITEM = ITEMS.register("angelic_stone", () -> new BlockItem(ANGELIC_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> LIGHT_ANGELIC_STONE_ITEM = ITEMS.register("light_angelic_stone", () -> new BlockItem(LIGHT_ANGELIC_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> HELLFIRE_STONE_ITEM = ITEMS.register("hellfire_stone", () -> new BlockItem(HELLFIRE_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> LIGHT_HELLFIRE_STONE_ITEM = ITEMS.register("light_hellfire_stone", () -> new BlockItem(LIGHT_HELLFIRE_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
 	//bushes
 	public static final RegistryObject<Block> NEWDIM_BERRY_BUSH = BLOCKS.register("newdim_berry_bush", () -> new NewDimBerryBushBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.2F).sound(SoundType.PLANT).harvestTool(ToolType.HOE).notSolid()

@@ -14,5 +14,12 @@
   "block.newdim.newdim_berry_bush_stem" : "Newdim Berry Bush",
   "block.newdim.newdim_berry_bush" : "Newdim Berry Bush",
   "block.newdim.white_flower" : "White Flower",
-  "block.newdim.purple_flower" : "Purple Flower"
+  "block.newdim.purple_flower" : "Purple Flower",
+  "block.newdim.bronze_dongeon_stone" : "Bronze Dongeon Stone",
+  "block.newdim.light_bronze_dongeon_stone" : "Bronze Dongeon Light Stone",
+  "block.newdim.angelic_stone" : "Angelic Stone",
+  "block.newdim.light_angelic_stone" : "Angelic Light Stone",
+  "block.newdim.hellfire_stone" : "Hellfire Stone",
+  "block.newdim.light_hellfire_stone" : "Hellfire Light Stone",
+  "block.newdim.newdim_stone_bricks" : "Newdim Stonebricks"
 }
