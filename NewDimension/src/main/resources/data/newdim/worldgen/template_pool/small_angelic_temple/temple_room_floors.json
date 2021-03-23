@@ -1,0 +1,15 @@
+{
+  "name": "newdim:temple_room_floors",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 100,
+      "element": {
+        "location": "newdim:small_angelic_temple/temple_room_floor",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

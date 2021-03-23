@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class NewDimAngelicTempleFeature extends Feature<NoFeatureConfig> {
 
-    private static final ResourceLocation TEMPLE = new ResourceLocation(NewDimension.MODID, "angelic_temple");
+    private static final ResourceLocation TEMPLE = new ResourceLocation(NewDimension.MODID, "angelic_temple/angelic_temple");
 
     public NewDimAngelicTempleFeature(Codec<NoFeatureConfig> codec) {super(codec);}
     

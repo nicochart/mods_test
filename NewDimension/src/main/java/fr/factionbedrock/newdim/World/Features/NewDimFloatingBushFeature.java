@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class NewDimFloatingBushFeature extends Feature<NoFeatureConfig> {
 
-    private static final ResourceLocation BUSH = new ResourceLocation(NewDimension.MODID, "floating_bush");
+    private static final ResourceLocation BUSH = new ResourceLocation(NewDimension.MODID, "floating_bush/floating_bush");
 
     public NewDimFloatingBushFeature(Codec<NoFeatureConfig> codec) {super(codec);}
     
