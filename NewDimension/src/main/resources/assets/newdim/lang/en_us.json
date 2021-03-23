@@ -21,5 +21,7 @@
   "block.newdim.light_angelic_stone" : "Angelic Light Stone",
   "block.newdim.hellfire_stone" : "Hellfire Stone",
   "block.newdim.light_hellfire_stone" : "Hellfire Light Stone",
-  "block.newdim.newdim_stone_bricks" : "Newdim Stonebricks"
+  "block.newdim.newdim_stone_bricks" : "Newdim Stonebricks",
+  "block.newdim.angelic_pillar" : "Angelic Pillar",
+  "block.newdim.angelic_pillar_top" : "Angelic Pillar Top"
 }

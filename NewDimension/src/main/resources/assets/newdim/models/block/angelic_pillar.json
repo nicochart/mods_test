@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "newdim:block/angelic_pillar_side",
+    "end": "newdim:block/angelic_pillar_top"
+  }
+}

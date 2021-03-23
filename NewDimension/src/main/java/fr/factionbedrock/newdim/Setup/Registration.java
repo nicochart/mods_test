@@ -18,6 +18,7 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -114,6 +115,9 @@ public class Registration {
 	public static final RegistryObject<Block> LIGHT_ANGELIC_STONE = BLOCKS.register("light_angelic_stone", () -> new Block(AbstractBlock.Properties.from(ANGELIC_STONE.get()).setLightLevel((state) -> 11)));
 	public static final RegistryObject<Block> HELLFIRE_STONE  = BLOCKS.register("hellfire_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 	public static final RegistryObject<Block> LIGHT_HELLFIRE_STONE = BLOCKS.register("light_hellfire_stone", () -> new Block(AbstractBlock.Properties.from(HELLFIRE_STONE.get()).setLightLevel((state) -> 11)));
+	static final RegistryObject<RotatedPillarBlock> ANGELIC_PILLAR = BLOCKS.register("angelic_pillar", () -> new RotatedPillarBlock(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.QUARTZ).hardnessAndResistance(0.5F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
+	public static final RegistryObject<RotatedPillarBlock> ANGELIC_PILLAR_TOP = BLOCKS.register("angelic_pillar_top", () -> new RotatedPillarBlock(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.QUARTZ).hardnessAndResistance(0.5F).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
+
 	
 	public static final RegistryObject<Item> BRONZE_DONGEON_STONE_ITEM = ITEMS.register("bronze_dongeon_stone", () -> new BlockItem(BRONZE_DONGEON_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	public static final RegistryObject<Item> LIGHT_BRONZE_DONGEON_STONE_ITEM = ITEMS.register("light_bronze_dongeon_stone", () -> new BlockItem(LIGHT_BRONZE_DONGEON_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
@@ -121,6 +125,8 @@ public class Registration {
 	public static final RegistryObject<Item> LIGHT_ANGELIC_STONE_ITEM = ITEMS.register("light_angelic_stone", () -> new BlockItem(LIGHT_ANGELIC_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	public static final RegistryObject<Item> HELLFIRE_STONE_ITEM = ITEMS.register("hellfire_stone", () -> new BlockItem(HELLFIRE_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	public static final RegistryObject<Item> LIGHT_HELLFIRE_STONE_ITEM = ITEMS.register("light_hellfire_stone", () -> new BlockItem(LIGHT_HELLFIRE_STONE.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> ANGELIC_PILLAR_ITEM = ITEMS.register("angelic_pillar", () -> new BlockItem(ANGELIC_PILLAR.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	public static final RegistryObject<Item> ANGELIC_PILLAR_TOP_ITEM = ITEMS.register("angelic_pillar_top", () -> new BlockItem(ANGELIC_PILLAR_TOP.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
 	//bushes
 	public static final RegistryObject<Block> NEWDIM_BERRY_BUSH = BLOCKS.register("newdim_berry_bush", () -> new NewDimBerryBushBlock(AbstractBlock.Properties.create(Material.PLANTS).hardnessAndResistance(0.2F).sound(SoundType.PLANT).harvestTool(ToolType.HOE).notSolid()
@@ -155,6 +161,8 @@ public class Registration {
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GOLDEN_AERCLOUD_FEATURE = FEATURES.register("golden_aercloud", () -> new NewDimGoldenAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_FLOATING_BUSH_FEATURE = FEATURES.register("newdim_floating_bush", () -> new NewDimFloatingBushFeature(NoFeatureConfig.field_236558_a_));
+	
+	public static final RegistryObject<Feature<NoFeatureConfig>> ANGELIC_TEMPLE_FEATURE = FEATURES.register("angelic_temple", () -> new NewDimAngelicTempleFeature(NoFeatureConfig.field_236558_a_));
 	 
 	public static void registerConfiguredFeatures()
 	{
@@ -165,6 +173,7 @@ public class Registration {
 		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 
 		 register("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
+		 register("angelic_temple_feature", ANGELIC_TEMPLE_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(10));
 		 
 		 register("newdim_basictree_feature", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
