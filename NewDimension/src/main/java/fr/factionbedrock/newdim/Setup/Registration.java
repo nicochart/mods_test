@@ -8,7 +8,7 @@ import fr.factionbedrock.newdim.Entity.NewDimEntity;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.*;
-import fr.factionbedrock.newdim.World.Tree.NewDimBasicTree;
+import fr.factionbedrock.newdim.World.Structure.SmallAngelicTempleStructure;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -36,7 +36,10 @@ import net.minecraft.world.gen.feature.FeatureSpread;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
+import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+import net.minecraft.world.gen.settings.StructureSeparationSettings;
 import net.minecraft.world.gen.trunkplacer.StraightTrunkPlacer;
 import net.minecraft.item.BlockItem;
 import net.minecraftforge.common.ToolType;
@@ -49,14 +52,21 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 
 import static fr.factionbedrock.newdim.NewDimension.MODID;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
 public class Registration {
 
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
+    private static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, MODID);
     private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
+    private static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, MODID);
+
 
     public static void init()
     {
@@ -65,6 +75,7 @@ public class Registration {
         FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
     
     /*NEW TREE*/
@@ -152,7 +163,8 @@ public class Registration {
 	public static final RegistryObject<Item> BEDROCK_INGOT = ITEMS.register("bedrock_ingot", NewDimItem::new);
 	
 	
-	//features
+	 /* CONFIGURED FEATURES */
+	
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_FEATURE = FEATURES.register("newdim_quicksoil", () -> new NewDimQuicksoilFeature(NoFeatureConfig.field_236558_a_));
 	
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_QUICKSOIL_AERCLOUD_FEATURE = FEATURES.register("newdim_quicksoil_aercloud", () -> new NewDimQuicksoilAercloudFeature(NoFeatureConfig.field_236558_a_));
@@ -162,20 +174,22 @@ public class Registration {
 	 
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_FLOATING_BUSH_FEATURE = FEATURES.register("newdim_floating_bush", () -> new NewDimFloatingBushFeature(NoFeatureConfig.field_236558_a_));
 	
-	public static final RegistryObject<Feature<NoFeatureConfig>> ANGELIC_TEMPLE_FEATURE = FEATURES.register("angelic_temple", () -> new NewDimAngelicTempleFeature(NoFeatureConfig.field_236558_a_));
+	
 	 
 	public static void registerConfiguredFeatures()
 	{
-		 register("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
-		 register("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
-		 register("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
-		 register("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
-		 register("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
+		
+		 registerCF("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
+		 registerCF("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
+		 registerCF("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
+		 registerCF("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
+		 registerCF("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 
-		 register("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
-		 register("angelic_temple_feature", ANGELIC_TEMPLE_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(10));
+		 registerCF("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
 		 
-		 register("newdim_basictree_feature", Feature.TREE.withConfiguration
+		 
+		 
+		 registerCF("newdim_basictree_feature", Feature.TREE.withConfiguration
 				    ((new BaseTreeFeatureConfig.Builder
 				       (
 				          new SimpleBlockStateProvider(NEWTREE_LOG.get().getDefaultState()),
@@ -205,7 +219,7 @@ public class Registration {
 	    			     See resources/data/minecraft/tags/blocks/leaves.json
 	 */
 		 
-		  register("newdim_classicbiome_flowers", Feature.FLOWER.withConfiguration(
+		  registerCF("newdim_classicbiome_flowers", Feature.FLOWER.withConfiguration(
 	                (new BlockClusterFeatureConfig.Builder(
 	                     (new WeightedBlockStateProvider())
 	                     .addWeightedBlockstate(PURPLE_FLOWER.get().getDefaultState(), 1)
@@ -217,14 +231,68 @@ public class Registration {
 		  //func_242731_b = count     |     addWeightedBlockstate(blockStateIn, weightIn)
 	 }
 	
-	
-	//entities
-	public static final EntityType<NewDimEntity> NEWDIM_ENTITY_TYPE = EntityType.Builder.create(NewDimEntity::new, EntityClassification.MONSTER)
-            .size(0.8F,2.5F).build("newdim_entity");
-    public static final RegistryObject<EntityType<NewDimEntity>> NEWDIM_ENTITY = ENTITIES.register("newdim_entity", () -> NEWDIM_ENTITY_TYPE);
-	
-	 private static <FC extends IFeatureConfig> void register(String name, ConfiguredFeature<FC, ?> feature)
+	 private static <FC extends IFeatureConfig> void registerCF(String name, ConfiguredFeature<FC, ?> feature)
 	 {
 		  Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(MODID, name), feature);
 	 }
+	 
+	 /* STRUCTURES */
+	 
+	 public static final RegistryObject<Structure<NoFeatureConfig>> SMALL_ANGELIC_TEMPLE_STRUCTURE = STRUCTURES.register("small_angelic_temple", () -> new SmallAngelicTempleStructure(NoFeatureConfig.field_236558_a_));
+	 
+	 public static void setupStructures()
+	 {
+	        setupMapSpacingAndLand(
+	                SMALL_ANGELIC_TEMPLE_STRUCTURE.get(), /* The instance of the structure */
+	                new StructureSeparationSettings(10 /* maximum distance apart in chunks between spawn attempts */,
+	                        5 /* minimum distance apart in chunks between spawn attempts */,
+	                        1234567890 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
+	                true);
+	 }
+	 
+	 
+	//entities
+	  public static final EntityType<NewDimEntity> NEWDIM_ENTITY_TYPE = EntityType.Builder.create(NewDimEntity::new, EntityClassification.MONSTER)
+	            .size(0.8F,2.5F).build("newdim_entity");
+	  public static final RegistryObject<EntityType<NewDimEntity>> NEWDIM_ENTITY = ENTITIES.register("newdim_entity", () -> NEWDIM_ENTITY_TYPE);
+
+	   public static <F extends Structure<?>> void setupMapSpacingAndLand(F structure,StructureSeparationSettings structureSeparationSettings,boolean transformSurroundingLand)
+	   {
+	        Structure.NAME_STRUCTURE_BIMAP.put(structure.getRegistryName().toString(), structure);
+
+	        if(transformSurroundingLand)
+	        {
+	            Structure.field_236384_t_ =
+	                    ImmutableList.<Structure<?>>builder()
+	                            .addAll(Structure.field_236384_t_)
+	                            .add(structure)
+	                            .build();
+	        }
+
+	        DimensionStructuresSettings.field_236191_b_ =
+	                ImmutableMap.<Structure<?>, StructureSeparationSettings>builder()
+	                        .putAll(DimensionStructuresSettings.field_236191_b_)
+	                        .put(structure, structureSeparationSettings)
+	                        .build();
+
+	        WorldGenRegistries.NOISE_SETTINGS.getEntries().forEach(settings ->
+	        {
+	            Map<Structure<?>, StructureSeparationSettings> structureMap = settings.getValue().getStructures().func_236195_a_();
+
+	            /*
+	                field_236193_d_ requires AccessTransformer  (See resources/META-INF/accesstransformer.cfg, and see build.gradle do say it to gradle)
+	                I had a problem with the accesstransformer.cfg, I had to remove the project from eclipse, run "gradlew eclipse genEclipseRuns" in a command prompt, and re-open the project.
+	            */
+	            if(structureMap instanceof ImmutableMap)
+	            {
+	                Map<Structure<?>, StructureSeparationSettings> tempMap = new HashMap<>(structureMap);
+	                tempMap.put(structure, structureSeparationSettings);
+	                settings.getValue().getStructures().field_236193_d_ = tempMap;
+	            }
+	            else
+	            {
+	                structureMap.put(structure, structureSeparationSettings);
+	            }
+	        });
+	   }
 }

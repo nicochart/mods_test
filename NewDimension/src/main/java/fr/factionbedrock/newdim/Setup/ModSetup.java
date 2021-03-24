@@ -4,6 +4,7 @@ import fr.factionbedrock.newdim.NewDimension;
 import fr.factionbedrock.newdim.World.NewDimBiomeProvider;
 import fr.factionbedrock.newdim.World.NewDimChunkGenerator;
 import fr.factionbedrock.newdim.Commands.ModCommands;
+import fr.factionbedrock.newdim.Register.RegisterStructureFeature;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -30,11 +31,14 @@ public class ModSetup {
         event.enqueueWork(() ->
         {
         	Registration.registerConfiguredFeatures();
+        	Registration.setupStructures();
+        	RegisterStructureFeature.registerConfiguredStructures();
         	
         	Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(NewDimension.MODID, "newdimchunkgen"),
                     NewDimChunkGenerator.CODEC);
             Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(NewDimension.MODID, "newdimbiomeprovider"),
                     NewDimBiomeProvider.CODEC);
+            
         });
     }
 
