@@ -22,11 +22,7 @@
     ]
   },
   "features": [
-    [
-      "newdim:newdim_quicksoil_feature",
-      "newdim:newdim_floating_bush_feature",
-      "newdim:angelic_temple_feature"
-    ],
+    [],
     [
       //"minecraft:water_lake"
     ],
@@ -39,6 +35,8 @@
     ],
     [],
     [
+      "newdim:newdim_quicksoil_feature",
+      "newdim:newdim_floating_bush_feature",
       "newdim:newdim_basictree_feature", //natural features (?)
       "newdim:newdim_white_aercloud_feature",
       "newdim:newdim_blue_aercloud_feature",
