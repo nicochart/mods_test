@@ -201,6 +201,19 @@ public class Registration {
 				     ).setIgnoreVines().build()
 				    ).withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
 				 );
+		 
+		 registerCF("newdim_foresttree_feature", Feature.TREE.withConfiguration
+				    ((new BaseTreeFeatureConfig.Builder
+				       (
+				          new SimpleBlockStateProvider(NEWTREE_LOG.get().getDefaultState()),
+	                      new SimpleBlockStateProvider(NEWTREE_LEAVES.get().getDefaultState()),
+	                      new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3), //rayon,décalage,hauteur		func_242252_a()=fixed()
+	                      new StraightTrunkPlacer(5, 3, 0), //hauteur de base, randomizer1, randomizer2
+	                      new TwoLayerFeature(1, 0, 1)
+	                   )
+				     ).setIgnoreVines().build()
+				    ).range(256).square().func_242731_b(10)
+				 );
 	 
 	 /*
 	    .withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT) = placement basique

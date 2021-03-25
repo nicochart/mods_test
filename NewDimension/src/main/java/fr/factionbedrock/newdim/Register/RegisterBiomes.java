@@ -21,11 +21,14 @@ public class RegisterBiomes
 	public static final RegistryKey<Biome> NEWDIMBIOME = register("newdimbiome");
 	//Océan de quicksoil de la nouvelle dimension
     public static final RegistryKey<Biome> NEWDIM_QUICKSOILOCEAN = register("newdim_quicksoilocean");
+    //Forêt de la nouvelle dimension
+    public static final RegistryKey<Biome> NEWDIM_FOREST = register("newdim_forest");
     
     public static void toDictionary()
     {
         BiomeDictionary.addTypes(NEWDIMBIOME, BiomeDictionary.Type.HOT, BiomeDictionary.Type.FOREST);
         BiomeDictionary.addTypes(NEWDIM_QUICKSOILOCEAN, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
+        BiomeDictionary.addTypes(NEWDIM_FOREST, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DENSE, BiomeDictionary.Type.WET, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.FOREST);
     }    
 	
 	private static ResourceLocation name(String name)

@@ -71,7 +71,7 @@ public class NewDimension
     
     public void biomeModification(final BiomeLoadingEvent event)
     {
-    	if (event.getName().equals(RegisterBiomes.NEWDIMBIOME.getLocation()))
+    	if (event.getName().equals(RegisterBiomes.NEWDIMBIOME.getLocation()) || event.getName().equals(RegisterBiomes.NEWDIM_FOREST.getLocation()))
     	{
     		event.getGeneration().getStructures().add(() -> RegisterStructureFeature.CONFIGURED_SMALL_ANGELIC_TEMPLE_STRUCTURE);
         }
