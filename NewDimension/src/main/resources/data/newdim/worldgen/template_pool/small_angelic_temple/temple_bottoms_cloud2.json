@@ -1,0 +1,15 @@
+{
+  "name": "newdim:temple_bottoms_cloud2",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 100,
+      "element": {
+        "location": "newdim:small_angelic_temple/temple_bottom_cloud2",
+        "processors": "minecraft:empty",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

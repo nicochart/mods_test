@@ -2,6 +2,7 @@ package fr.factionbedrock.newdim.World.Structure;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -21,7 +22,7 @@ public abstract class AbstractNewDimStructure extends Structure<NoFeatureConfig>
     }
 
     @Override
-    public GenerationStage.Decoration getDecorationStage()
+    public GenerationStage.Decoration getDecorationStage() //What stage of generation your structure should be generated during
     {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
     }
@@ -78,7 +79,7 @@ public abstract class AbstractNewDimStructure extends Structure<NoFeatureConfig>
 
         private boolean isValidBlock(BlockState currentBlockstate)
         {
-            return true;//currentBlockstate.isIn(UGBlocks.DEEPTURF_BLOCK.get());
+            return currentBlockstate.isIn(Blocks.AIR.getBlock());
         }
     }
 }

@@ -60,9 +60,9 @@ public class SmallAngelicTempleStructure extends AbstractNewDimStructure
 
             this.recalculateStructureSize();
 
-            if (yPos.getY() >= 205 || yPos.getY() <= 32)
+            if (yPos.getY() >= 205 || yPos.getY() <= 110)
             {	//moveInsideHeights
-                this.func_214626_a(this.rand, 32, 200);
+                this.func_214626_a(this.rand, 110, 200);
             }
             else {
                 this.func_214626_a(this.rand, yPos.getY() - 5, yPos.getY());

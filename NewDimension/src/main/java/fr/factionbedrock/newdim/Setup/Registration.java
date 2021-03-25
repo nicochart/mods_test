@@ -247,7 +247,7 @@ public class Registration {
 	                new StructureSeparationSettings(10 /* maximum distance apart in chunks between spawn attempts */,
 	                        5 /* minimum distance apart in chunks between spawn attempts */,
 	                        1234567890 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
-	                true);
+	                false); //TransformSurroundingLand
 	 }
 	 
 	 
