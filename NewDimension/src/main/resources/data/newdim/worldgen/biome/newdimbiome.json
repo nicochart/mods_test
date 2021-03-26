@@ -35,12 +35,8 @@
     ],
     [],
     [
-      "newdim:newdim_quicksoil_feature",
       "newdim:newdim_floating_bush_feature",
-      "newdim:newdim_basictree_feature", //natural features (?)
-      "newdim:newdim_white_aercloud_feature",
-      "newdim:newdim_blue_aercloud_feature",
-      "newdim:newdim_golden_aercloud_feature",
+      "newdim:newdim_basictree_feature",
       "newdim:newdim_classicbiome_flowers"
     ],
     []

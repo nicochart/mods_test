@@ -178,12 +178,15 @@ public class Registration {
 	 
 	public static void registerConfiguredFeatures()
 	{
-		
+		 /*
+		 These features registers are useless at the moment, because we them "manually" in the biomes in the main class (see "biomeModification").
+		 
 		 registerCF("newdim_quicksoil_feature", NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20)); //func_242731_b(10)=count(10)
-		 registerCF("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
 		 registerCF("newdim_white_aercloud_feature", NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
 		 registerCF("newdim_blue_aercloud_feature", NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
 		 registerCF("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
+		 */
+		 registerCF("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
 		 
 		 registerCF("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
 		 

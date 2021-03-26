@@ -18,6 +18,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.FlatChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 import net.minecraft.world.gen.settings.StructureSeparationSettings;
@@ -70,10 +72,18 @@ public class NewDimension
     
     
     public void biomeModification(final BiomeLoadingEvent event)
-    {
-    	if (event.getName().equals(RegisterBiomes.NEWDIMBIOME.getLocation()) || event.getName().equals(RegisterBiomes.NEWDIM_FOREST.getLocation()))
+    {	
+    	/* Adding common features and structure in newdimbiome, newdim_quicksoilocean and newdim_forest */
+    	if (event.getName().equals(RegisterBiomes.NEWDIMBIOME.getLocation()) || event.getName().equals(RegisterBiomes.NEWDIM_FOREST.getLocation()) || event.getName().equals(RegisterBiomes.NEWDIM_QUICKSOILOCEAN.getLocation()))
     	{
+    		/* structure */
     		event.getGeneration().getStructures().add(() -> RegisterStructureFeature.CONFIGURED_SMALL_ANGELIC_TEMPLE_STRUCTURE);
+    		
+    		/* features */
+    		event.getGeneration().getFeatures(GenerationStage.Decoration.LOCAL_MODIFICATIONS).add(() -> Registration.NEWDIM_QUICKSOIL_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
+    		event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> Registration.NEWDIM_WHITE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(128).square().chance(5));
+   		    event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> Registration.NEWDIM_BLUE_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(96).square().chance(5));
+   		    event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> Registration.NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
         }
     }    
     

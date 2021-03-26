@@ -22,9 +22,7 @@
     ]
   },
   "features": [
-    [
-       "newdim:newdim_quicksoil_feature"
-    ],
+    [],
     [],
     [],
     [],
@@ -35,10 +33,7 @@
     ],
     [],
     [
-       "newdim:newdim_white_aercloud_feature",
-       "newdim:newdim_blue_aercloud_feature",
-       "newdim:newdim_quicksoil_aecloud_feature",
-       "newdim:newdim_golden_aercloud_feature"
+       "newdim:newdim_quicksoil_aecloud_feature"
     ],
     []
   ],
