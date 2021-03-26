@@ -119,6 +119,9 @@ public class Registration {
 	public static final RegistryObject<Block> NEWDIM_GOLDEN_AERCLOUD = BLOCKS.register("newdim_golden_aercloud",	() -> new NewDimAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
 	public static final RegistryObject<Item> NEWDIM_GOLDEN_AERCLOUD_ITEM = ITEMS.register("newdim_golden_aercloud", () -> new BlockItem(NEWDIM_GOLDEN_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
 	
+	public static final RegistryObject<Block> NEWDIM_GREEN_AERCLOUD = BLOCKS.register("newdim_green_aercloud",	() -> new NewDimGreenAercloudBlock(AbstractBlock.Properties.from(Registration.NEWDIM_WHITE_AERCLOUD.get())));
+	public static final RegistryObject<Item> NEWDIM_GREEN_AERCLOUD_ITEM = ITEMS.register("newdim_green_aercloud", () -> new BlockItem(NEWDIM_GREEN_AERCLOUD.get(), new Item.Properties().group(ModSetup.ITEM_GROUP)));
+	
 	//dungeons blocks
 	public static final RegistryObject<Block> BRONZE_DONGEON_STONE = BLOCKS.register("bronze_dongeon_stone", () -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(0.5F).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 	public static final RegistryObject<Block> LIGHT_BRONZE_DONGEON_STONE = BLOCKS.register("light_bronze_dongeon_stone", () -> new Block(AbstractBlock.Properties.from(BRONZE_DONGEON_STONE.get()).setLightLevel((state) -> 11)));
@@ -171,6 +174,7 @@ public class Registration {
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_WHITE_AERCLOUD_FEATURE = FEATURES.register("white_aercloud", () -> new NewDimWhiteAercloudFeature(NoFeatureConfig.field_236558_a_));	 
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_BLUE_AERCLOUD_FEATURE = FEATURES.register("blue_aercloud", () -> new NewDimBlueAercloudFeature(NoFeatureConfig.field_236558_a_));	 
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GOLDEN_AERCLOUD_FEATURE = FEATURES.register("golden_aercloud", () -> new NewDimGoldenAercloudFeature(NoFeatureConfig.field_236558_a_));
+	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_GREEN_AERCLOUD_FEATURE = FEATURES.register("green_aercloud", () -> new NewDimGreenAercloudFeature(NoFeatureConfig.field_236558_a_));
 	 
 	public static final RegistryObject<Feature<NoFeatureConfig>> NEWDIM_FLOATING_BUSH_FEATURE = FEATURES.register("newdim_floating_bush", () -> new NewDimFloatingBushFeature(NoFeatureConfig.field_236558_a_));
 	
@@ -187,8 +191,9 @@ public class Registration {
 		 registerCF("newdim_golden_aercloud_feature", NEWDIM_GOLDEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 */
 		 registerCF("newdim_quicksoil_aecloud_feature", NEWDIM_QUICKSOIL_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(256).square().func_242731_b(20));
+		 registerCF("newdim_green_aercloud_feature", NEWDIM_GREEN_AERCLOUD_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).range(160).square().chance(5));
 		 
-		 registerCF("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(30)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
+		 registerCF("newdim_floating_bush_feature", NEWDIM_FLOATING_BUSH_FEATURE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).chance(20)); //plus le parametre de "chance" est grand, moins ça a de chance de spawn
 		 
 		 
 		 

@@ -26,6 +26,7 @@ public class NewDimRendering
 		render(() -> Registration.NEWDIM_QUICKSOIL_AERCLOUD.get(), translucent);
 		render(() -> Registration.NEWDIM_BLUE_AERCLOUD.get(), translucent);
 		render(() -> Registration.NEWDIM_GOLDEN_AERCLOUD.get(), translucent);
+		render(() -> Registration.NEWDIM_GREEN_AERCLOUD.get(), translucent);
         render(() -> Registration.NEWDIM_BERRY_BUSH.get(), cutout);
         render(() -> Registration.NEWDIM_BERRY_BUSH_STEM.get(), cutout);
         render(() -> Registration.PURPLE_FLOWER.get(), cutout);

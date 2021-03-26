@@ -34,6 +34,7 @@
     [],
     [
       "newdim:newdim_foresttree_feature",
+      "newdim:newdim_green_aercloud_feature",
       "newdim:newdim_classicbiome_flowers"
     ],
     []
