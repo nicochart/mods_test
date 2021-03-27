@@ -2,10 +2,12 @@ package fr.factionbedrock.newdim.Setup;
 
 import fr.factionbedrock.newdim.Block.NewDimChestBlock;
 import fr.factionbedrock.newdim.Block.NewDimGrassBlock;
+import fr.factionbedrock.newdim.Block.NewDimPortalBlock;
 import fr.factionbedrock.newdim.Block.Aercloud.*;
 import fr.factionbedrock.newdim.Block.Bushes.*;
 import fr.factionbedrock.newdim.Entity.NewDimEntity;
 import fr.factionbedrock.newdim.Item.NewDimItem;
+import fr.factionbedrock.newdim.Register.NewDimPOI;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
 import fr.factionbedrock.newdim.World.Features.*;
 import fr.factionbedrock.newdim.World.Structure.SmallAngelicTempleStructure;
@@ -75,8 +77,11 @@ public class Registration {
         FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        NewDimPOI.POI.register(FMLJavaModLoadingContext.get().getModEventBus());
         STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
+    
+    public static final RegistryObject<NewDimPortalBlock> NEWDIM_PORTAL = BLOCKS.register("newdim_portal", () -> new NewDimPortalBlock(AbstractBlock.Properties.from(Blocks.NETHER_PORTAL)));
     
     /*NEW TREE*/
 		//logs

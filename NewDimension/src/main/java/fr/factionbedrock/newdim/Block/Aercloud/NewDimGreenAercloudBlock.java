@@ -39,7 +39,7 @@ public class NewDimGreenAercloudBlock extends NewDimAercloudBlock
 			}
 			else //motion.y ==0
 			{
-				entity.setMotion(motion.mul(0.9, 1.0, 0.9));
+				entity.setMotion(motion.mul(0.5, 1.0, 0.5));
 			}
 			return;
 		}

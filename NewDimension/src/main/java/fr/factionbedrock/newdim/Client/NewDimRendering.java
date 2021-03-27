@@ -31,6 +31,7 @@ public class NewDimRendering
         render(() -> Registration.NEWDIM_BERRY_BUSH_STEM.get(), cutout);
         render(() -> Registration.PURPLE_FLOWER.get(), cutout);
         render(() -> Registration.WHITE_FLOWER.get(), cutout);
+        render(() -> Registration.NEWDIM_PORTAL.get(), translucent);
 	}
 	
 	private static void render(Supplier<? extends Block> block, RenderType render)
