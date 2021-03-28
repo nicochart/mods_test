@@ -11,6 +11,6 @@ public class NewDimPOI
 {
     public static final DeferredRegister<PointOfInterestType> POI = DeferredRegister.create(ForgeRegistries.POI_TYPES, NewDimension.MODID);
 
-    public static final RegistryObject<PointOfInterestType> NEWDIM_PORTAL_POI = POI.register("aether_portal",
-            () -> new PointOfInterestType("aether_portal", PointOfInterestType.getAllStates(Registration.NEWDIM_PORTAL.get()), 0, 1));
+    public static final RegistryObject<PointOfInterestType> NEWDIM_PORTAL_POI = POI.register("newdim_portal",
+            () -> new PointOfInterestType("newdim_portal", PointOfInterestType.getAllStates(Registration.NEWDIM_PORTAL.get()), 0, 1));
 }
