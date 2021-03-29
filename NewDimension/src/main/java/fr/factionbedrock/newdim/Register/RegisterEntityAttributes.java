@@ -20,5 +20,6 @@ public class RegisterEntityAttributes
 		Entity with no attributes registered and be summoned 
 		*/
 		event.put(Registration.NEWDIM_ENTITY.get(), NewDimEntity.registerAttributes().create());
+		event.put(Registration.NEWDIM_GOLEM.get(), NewDimEntity.registerAttributes().create());
 	}
 }

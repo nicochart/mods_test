@@ -6,6 +6,7 @@ import fr.factionbedrock.newdim.Block.NewDimPortalBlock;
 import fr.factionbedrock.newdim.Block.Aercloud.*;
 import fr.factionbedrock.newdim.Block.Bushes.*;
 import fr.factionbedrock.newdim.Entity.NewDimEntity;
+import fr.factionbedrock.newdim.Entity.NewDimGolem;
 import fr.factionbedrock.newdim.Item.NewDimItem;
 import fr.factionbedrock.newdim.Register.NewDimPOI;
 import fr.factionbedrock.newdim.Register.RegisterBiomes;
@@ -280,7 +281,12 @@ public class Registration {
 	//entities
 	  public static final EntityType<NewDimEntity> NEWDIM_ENTITY_TYPE = EntityType.Builder.create(NewDimEntity::new, EntityClassification.MONSTER)
 	            .size(0.8F,2.5F).build("newdim_entity");
+	  
+	  public static final EntityType<NewDimGolem> NEWDIM_GOLEM_TYPE = EntityType.Builder.create(NewDimGolem::new, EntityClassification.MONSTER)
+	            .size(0.8F,2.5F).build("newdim_golem"); /*I don't know what to put in "size" yet*/
+	  
 	  public static final RegistryObject<EntityType<NewDimEntity>> NEWDIM_ENTITY = ENTITIES.register("newdim_entity", () -> NEWDIM_ENTITY_TYPE);
+	  public static final RegistryObject<EntityType<NewDimGolem>> NEWDIM_GOLEM = ENTITIES.register("newdim_golem", () -> NEWDIM_GOLEM_TYPE);
 
 	   public static <F extends Structure<?>> void setupMapSpacingAndLand(F structure,StructureSeparationSettings structureSeparationSettings,boolean transformSurroundingLand)
 	   {
