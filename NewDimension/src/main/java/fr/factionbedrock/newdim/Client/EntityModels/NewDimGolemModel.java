@@ -80,17 +80,8 @@ public class NewDimGolemModel<T extends NewDimGolem> extends EntityModel<T>
 	
 	public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick)
 	{
-		 int i = entityIn.getAttackTimer();
-		 if (i > 0)
-		 {
-		    this.rightArm.rotateAngleX = -2.0F + 1.5F * MathHelper.func_233021_e_((float)i - partialTick, 10.0F);
-		    this.leftArm.rotateAngleX = -2.0F + 1.5F * MathHelper.func_233021_e_((float)i - partialTick, 10.0F);
-		 }
-		 else
-		 {
-            this.rightArm.rotateAngleX = (-0.2F + 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
-		    this.leftArm.rotateAngleX = (-0.2F - 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
-		 }
+        this.rightArm.rotateAngleX = (-0.2F + 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
+		this.leftArm.rotateAngleX = (-0.2F - 1.5F * MathHelper.func_233021_e_(limbSwing, 13.0F)) * limbSwingAmount;
 	}
 	   
 
