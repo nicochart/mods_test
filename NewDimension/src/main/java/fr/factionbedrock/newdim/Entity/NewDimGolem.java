@@ -44,33 +44,13 @@ public class NewDimGolem extends AbstractNewDimEntity
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f1);
         if (flag)
         {
-           entityIn.setMotion(entityIn.getMotion().add(0.0D, (double)0.4F, 0.0D));
+           entityIn.setMotion(entityIn.getMotion().add(0.0D, (double)0.4F, 0.0D)); //projection en hauteur
            this.applyEnchantments(this, entityIn);
         }
 
         this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return flag;
     }
-    
-    /*
-    @Override
-    public void livingTick()
-    {
-	      super.livingTick();
-
-	      if (horizontalMag(this.getMotion()) > (double)2.5000003E-7F && this.rand.nextInt(5) == 0) //projection en hauteur
-	      {
-	         int i = MathHelper.floor(this.getPosX());
-	         int j = MathHelper.floor(this.getPosY() - (double)0.2F);
-	         int k = MathHelper.floor(this.getPosZ());
-	         BlockPos pos = new BlockPos(i, j, k);
-	         BlockState blockstate = this.world.getBlockState(pos);
-	         if (!blockstate.isAir(this.world, pos))
-	         {
-	            this.world.addParticle(new BlockParticleData(ParticleTypes.BLOCK, blockstate).setPos(pos), this.getPosX() + ((double)this.rand.nextFloat() - 0.5D) * (double)this.getWidth(), this.getPosY() + 0.1D, this.getPosZ() + ((double)this.rand.nextFloat() - 0.5D) * (double)this.getWidth(), 4.0D * ((double)this.rand.nextFloat() - 0.5D), 0.5D, ((double)this.rand.nextFloat() - 0.5D) * 4.0D);
-	         }
-	      }
-	   }*/
     
     @Override
     protected SoundEvent getAmbientSound()
