@@ -1,7 +1,6 @@
 package fr.factionbedrock.bedrockchest.Client;
 
 import fr.factionbedrock.bedrockchest.IPhysicalSide;
-import fr.factionbedrock.bedrockchest.Client.Renderer.BedrockChestItemTileEntityRenderer;
 import fr.factionbedrock.bedrockchest.Client.Renderer.BedrockChestTileEntityRenderer;
 import fr.factionbedrock.bedrockchest.Registry.RegisterTileEntityTypes;
 import net.minecraftforge.eventbus.api.IEventBus;

@@ -3,7 +3,6 @@ package fr.factionbedrock.newdim.Client;
 import com.google.common.base.Supplier;
 
 import fr.factionbedrock.newdim.NewDimension;
-import fr.factionbedrock.newdim.Client.EntityRender.NewDimEntityRender;
 import fr.factionbedrock.newdim.Client.EntityRender.NewDimGolemRender;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraft.block.Block;
@@ -42,7 +41,6 @@ public class NewDimRendering
 	
 	public static void registerEntityRenderers()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(Registration.NEWDIM_ENTITY.get(), NewDimEntityRender::new);
 		RenderingRegistry.registerEntityRenderingHandler(Registration.NEWDIM_GOLEM.get(), NewDimGolemRender::new);
 	}
 }

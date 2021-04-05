@@ -1,7 +1,7 @@
 package fr.factionbedrock.newdim.Register;
 
 import fr.factionbedrock.newdim.NewDimension;
-import fr.factionbedrock.newdim.Entity.NewDimEntity;
+import fr.factionbedrock.newdim.Entity.NewDimGolem;
 import fr.factionbedrock.newdim.Setup.Registration;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,7 +19,6 @@ public class RegisterEntityAttributes
 		java.lang.NullPointerException: Cannot invoke "net.minecraft.entity.ai.attributes.AttributeModifierMap.getAttributeValue(net.minecraft.entity.ai.attributes.Attribute)" because "this.attributeMap" is null
 		Entity with no attributes registered and be summoned 
 		*/
-		event.put(Registration.NEWDIM_ENTITY.get(), NewDimEntity.registerAttributes().create());
-		event.put(Registration.NEWDIM_GOLEM.get(), NewDimEntity.registerAttributes().create());
+		event.put(Registration.NEWDIM_GOLEM.get(), NewDimGolem.registerAttributes().create());
 	}
 }
