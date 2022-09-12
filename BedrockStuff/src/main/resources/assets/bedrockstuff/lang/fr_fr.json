@@ -10,5 +10,12 @@
   "item.bedrockstuff.bedrock_boots" : "§8Bottes en Bedrock",
   "item.bedrockstuff.bedrock_scrap" : "§8Fragment de Bedrock",
   "item.bedrockstuff.bedrock_ingot" : "§8Lingot de Bedrock",
-  "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock"
+  "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock",
+
+  "advancements.bedrock_ore.title": "Serai-ce.. de la Bedrock ?",
+  "advancements.bedrock_ore.desc": "Minez du Minerai de Bedrock",
+  "advancements.bedrock_ingot.title": "Forgeron des Profondeurs",
+  "advancements.bedrock_ingot.desc": "Obtenez un Lingot de Bedrock",
+  "advancements.obtain_bedrock_stuff.title": "Couvrez moi de Bedrock",
+  "advancements.obtain_bedrock_stuff.desc": "Fabriquez du matériel en Bedrock"
 }

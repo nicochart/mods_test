@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "bedrockstuff:bedrock_sword",
+    "bedrockstuff:bedrock_pickaxe",
+    "bedrockstuff:bedrock_axe",
+    "bedrockstuff:bedrock_shovel",
+    "bedrockstuff:bedrock_hoe",
+    "bedrockstuff:bedrock_helmet",
+    "bedrockstuff:bedrock_chestplate",
+    "bedrockstuff:bedrock_leggings",
+    "bedrockstuff:bedrock_boots"
+  ]
+}

@@ -10,5 +10,12 @@
   "item.bedrockstuff.bedrock_boots" : "§8Bedrock Boots",
   "item.bedrockstuff.bedrock_scrap" : "§8Bedrock Scrap",
   "item.bedrockstuff.bedrock_ingot" : "§8Bedrock Ingot",
-  "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore"
+  "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore",
+
+  "advancements.bedrock_ore.title": "Is that.. Bedrock ?",
+  "advancements.bedrock_ore.desc": "Collect Bedrock Ore",
+  "advancements.bedrock_ingot.title": "Blacksmith of the Deep",
+  "advancements.bedrock_ingot.desc": "Obtain a Bedrock Ingot",
+  "advancements.obtain_bedrock_stuff.title": "Cover me with Bedrock",
+  "advancements.obtain_bedrock_stuff.desc": "Craft any Bedrock Armor or Tool"
 }
