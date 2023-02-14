@@ -38,6 +38,6 @@ Bedrock Tools and Armor
 [[dependencies.bedrockstuff]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4,1.17)" #1.17 non inclu
+    versionRange="[1.18.2,1.19)" #1.19 non inclu
     ordering="NONE"
     side="BOTH"
