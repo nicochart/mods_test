@@ -1,15 +1,15 @@
 package fr.factionbedrock.bedrockstuff.Armor;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 
 public class ItemArmor extends ArmorItem
 {
-	public ItemArmor(IArmorMaterial materialIn, EquipmentSlotType slots, Properties properties)
+	public ItemArmor(ArmorMaterial materialIn, EquipmentSlot slots, Properties properties)
 	{
         super(materialIn, slots, properties);
     }
 	
-	//On peut définir ici des fonctions supplémentaires aux armures
+	//On peut definir ici des fonctions supplementaires aux armures
 }

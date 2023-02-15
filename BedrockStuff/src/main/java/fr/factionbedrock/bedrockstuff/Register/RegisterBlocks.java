@@ -1,49 +1,29 @@
 package fr.factionbedrock.bedrockstuff.Register;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
-import fr.factionbedrock.bedrockstuff.Blocks.BedrockOre;
-import fr.factionbedrock.bedrockstuff.Item.ItemFromBlock;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.OreBlock;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
-import net.minecraftforge.common.ToolType;
-import net.minecraft.block.SoundType;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraftforge.registries.RegistryObject;
 
 @EventBusSubscriber(modid = BedrockStuff.MODID, bus = Bus.MOD)
 public class RegisterBlocks
 {
-	public static final Block bedrockOre = new BedrockOre
-			(
-			    AbstractBlock.Properties.create(Material.ROCK, MaterialColor.STONE)
-               .hardnessAndResistance(90f, 100f)
-               .harvestTool(ToolType.PICKAXE)
-               .harvestLevel(4)
-               .sound(SoundType.STONE)
-               .setRequiresTool()
-            );
-      
-	@SubscribeEvent
-    public static void register(Register<Block> event)
-	{
-        IForgeRegistry<Block> registry = event.getRegistry();
-        
-        bedrockOre.setRegistryName(BedrockStuff.MODID, "bedrock_ore");
-        registry.registerAll(bedrockOre);
-	}
-	
-	@SubscribeEvent
-    public static void registerItem(Register<Item> event) 
-	{
-        IForgeRegistry<Item> registry = event.getRegistry();
-        registry.register(new ItemFromBlock(bedrockOre, new Item.Properties().group(ItemGroup.MATERIALS)));
-	}
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BedrockStuff.MODID);
+
+	public static final RegistryObject<Block> bedrockOre = BLOCKS.register("bedrock_ore", () -> new OreBlock
+	(
+			BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+					.strength(90f, 100f)
+					.sound(SoundType.STONE)
+					.requiresCorrectToolForDrops()
+	));
 }

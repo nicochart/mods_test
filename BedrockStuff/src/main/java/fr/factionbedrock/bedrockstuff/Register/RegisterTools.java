@@ -3,33 +3,22 @@ package fr.factionbedrock.bedrockstuff.Register;
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
 import fr.factionbedrock.bedrockstuff.Basis.BasisToolMaterial;
 import fr.factionbedrock.bedrockstuff.Tools.*;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 @EventBusSubscriber(modid = BedrockStuff.MODID, bus = Bus.MOD)
 public class RegisterTools
 {
-	 public static final Sword bedrockSword = new Sword(BasisToolMaterial.bedrock, new Item.Properties().group(ItemGroup.COMBAT));
-	 public static final Hoe bedrockHoe = new Hoe(BasisToolMaterial.bedrock,-3, 0.0F, new Item.Properties().group(ItemGroup.TOOLS));
-	 public static final Axe bedrockAxe = new Axe(BasisToolMaterial.bedrock, new Item.Properties().group(ItemGroup.TOOLS));
-	 public static final Pickaxe bedrockPickaxe = new Pickaxe(BasisToolMaterial.bedrock, new Item.Properties().group(ItemGroup.TOOLS));
-	 public static final Shovel bedrockShovel = new Shovel(BasisToolMaterial.bedrock, new Item.Properties().group(ItemGroup.TOOLS));
-	 
-	 @SubscribeEvent
-	 public static void register(Register<Item> event)
-	 {
-	        IForgeRegistry<Item> registry = event.getRegistry();
-	        
-	        bedrockSword.setRegistryName(BedrockStuff.MODID, "bedrock_sword");
-	        bedrockHoe.setRegistryName(BedrockStuff.MODID, "bedrock_hoe");
-	        bedrockAxe.setRegistryName(BedrockStuff.MODID, "bedrock_axe");
-	        bedrockPickaxe.setRegistryName(BedrockStuff.MODID, "bedrock_pickaxe");
-	        bedrockShovel.setRegistryName(BedrockStuff.MODID, "bedrock_shovel");
-	        registry.registerAll(bedrockSword,bedrockHoe,bedrockAxe,bedrockPickaxe,bedrockShovel);
-	 }
+	public static final DeferredRegister<Item> TOOLS = DeferredRegister.create(ForgeRegistries.ITEMS, BedrockStuff.MODID);
+
+	public static final RegistryObject<Item> bedrockSword = TOOLS.register("bedrock_sword", () -> new Sword(BasisToolMaterial.bedrock, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+	public static final RegistryObject<Item> bedrockHoe = TOOLS.register("bedrock_hoe", () -> new Hoe(BasisToolMaterial.bedrock,-3, 0.0F, new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+	public static final RegistryObject<Item> bedrockAxe = TOOLS.register("bedrock_axe", () -> new Axe(BasisToolMaterial.bedrock, new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+	public static final RegistryObject<Item> bedrockPickaxe = TOOLS.register("bedrock_pickaxe", () -> new Pickaxe(BasisToolMaterial.bedrock, new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+	public static final RegistryObject<Item> bedrockShovel = TOOLS.register("bedrock_shovel", () -> new Shovel(BasisToolMaterial.bedrock, new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
 }

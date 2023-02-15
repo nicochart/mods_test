@@ -1,12 +1,9 @@
 package fr.factionbedrock.bedrockstuff.Tools;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.SwordItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.SwordItem;
 
 public class Sword extends SwordItem
 {
-	public Sword(IItemTier material, Properties properties)
-	{
-        super(material, 3, -2.4F, properties);
-    }
+	public Sword(Tier material, Properties properties) {super(material, 3, -2.4F, properties);}
 }

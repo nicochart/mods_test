@@ -4,21 +4,21 @@ import java.util.function.Supplier;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
 import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BasisArmorMaterial
 {
-	public final static IArmorMaterial bedrock = new ArmorMaterial
+	public final static ArmorMaterial bedrock = new BedrockStuffArmorMaterial
 			(
-					BedrockStuff.MODID + ":bedrock", //Nom du matériau
-					42, //Facteur de dégats, permet de calculer la durabilité avec le Max_Damage_Array 
+					BedrockStuff.MODID + ":bedrock", //Nom du materiau
+					42, //Facteur de degats, permet de calculer la durabilite avec le Max_Damage_Array
 					new int[]
 						{
 							4, //Protection des Bottes
@@ -26,14 +26,14 @@ public class BasisArmorMaterial
 							10, //Plastron
 							3 //Casque
 						},
-					15, //Enchantabilité
-					SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, //Son lorsqu'on équipe
+					15, //Enchantabilite
+					SoundEvents.ARMOR_EQUIP_NETHERITE, //Son lorsqu'on equipe
 					4, //Robustesse
 					0.1F, //Resistance au recul
-					() -> Ingredient.fromItems(RegisterItems.bedrockIngot) //Matériaux de réparation
+					() -> Ingredient.of(RegisterItems.bedrockIngot.get()) //Materiaux de reparation
 			);
 	
-	private static class ArmorMaterial implements IArmorMaterial
+	private static class BedrockStuffArmorMaterial implements ArmorMaterial
 	{
         private static final int[] Max_Damage_Array = new int[] {13,15,16,11};
         private final String name;
@@ -43,9 +43,9 @@ public class BasisArmorMaterial
         private final SoundEvent soundEvent;
         private final float toughness;
         private final float knockbackResistance;
-        private final LazyValue<Ingredient> repairMaterial;
+        private final LazyLoadedValue<Ingredient> repairMaterial;
 
-        public ArmorMaterial(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, double toughness, float knockbackResistance, Supplier<Ingredient> supplier)
+        public BedrockStuffArmorMaterial(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, double toughness, float knockbackResistance, Supplier<Ingredient> supplier)
         {
             this.name = name;
             this.maxDamageFactor = maxDamageFactor;
@@ -54,24 +54,24 @@ public class BasisArmorMaterial
             this.soundEvent = soundEvent;
             this.toughness = (float)toughness;
             this.knockbackResistance = knockbackResistance;
-            this.repairMaterial = new LazyValue<Ingredient>(supplier);
+            this.repairMaterial = new LazyLoadedValue<Ingredient>(supplier);
         }
 
         //getters
         @Override
-        public int getDurability(EquipmentSlotType slotIn) {return Max_Damage_Array[slotIn.getIndex()] * maxDamageFactor;}
+        public int getDurabilityForSlot(EquipmentSlot slotIn) {return Max_Damage_Array[slotIn.getIndex()] * maxDamageFactor;}
 
         @Override
-        public int getDamageReductionAmount(EquipmentSlotType slotIn) {return damageReductionAmountArray[slotIn.getIndex()];}
+        public int getDefenseForSlot(EquipmentSlot slotIn) {return damageReductionAmountArray[slotIn.getIndex()];}
 
         @Override
-        public int getEnchantability() {return enchantability;}
+        public int getEnchantmentValue() {return enchantability;}
 
         @Override
-        public SoundEvent getSoundEvent() {return soundEvent;}
+        public SoundEvent getEquipSound(){return soundEvent;}
 
         @Override
-        public Ingredient getRepairMaterial() {return repairMaterial.getValue();}
+        public Ingredient getRepairIngredient() {return repairMaterial.get();}
 
         @OnlyIn(Dist.CLIENT)
         @Override
