@@ -2,13 +2,17 @@ package fr.factionbedrock.bedrockstuff.Register;
 
 import com.google.common.collect.ImmutableList;
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class RegisterConfiguredFeatures
 {
