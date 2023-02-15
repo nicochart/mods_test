@@ -34,11 +34,11 @@ public class BedrockStuff
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         // Registration
-        FMLJavaModLoadingContext.get().getModEventBus().register(RegisterBlocks.BLOCKS);
-        FMLJavaModLoadingContext.get().getModEventBus().register(RegisterItems.ITEMS);
-        FMLJavaModLoadingContext.get().getModEventBus().register(RegisterArmor.ARMOR);
-        FMLJavaModLoadingContext.get().getModEventBus().register(RegisterTools.TOOLS);
-        FMLJavaModLoadingContext.get().getModEventBus().register(RegisterConfiguredFeatures.CONFIGURED_FEATURES);
+        RegisterBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterArmor.ARMOR.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterTools.TOOLS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterConfiguredFeatures.CONFIGURED_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
