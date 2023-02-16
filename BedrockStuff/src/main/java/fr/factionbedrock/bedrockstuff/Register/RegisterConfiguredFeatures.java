@@ -16,6 +16,6 @@ public class RegisterConfiguredFeatures
 {
     public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, BedrockStuff.MODID);
 
-    public static final RegistryObject<ConfiguredFeature<?, ?>> bedrockOre = CONFIGURED_FEATURES.register("bedrock_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, RegisterBlocks.bedrockOre.get().defaultBlockState())), 10)));
+    public static final RegistryObject<ConfiguredFeature<?, ?>> bedrockOre = CONFIGURED_FEATURES.register("bedrock_ore", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(ImmutableList.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, RegisterBlocks.bedrockOre.get().defaultBlockState()), OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, RegisterBlocks.deepslateBedrockOre.get().defaultBlockState())), 5)));
     //see net.minecraft.data.worldgen.features.OreFeatures to see OreConfiguration() parameters examples
 }

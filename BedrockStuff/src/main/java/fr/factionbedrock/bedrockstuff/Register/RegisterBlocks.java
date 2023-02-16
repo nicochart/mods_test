@@ -26,4 +26,12 @@ public class RegisterBlocks
 					.sound(SoundType.STONE)
 					.requiresCorrectToolForDrops()
 	));
+
+	public static final RegistryObject<Block> deepslateBedrockOre = BLOCKS.register("deepslate_bedrock_ore", () -> new OreBlock
+	(
+			BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE)
+					.strength(90f, 100f)
+					.sound(SoundType.STONE)
+					.requiresCorrectToolForDrops()
+	));
 }

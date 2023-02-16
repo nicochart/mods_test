@@ -12,5 +12,5 @@ import net.minecraftforge.registries.RegistryObject;
 public class RegisterPlacedFeatures {
     public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, BedrockStuff.MODID);
 
-    public static final RegistryObject<PlacedFeature> bedrockOre = PLACED_FEATURES.register("bedrock_ore", () -> new PlacedFeature(RegisterConfiguredFeatures.bedrockOre.getHolder().get(), OrePlacements.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(0), VerticalAnchor.absolute(15)))));
+    public static final RegistryObject<PlacedFeature> bedrockOre = PLACED_FEATURES.register("bedrock_ore", () -> new PlacedFeature(RegisterConfiguredFeatures.bedrockOre.getHolder().get(), OrePlacements.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-55)))));
 }

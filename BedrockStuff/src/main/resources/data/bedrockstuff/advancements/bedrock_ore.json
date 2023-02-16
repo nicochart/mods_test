@@ -11,7 +11,7 @@
   "criteria": {
     "br_ore": {
       "trigger": "minecraft:inventory_changed",
-      "conditions": {"items": [{"item": "bedrockstuff:bedrock_ore"}]}
+      "conditions": {"items": [{"tag": "bedrockstuff:bedrock_ore"}]}
     }
   },
   "requirements": [["br_ore"]]

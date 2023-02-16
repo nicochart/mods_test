@@ -18,4 +18,5 @@ public class RegisterItems
     public static final RegistryObject<Item> bedrockScrap = ITEMS.register("bedrock_scrap", () -> new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> bedrockIngot = ITEMS.register("bedrock_ingot", () -> new Item(new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MATERIALS)));
     public static final RegistryObject<Item> bedrockOre = ITEMS.register("bedrock_ore", () -> new BlockItem(RegisterBlocks.bedrockOre.get(), new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MATERIALS)));
+    public static final RegistryObject<Item> deepslateBedrockOre = ITEMS.register("deepslate_bedrock_ore", () -> new BlockItem(RegisterBlocks.deepslateBedrockOre.get(), new Item.Properties().stacksTo(64).tab(CreativeModeTab.TAB_MATERIALS)));
 }

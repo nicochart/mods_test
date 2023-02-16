@@ -1,7 +1,7 @@
 {
     "type": "minecraft:blasting",
     "ingredient": {
-        "item": "bedrockstuff:bedrock_ore"
+        "tag": "bedrockstuff:bedrock_ore"
     },
     "result": "bedrockstuff:bedrock_scrap",
     "experience": 2.5,

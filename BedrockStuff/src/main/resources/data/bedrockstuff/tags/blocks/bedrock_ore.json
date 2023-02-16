@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "bedrockstuff:bedrock_ore",
+    "bedrockstuff:deepslate_bedrock_ore"
+  ]
+}

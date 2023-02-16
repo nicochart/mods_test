@@ -1,0 +1,7 @@
+{
+  "parent" : "block/cube_all",
+  "textures" :
+  {
+      "all": "bedrockstuff:blocks/deepslate_bedrock_ore"
+  }
+}
