@@ -1,6 +1,7 @@
 package fr.factionbedrock.aerialhell;
 
 import com.mojang.logging.LogUtils;
+import fr.factionbedrock.aerialhell.Registry.AerialHellEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -26,6 +27,9 @@ public class AerialHell
 
     public AerialHell()
     {
+        AerialHellEntities.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
