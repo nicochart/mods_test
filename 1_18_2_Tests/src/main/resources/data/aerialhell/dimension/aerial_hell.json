@@ -1,0 +1,25 @@
+{
+  "type": "aerialhell:aerial_hell",
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": 42,
+    "settings": "aerialhell:aerial_hell",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:plains",
+          "parameters": {
+            "temperature": 0.5,
+            "humidity": 0.2,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0.1,
+            "depth": 0,
+            "offset": 0.3
+          }
+        }
+      ]
+    }
+  }
+}
