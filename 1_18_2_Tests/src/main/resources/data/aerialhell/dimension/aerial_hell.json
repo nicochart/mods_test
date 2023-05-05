@@ -8,15 +8,39 @@
       "type": "minecraft:multi_noise",
       "biomes": [
         {
-          "biome": "minecraft:plains",
+          "biome": "aerialhell:aerial_hell_plains",
           "parameters": {
-            "temperature": 0.5,
+            "temperature": 0.4,
+            "humidity": 0.2,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "aerialhell:shadow_plain",
+          "parameters": {
+            "temperature": 0.1,
+            "humidity": 0.2,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0.1,
+            "depth": 0.6,
+            "offset": 0.5
+          }
+        },
+        {
+          "biome": "aerialhell:slippery_sand_ocean",
+          "parameters": {
+            "temperature": 0.8,
             "humidity": 0.2,
             "continentalness": 0,
             "erosion": 0,
             "weirdness": 0.1,
             "depth": 0,
-            "offset": 0.3
+            "offset": 0.1
           }
         }
       ]

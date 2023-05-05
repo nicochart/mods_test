@@ -1,0 +1,56 @@
+{
+  "temperature": 0.8,
+  "downfall": 0,
+  "precipitation": "none",
+  "temperature_modifier": "none",
+  "category": "none",
+  "effects": {
+    "sky_color": 6388367,
+    "fog_color": 7583106,
+    "water_color": 4090254,
+    "water_fog_color": 4019819,
+    "grass_color": 3247206,
+    "foliage_color": 3247206,
+    "grass_color_modifier": "none",
+    "music": {
+      "sound": "minecraft:music.menu",
+      "min_delay": 1200,
+      "max_delay": 3600,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:cave"
+    ]
+  },
+  "features": [
+    [],
+    [
+      //lakes
+    ],
+    [
+      //landscape transformations
+    ],
+    [],
+    [],
+    [],
+    [
+      //ores
+    ],
+    [],
+    [
+      //natural
+    ],
+    []
+  ]
+}
