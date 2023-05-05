@@ -19,19 +19,19 @@
     "size_horizontal": 2,
     "size_vertical": 1,
     "sampling": {
-      "xz_scale": 2,
-      "y_scale": 1,
+      "xz_scale": 2.5,
+      "y_scale": 1.5,
       "xz_factor": 80,
       "y_factor": 160
     },
     "bottom_slide": {
-      "target": -0.7,
+      "target": -1,
       "size": 20,
       "offset": -10
     },
     "top_slide": {
-      "target": -1.4,
-      "size": 82,
+      "target": -2,
+      "size": 70,
       "offset": -43
     },
     "terrain_shaper": {
@@ -99,19 +99,38 @@
       }
     },
     "final_density": {
-      "type": "minecraft:squeeze",
-      "argument": {
-        "type": "minecraft:mul",
-        "argument1": 0.64,
-        "argument2": {
-          "type": "minecraft:interpolated",
-          "argument": {
-            "type": "minecraft:blend_density",
+      "type": "minecraft:add",
+      "argument1": {
+        "type": "minecraft:squeeze",
+        "argument": {
+          "type": "minecraft:mul",
+          "argument1": 0.9,
+          "argument2": {
+            "type": "minecraft:interpolated",
             "argument": {
-              "type": "minecraft:slide",
-              "argument": "minecraft:overworld/sloped_cheese"
+              "type": "minecraft:blend_density",
+              "argument": {
+                "type": "minecraft:slide",
+                "argument": {
+                  "type": "minecraft:add",
+                  "argument1": "minecraft:overworld/sloped_cheese",
+                  "argument2": {
+                    "type": "minecraft:mul",
+                    "argument1": "minecraft:overworld/caves/noodle",
+                    "argument2": -0.0065
+                  }
+                }
+              }
             }
           }
+        }
+      },
+      "argument2": {
+        "type": "minecraft:interpolated",
+        "argument": {
+          "type": "minecraft:mul",
+          "argument1": "minecraft:overworld/caves/spaghetti_2d",
+          "argument2": -0.03
         }
       }
     },
