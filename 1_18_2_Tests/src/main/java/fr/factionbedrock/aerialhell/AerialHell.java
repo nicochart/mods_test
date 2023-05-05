@@ -1,7 +1,10 @@
 package fr.factionbedrock.aerialhell;
 
 import com.mojang.logging.LogUtils;
+import fr.factionbedrock.aerialhell.Client.Register;
+import fr.factionbedrock.aerialhell.Registry.AerialHellBlocks;
 import fr.factionbedrock.aerialhell.Registry.AerialHellEntities;
+import fr.factionbedrock.aerialhell.Registry.AerialHellItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +31,8 @@ public class AerialHell
     public AerialHell()
     {
         AerialHellEntities.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AerialHellBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AerialHellItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 
         // Register the setup method for modloading
@@ -43,9 +48,7 @@ public class AerialHell
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        Register.registerBlockRenderLayers();
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

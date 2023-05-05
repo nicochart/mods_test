@@ -5,7 +5,7 @@
   "ore_veins_enabled": false,
   "legacy_random_source": true,
   "default_block": {
-    "Name": "minecraft:stone"
+    "Name": "aerialhell:stellar_stone"
   },
   "default_fluid": {
     "Name": "minecraft:water",
@@ -110,15 +110,15 @@
             "argument": {
               "type": "minecraft:blend_density",
               "argument": {
-                "type": "minecraft:slide",
-                "argument": {
-                  "type": "minecraft:add",
-                  "argument1": "minecraft:overworld/sloped_cheese",
-                  "argument2": {
-                    "type": "minecraft:mul",
-                    "argument1": "minecraft:overworld/caves/noodle",
-                    "argument2": -0.0065
-                  }
+                "type": "minecraft:add",
+                "argument1": {
+                  "type": "minecraft:slide",
+                  "argument": "minecraft:overworld/sloped_cheese"
+                },
+                "argument2": {
+                  "type": "minecraft:mul",
+                  "argument1": "minecraft:overworld/caves/noodle",
+                  "argument2": -0.008
                 }
               }
             }
@@ -130,7 +130,7 @@
         "argument": {
           "type": "minecraft:mul",
           "argument1": "minecraft:overworld/caves/spaghetti_2d",
-          "argument2": -0.03
+          "argument2": -0.06
         }
       }
     },
@@ -236,7 +236,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:grass_block",
+                                  "Name": "aerialhell:stellar_grass_block",
                                   "Properties": {
                                     "snowy": "false"
                                   }
@@ -246,7 +246,7 @@
                             {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:dirt"
+                                "Name": "aerialhell:stellar_dirt"
                               }
                             }
                           ]
@@ -497,7 +497,7 @@
                             "then_run": {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:stone"
+                                "Name": "aerialhell:stellar_stone"
                               }
                             }
                           },
@@ -760,7 +760,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -825,7 +825,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -932,7 +932,7 @@
                                 {
                                   "type": "minecraft:block",
                                   "result_state": {
-                                    "Name": "minecraft:stone"
+                                    "Name": "aerialhell:stellar_stone"
                                   }
                                 }
                               ]
@@ -972,7 +972,7 @@
                                         "then_run": {
                                           "type": "minecraft:block",
                                           "result_state": {
-                                            "Name": "minecraft:stone"
+                                            "Name": "aerialhell:stellar_stone"
                                           }
                                         }
                                       },
@@ -988,7 +988,7 @@
                                 {
                                   "type": "minecraft:block",
                                   "result_state": {
-                                    "Name": "minecraft:stone"
+                                    "Name": "aerialhell:stellar_stone"
                                   }
                                 }
                               ]
@@ -1013,7 +1013,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             }
@@ -1103,7 +1103,7 @@
                             "then_run": {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:stone"
+                                "Name": "aerialhell:stellar_stone"
                               }
                             }
                           }
@@ -1131,7 +1131,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -1187,7 +1187,7 @@
                                     "then_run": {
                                       "type": "minecraft:block",
                                       "result_state": {
-                                        "Name": "minecraft:stone"
+                                        "Name": "aerialhell:stellar_stone"
                                       }
                                     }
                                   },
@@ -1211,7 +1211,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -1237,7 +1237,7 @@
                                     "then_run": {
                                       "type": "minecraft:block",
                                       "result_state": {
-                                        "Name": "minecraft:grass_block",
+                                        "Name": "aerialhell:stellar_grass_block",
                                         "Properties": {
                                           "snowy": "false"
                                         }
@@ -1247,7 +1247,7 @@
                                   {
                                     "type": "minecraft:block",
                                     "result_state": {
-                                      "Name": "minecraft:dirt"
+                                      "Name": "aerialhell:stellar_dirt"
                                     }
                                   }
                                 ]
@@ -1268,7 +1268,7 @@
                                   "then_run": {
                                     "type": "minecraft:block",
                                     "result_state": {
-                                      "Name": "minecraft:stone"
+                                      "Name": "aerialhell:stellar_stone"
                                     }
                                   }
                                 },
@@ -1387,7 +1387,7 @@
                             "then_run": {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:grass_block",
+                                "Name": "aerialhell:stellar_grass_block",
                                 "Properties": {
                                   "snowy": "false"
                                 }
@@ -1397,7 +1397,7 @@
                           {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:dirt"
+                              "Name": "aerialhell:stellar_dirt"
                             }
                           }
                         ]
@@ -1556,7 +1556,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -1613,7 +1613,7 @@
                         "then_run": {
                           "type": "minecraft:block",
                           "result_state": {
-                            "Name": "minecraft:stone"
+                            "Name": "aerialhell:stellar_stone"
                           }
                         }
                       },
@@ -1655,7 +1655,7 @@
                             {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:dirt"
+                                "Name": "aerialhell:stellar_dirt"
                               }
                             }
                           ]
@@ -1693,7 +1693,7 @@
                                 {
                                   "type": "minecraft:block",
                                   "result_state": {
-                                    "Name": "minecraft:stone"
+                                    "Name": "aerialhell:stellar_stone"
                                   }
                                 }
                               ]
@@ -1733,7 +1733,7 @@
                                         "then_run": {
                                           "type": "minecraft:block",
                                           "result_state": {
-                                            "Name": "minecraft:stone"
+                                            "Name": "aerialhell:stellar_stone"
                                           }
                                         }
                                       },
@@ -1749,7 +1749,7 @@
                                 {
                                   "type": "minecraft:block",
                                   "result_state": {
-                                    "Name": "minecraft:stone"
+                                    "Name": "aerialhell:stellar_stone"
                                   }
                                 }
                               ]
@@ -1774,7 +1774,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             }
@@ -1864,7 +1864,7 @@
                             "then_run": {
                               "type": "minecraft:block",
                               "result_state": {
-                                "Name": "minecraft:stone"
+                                "Name": "aerialhell:stellar_stone"
                               }
                             }
                           }
@@ -1889,7 +1889,7 @@
                           "then_run": {
                             "type": "minecraft:block",
                             "result_state": {
-                              "Name": "minecraft:stone"
+                              "Name": "aerialhell:stellar_stone"
                             }
                           }
                         }
@@ -1928,7 +1928,7 @@
                                     "then_run": {
                                       "type": "minecraft:block",
                                       "result_state": {
-                                        "Name": "minecraft:stone"
+                                        "Name": "aerialhell:stellar_stone"
                                       }
                                     }
                                   },
@@ -1952,7 +1952,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:stone"
+                                  "Name": "aerialhell:stellar_stone"
                                 }
                               }
                             },
@@ -1967,7 +1967,7 @@
                               "then_run": {
                                 "type": "minecraft:block",
                                 "result_state": {
-                                  "Name": "minecraft:dirt"
+                                  "Name": "aerialhell:stellar_dirt"
                                 }
                               }
                             },
@@ -1986,7 +1986,7 @@
                                   "then_run": {
                                     "type": "minecraft:block",
                                     "result_state": {
-                                      "Name": "minecraft:stone"
+                                      "Name": "aerialhell:stellar_stone"
                                     }
                                   }
                                 },
@@ -2004,7 +2004,7 @@
                       {
                         "type": "minecraft:block",
                         "result_state": {
-                          "Name": "minecraft:dirt"
+                          "Name": "aerialhell:stellar_dirt"
                         }
                       }
                     ]
@@ -2089,7 +2089,7 @@
                   "then_run": {
                     "type": "minecraft:block",
                     "result_state": {
-                      "Name": "minecraft:stone"
+                      "Name": "aerialhell:stellar_stone"
                     }
                   }
                 },
@@ -2146,7 +2146,7 @@
                       "then_run": {
                         "type": "minecraft:block",
                         "result_state": {
-                          "Name": "minecraft:stone"
+                          "Name": "aerialhell:stellar_stone"
                         }
                       }
                     },

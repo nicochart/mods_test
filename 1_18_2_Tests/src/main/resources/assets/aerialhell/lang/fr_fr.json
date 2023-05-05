@@ -1,0 +1,9 @@
+{
+  "block.aerialhell.stellar_grass_block" : "Bloc d'Herbe Stellaire",
+  "block.aerialhell.shadow_grass_block" : "Bloc d'Herbe des Ombres",
+  "block.aerialhell.stellar_grass" : "Herbe Stellaire",
+  "block.aerialhell.shadow_grass" : "Herbe des Ombres",
+  "block.aerialhell.stellar_dirt" : "Terre Stellaire",
+  "block.aerialhell.slippery_sand" : "Sable Glissant",
+  "block.aerialhell.stellar_stone" : "Roche Stellaire"
+}
