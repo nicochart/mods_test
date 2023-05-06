@@ -46,6 +46,7 @@
     ],
     [
       //landscape transformations
+      "aerialhell:dangling_chain"
     ],
     [],
     [],
@@ -56,6 +57,7 @@
     [],
     [
       //natural
+      "aerialhell:patch_shadow_grass"
     ],
     []
   ]

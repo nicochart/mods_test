@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import fr.factionbedrock.aerialhell.Client.Register;
 import fr.factionbedrock.aerialhell.Registry.AerialHellBlocks;
 import fr.factionbedrock.aerialhell.Registry.AerialHellEntities;
+import fr.factionbedrock.aerialhell.Registry.AerialHellFeatures;
 import fr.factionbedrock.aerialhell.Registry.AerialHellItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -33,6 +34,9 @@ public class AerialHell
         AerialHellEntities.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
         AerialHellBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         AerialHellItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AerialHellFeatures.Features.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AerialHellFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        AerialHellFeatures.PlacedFeatures.PLACED_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 
         // Register the setup method for modloading
