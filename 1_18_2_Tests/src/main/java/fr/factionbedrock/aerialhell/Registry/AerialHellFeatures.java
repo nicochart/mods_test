@@ -2,13 +2,9 @@ package fr.factionbedrock.aerialhell.Registry;
 
 import fr.factionbedrock.aerialhell.AerialHell;
 import fr.factionbedrock.aerialhell.Features.DanglingChainFeature;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
-import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -60,14 +56,7 @@ public class AerialHellFeatures
 
         public static final RegistryObject<ConfiguredFeature<?, ?>> OAK_PINE = CONFIGURED_FEATURES.register("oak_pine", () -> new ConfiguredFeature<>(Feature.TREE, Configs.OAK_PINE_CONFIG));
 
-        public static final RegistryObject<PlacedFeature> OAK_PINE_CHECKED = PlacedFeatures.PLACED_FEATURES.register("oak_pine_checked", () -> new PlacedFeature(OAK_PINE.getHolder().get(), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING))));
-
-        public static final RegistryObject<ConfiguredFeature<?, ?>> OAK_PINE_VEGETATION = CONFIGURED_FEATURES.register("oak_pine_vegetation", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(OAK_PINE_CHECKED.getHolder().get(), 0.5F)), OAK_PINE_CHECKED.getHolder().get())));
-
-        public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<FC, ?>> register(String registryName, F feature, FC configuration)
-        {
-            return BuiltinRegistries.registerExact(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(AerialHell.MODID, registryName).toString(), new ConfiguredFeature<>(feature, configuration));
-        }
+        public static final RegistryObject<ConfiguredFeature<?, ?>> OAK_PINE_VEGETATION = CONFIGURED_FEATURES.register("oak_pine_vegetation", () -> new ConfiguredFeature<>(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(PlacedFeatures.OAK_PINE_CHECKED.getHolder().get(), 0.5F)), PlacedFeatures.OAK_PINE_CHECKED.getHolder().get())));
     }
 
     public static class PlacedFeatures
@@ -80,11 +69,8 @@ public class AerialHellFeatures
         public static final RegistryObject<PlacedFeature> PATCH_STELLAR_GRASS = PLACED_FEATURES.register("patch_stellar_grass", () -> new PlacedFeature(ConfiguredFeatures.PATCH_STELLAR_GRASS.getHolder().get(), List.of(CountPlacement.of(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
         public static final RegistryObject<PlacedFeature> PATCH_SHADOW_GRASS = PLACED_FEATURES.register("patch_shadow_grass", () -> new PlacedFeature(ConfiguredFeatures.PATCH_SHADOW_GRASS.getHolder().get(), List.of(CountPlacement.of(64), InSquarePlacement.spread(), PlacementUtils.FULL_RANGE, BiomeFilter.biome())));
 
-        public static final RegistryObject<PlacedFeature> OAK_PINE_VEGETATION = PLACED_FEATURES.register("oak_pine_vegetation", () -> new PlacedFeature(ConfiguredFeatures.OAK_PINE_VEGETATION.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2))));
+        public static final RegistryObject<PlacedFeature> OAK_PINE_CHECKED = PLACED_FEATURES.register("oak_pine_checked", () -> new PlacedFeature(ConfiguredFeatures.OAK_PINE.getHolder().get(), List.of(PlacementUtils.filteredByBlockSurvival(Blocks.OAK_SAPLING))));
 
-        public static Holder<PlacedFeature> register(String registryName, Holder<? extends ConfiguredFeature<?, ?>> configuredFeature, List<PlacementModifier> placementModifierList)
-        {
-            return BuiltinRegistries.register(BuiltinRegistries.PLACED_FEATURE, new ResourceLocation(AerialHell.MODID, registryName).toString(), new PlacedFeature(Holder.hackyErase(configuredFeature), List.copyOf(placementModifierList)));
-        }
+        public static final RegistryObject<PlacedFeature> OAK_PINE_VEGETATION = PLACED_FEATURES.register("oak_pine_vegetation", () -> new PlacedFeature(ConfiguredFeatures.OAK_PINE_VEGETATION.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(3, 0.1f, 2))));
     }
 }
