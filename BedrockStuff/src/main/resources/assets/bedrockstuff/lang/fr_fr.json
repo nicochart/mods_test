@@ -11,7 +11,7 @@
   "item.bedrockstuff.bedrock_scrap" : "§8Fragment de Bedrock",
   "item.bedrockstuff.bedrock_ingot" : "§8Lingot de Bedrock",
   "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock",
-  "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock des abîmes",
+  "block.bedrockstuff.deepslate_bedrock_ore" : "§8Minerai de Bedrock des abîmes",
 
   "advancements.bedrock_ore.title": "Serai-ce.. de la Bedrock ?",
   "advancements.bedrock_ore.desc": "Minez du Minerai de Bedrock",

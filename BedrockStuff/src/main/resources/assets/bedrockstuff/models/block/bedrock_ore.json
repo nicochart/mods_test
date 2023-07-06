@@ -2,6 +2,6 @@
   "parent" : "block/cube_all",
   "textures" :
   {
-      "all": "bedrockstuff:blocks/bedrock_ore"
+      "all": "bedrockstuff:block/bedrock_ore"
   }
 }

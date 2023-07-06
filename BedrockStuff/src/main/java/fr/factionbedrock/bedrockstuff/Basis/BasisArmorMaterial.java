@@ -1,10 +1,12 @@
 package fr.factionbedrock.bedrockstuff.Basis;
 
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
 import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.Util;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.util.LazyLoadedValue;
@@ -19,13 +21,12 @@ public class BasisArmorMaterial
 			(
 					BedrockStuff.MODID + ":bedrock", //Nom du materiau
 					42, //Facteur de degats, permet de calculer la durabilite avec le Max_Damage_Array
-					new int[]
-						{
-							4, //Protection des Bottes
-							7, //Pantalon
-							10, //Plastron
-							3 //Casque
-						},
+                    Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+                        map.put(ArmorItem.Type.BOOTS, 4);
+                        map.put(ArmorItem.Type.LEGGINGS, 7);
+                        map.put(ArmorItem.Type.CHESTPLATE, 10);
+                        map.put(ArmorItem.Type.HELMET, 3);
+                    }),
 					15, //Enchantabilite
 					SoundEvents.ARMOR_EQUIP_NETHERITE, //Son lorsqu'on equipe
 					4, //Robustesse
@@ -35,21 +36,26 @@ public class BasisArmorMaterial
 	
 	private static class BedrockStuffArmorMaterial implements ArmorMaterial
 	{
-        private static final int[] Max_Damage_Array = new int[] {13,15,16,11};
+        private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
+            p_266653_.put(ArmorItem.Type.BOOTS, 13);
+            p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
+            p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
+            p_266653_.put(ArmorItem.Type.HELMET, 11);
+        });
         private final String name;
         private final int maxDamageFactor;
-        private final int[] damageReductionAmountArray;
+        private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
         private final int enchantability;
         private final SoundEvent soundEvent;
         private final float toughness;
         private final float knockbackResistance;
         private final LazyLoadedValue<Ingredient> repairMaterial;
 
-        public BedrockStuffArmorMaterial(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, double toughness, float knockbackResistance, Supplier<Ingredient> supplier)
+        public BedrockStuffArmorMaterial(String name, int maxDamageFactor, EnumMap<ArmorItem.Type, Integer> protectionFunctionForType, int enchantability, SoundEvent soundEvent, double toughness, float knockbackResistance, Supplier<Ingredient> supplier)
         {
             this.name = name;
             this.maxDamageFactor = maxDamageFactor;
-            this.damageReductionAmountArray = damageReductionAmountArray;
+            this.protectionFunctionForType = protectionFunctionForType;
             this.enchantability = enchantability;
             this.soundEvent = soundEvent;
             this.toughness = (float)toughness;
@@ -59,10 +65,10 @@ public class BasisArmorMaterial
 
         //getters
         @Override
-        public int getDurabilityForSlot(EquipmentSlot slotIn) {return Max_Damage_Array[slotIn.getIndex()] * maxDamageFactor;}
+        public int getDurabilityForType(ArmorItem.Type type) {return HEALTH_FUNCTION_FOR_TYPE.get(type) * this.maxDamageFactor;}
 
         @Override
-        public int getDefenseForSlot(EquipmentSlot slotIn) {return damageReductionAmountArray[slotIn.getIndex()];}
+        public int getDefenseForType(ArmorItem.Type type) {return this.protectionFunctionForType.get(type);}
 
         @Override
         public int getEnchantmentValue() {return enchantability;}

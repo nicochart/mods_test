@@ -11,7 +11,7 @@
   "criteria": {
     "br_ingot": {
       "trigger": "minecraft:inventory_changed",
-      "conditions": {"items": [{"item": "bedrockstuff:bedrock_ingot"}]}
+      "conditions": {"items": [{"items": ["bedrockstuff:bedrock_ingot"]}]}
     }
   },
   "requirements": [["br_ingot"]]

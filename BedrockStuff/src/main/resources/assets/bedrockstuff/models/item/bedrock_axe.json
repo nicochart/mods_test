@@ -2,6 +2,6 @@
   "parent": "item/handheld",
   "textures":
   {
-    "layer0": "bedrockstuff:tools/bedrock_axe"
+    "layer0": "bedrockstuff:item/bedrock_axe"
   }
 }

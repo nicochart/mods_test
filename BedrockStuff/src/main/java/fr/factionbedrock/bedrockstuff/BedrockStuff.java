@@ -1,7 +1,5 @@
 package fr.factionbedrock.bedrockstuff;
 
-import java.util.stream.Collectors;
-
 import fr.factionbedrock.bedrockstuff.Register.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,8 +28,6 @@ public class BedrockStuff
         RegisterItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterArmor.ARMOR.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterTools.TOOLS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        RegisterConfiguredFeatures.CONFIGURED_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        RegisterPlacedFeatures.PLACED_FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

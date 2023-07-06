@@ -2,6 +2,6 @@
   "parent": "item/handheld",
   "textures":
   {
-    "layer0": "bedrockstuff:tools/bedrock_hoe"
+    "layer0": "bedrockstuff:item/bedrock_hoe"
   }
 }

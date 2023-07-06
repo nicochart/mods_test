@@ -11,6 +11,7 @@
   "item.bedrockstuff.bedrock_scrap" : "§8Bedrock Scrap",
   "item.bedrockstuff.bedrock_ingot" : "§8Bedrock Ingot",
   "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore",
+  "block.bedrockstuff.deepslate_bedrock_ore" : "§8Bedrock Ore",
 
   "advancements.bedrock_ore.title": "Is that.. Bedrock ?",
   "advancements.bedrock_ore.desc": "Collect Bedrock Ore",
