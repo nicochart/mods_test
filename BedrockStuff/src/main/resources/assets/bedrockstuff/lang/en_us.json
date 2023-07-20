@@ -13,6 +13,12 @@
   "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore",
   "block.bedrockstuff.deepslate_bedrock_ore" : "§8Bedrock Ore",
 
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.additions_slot_description": "Add Bedrock Ingot",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.applies_to": "Netherite Equipment",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.ingredients": "Bedrock Ingot",
+  "upgrade.bedrockstuff.bedrock_upgrade": "Bedrock Upgrade",
+
   "advancements.bedrock_ore.title": "Is that.. Bedrock ?",
   "advancements.bedrock_ore.desc": "Collect Bedrock Ore",
   "advancements.bedrock_ingot.title": "Blacksmith of the Deep",

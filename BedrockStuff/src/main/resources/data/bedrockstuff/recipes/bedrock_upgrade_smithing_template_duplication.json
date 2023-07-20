@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "bedrockstuff:bedrock_scrap"
+    },
+    "#": {
+      "item": "minecraft:deepslate"
+    },
+    "T": {
+      "item": "bedrockstuff:bedrock_upgrade_smithing_template"
+    }
+  },
+  "pattern": [
+    "#T#",
+    "#S#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "bedrockstuff:bedrock_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

@@ -13,6 +13,12 @@
   "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock",
   "block.bedrockstuff.deepslate_bedrock_ore" : "§8Minerai de Bedrock des abîmes",
 
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.additions_slot_description": "Ajoutez un Lingot de Bedrock",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.applies_to": "Équipement en Netherite",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.base_slot_description": "Ajoutez une pièce d'armure, une arme ou un outil en netherite",
+  "item.bedrockstuff.smithing_template.bedrock_upgrade.ingredients": "Lingot de Bedrock",
+  "upgrade.bedrockstuff.bedrock_upgrade": "Amélioration en Bedrock",
+
   "advancements.bedrock_ore.title": "Serai-ce.. de la Bedrock ?",
   "advancements.bedrock_ore.desc": "Minez du Minerai de Bedrock",
   "advancements.bedrock_ingot.title": "Forgeron des Profondeurs",

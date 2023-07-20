@@ -41,6 +41,7 @@ public class CreativeTabEvent
             itemsToAdd.add(RegisterItems.bedrockScrap.get());
             itemsToAdd.add(RegisterItems.bedrockOre.get());
             itemsToAdd.add(RegisterItems.deepslateBedrockOre.get());
+            itemsToAdd.add(RegisterItems.bedrockUpgradeSmithingTemplate.get());
         }
         addAllItemsToTab(event, itemsToAdd);
     }
