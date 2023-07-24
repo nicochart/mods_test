@@ -2,6 +2,7 @@ package fr.factionbedrock.bedrockstuff.Event;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
 import fr.factionbedrock.bedrockstuff.Register.RegisterArmor;
+import fr.factionbedrock.bedrockstuff.Register.RegisterCreativeModeTabs;
 import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
 import fr.factionbedrock.bedrockstuff.Register.RegisterTools;
 import net.minecraft.world.item.*;
@@ -42,6 +43,23 @@ public class CreativeTabEvent
             itemsToAdd.add(RegisterItems.bedrockOre.get());
             itemsToAdd.add(RegisterItems.deepslateBedrockOre.get());
             itemsToAdd.add(RegisterItems.bedrockUpgradeSmithingTemplate.get());
+        }
+        if (event.getTabKey() == RegisterCreativeModeTabs.BEDROCKSTUFF.getKey())
+        {
+            itemsToAdd.add(RegisterItems.bedrockOre.get());
+            itemsToAdd.add(RegisterItems.deepslateBedrockOre.get());
+            itemsToAdd.add(RegisterItems.bedrockIngot.get());
+            itemsToAdd.add(RegisterItems.bedrockScrap.get());
+            itemsToAdd.add(RegisterItems.bedrockUpgradeSmithingTemplate.get());
+            itemsToAdd.add(RegisterTools.bedrockAxe.get());
+            itemsToAdd.add(RegisterTools.bedrockHoe.get());
+            itemsToAdd.add(RegisterTools.bedrockPickaxe.get());
+            itemsToAdd.add(RegisterTools.bedrockShovel.get());
+            itemsToAdd.add(RegisterTools.bedrockSword.get());
+            itemsToAdd.add(RegisterArmor.bedrockHelmet.get());
+            itemsToAdd.add(RegisterArmor.bedrockChestplate.get());
+            itemsToAdd.add(RegisterArmor.bedrockLeggings.get());
+            itemsToAdd.add(RegisterArmor.bedrockBoots.get());
         }
         addAllItemsToTab(event, itemsToAdd);
     }

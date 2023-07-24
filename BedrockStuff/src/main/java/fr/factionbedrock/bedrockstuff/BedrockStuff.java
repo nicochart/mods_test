@@ -28,6 +28,7 @@ public class BedrockStuff
         RegisterItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterArmor.ARMOR.register(FMLJavaModLoadingContext.get().getModEventBus());
         RegisterTools.TOOLS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        RegisterCreativeModeTabs.TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

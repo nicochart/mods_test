@@ -1,4 +1,6 @@
 {
+  "itemGroup.bedrockstuff" : "§8Bedrock Stuff",
+
   "item.bedrockstuff.bedrock_sword" : "§8Épée en Bedrock",
   "item.bedrockstuff.bedrock_axe" : "§8Hache en Bedrock",
   "item.bedrockstuff.bedrock_shovel" : "§8Pelle en Bedrock",
