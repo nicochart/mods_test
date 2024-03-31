@@ -1,6 +1,7 @@
 package fr.factionbedrock.bedrockstuff.Register;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +20,7 @@ public class RegisterBlocks
 
 	public static final RegistryObject<Block> bedrockOre = BLOCKS.register("bedrock_ore", () -> new DropExperienceBlock
 	(
+			UniformInt.of(4, 8),
 			BlockBehaviour.Properties.of()
 					.mapColor(MapColor.STONE)
 					.strength(90f, 100f)
@@ -28,6 +30,7 @@ public class RegisterBlocks
 
 	public static final RegistryObject<Block> deepslateBedrockOre = BLOCKS.register("deepslate_bedrock_ore", () -> new DropExperienceBlock
 	(
+			UniformInt.of(4, 8),
 			BlockBehaviour.Properties.of()
 					.mapColor(MapColor.STONE)
 					.strength(90f, 100f)
