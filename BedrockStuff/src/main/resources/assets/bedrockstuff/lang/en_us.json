@@ -19,6 +19,7 @@
   "item.bedrockstuff.smithing_template.bedrock_upgrade.applies_to": "Netherite Equipment",
   "item.bedrockstuff.smithing_template.bedrock_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
   "item.bedrockstuff.smithing_template.bedrock_upgrade.ingredients": "Bedrock Ingot",
+  "item.bedrockstuff.bedrock_upgrade_smithing_template": "Bedrock Smithing Template",
   "upgrade.bedrockstuff.bedrock_upgrade": "Bedrock Upgrade",
 
   "advancements.bedrock_ore.title": "Is that.. Bedrock ?",
