@@ -15,9 +15,8 @@
 	"icon": "assets/aerialhell/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"fr.factionbedrock.AerialHell"
-		]
+		"main": ["fr.factionbedrock.AerialHell"],
+		"client": ["fr.factionbedrock.AerialHell"]
 	},
 	"mixins": [
 		"aerialhell.mixins.json"
