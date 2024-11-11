@@ -2,7 +2,7 @@ package fr.factionbedrock.Setup;
 
 import fr.factionbedrock.Registry.AerialHellBlocks;
 import fr.factionbedrock.Registry.AerialHellItems;
-import fr.factionbedrock.Registry.ItemGroups;
+import fr.factionbedrock.Registry.AerialHellItemGroups;
 
 public class AerialHellSetup
 {
@@ -10,6 +10,7 @@ public class AerialHellSetup
     {
         AerialHellBlocks.load();
         AerialHellItems.load();
-        ItemGroups.load();
+        AerialHellItemGroups.load();
+        AerialHellItemGroups.addItemsToVanillaGroups();
     }
 }
