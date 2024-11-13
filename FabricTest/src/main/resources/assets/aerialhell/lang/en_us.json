@@ -2,6 +2,7 @@
   "itemGroup.aerialhell.aerial_hell_group" : "Aerial Hell",
   "block.aerialhell.aerial_tree_planks" : "Aerial Tree Planks",
   "item.aerialhell.sky_stick" : "Sky Stick",
+  "item.aerialhell.evil_cow_spawn_egg" : "Evil Cow Spawn Egg",
 
   "entity.aerialhell.evil_cow": "Evil Cow"
 }
