@@ -1,9 +1,9 @@
 {
 	"required": true,
-	"package": "fr.factionbedrock.mixin",
+	"package": "fr.factionbedrock.Mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"NeighborNotifyMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
