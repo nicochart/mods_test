@@ -1,5 +1,6 @@
 package fr.factionbedrock.Mixin;
 
+import fr.factionbedrock.Registry.Worldgen.AerialHellDimensions;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -27,14 +28,14 @@ public class NeighborNotifyMixin
 	{
 		if (world.isClient) {return;}
 
-		if (world.getDimensionEntry().matchesId(DimensionTypes.THE_END.getValue()))
+		if (world.getDimensionEntry().matchesId(AerialHellDimensions.AERIAL_HELL_DIMENSION.getValue()))
 		{
 			if (state.getBlock() == Blocks.TORCH || state.getBlock() == Blocks.WALL_TORCH)
 			{
 				if (placer.getServer() != null)
 				{
 					List<ServerPlayerEntity> players = placer.getServer().getPlayerManager().getPlayerList();
-					players.forEach(player -> player.sendMessage(Text.literal(player.getName().getString() + " tried to place a torch in the END at x="+pos.getX()+", y="+pos.getY()+", z="+pos.getZ()+" ...!")));
+					players.forEach(player -> player.sendMessage(Text.literal(player.getName().getString() + " tried to place a torch in Aerial Hell at x="+pos.getX()+", y="+pos.getY()+", z="+pos.getZ()+" ...!")));
 				}
 
 				world.breakBlock(pos, true);
