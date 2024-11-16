@@ -18,6 +18,7 @@
 		"main": ["fr.factionbedrock.AerialHell"],
 		"client": ["fr.factionbedrock.AerialHell"]
 	},
+	"accessWidener" : "aerialhell.accesswidener",
 	"mixins": [
 		"aerialhell.mixins.json"
 	],

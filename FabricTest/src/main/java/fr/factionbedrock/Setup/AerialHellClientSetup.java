@@ -8,5 +8,6 @@ public class AerialHellClientSetup
     {
         RenderRegistration.registerEntityModelLayers();
         RenderRegistration.registerEntityRenderers();
+        RenderRegistration.registerBlockEntityRenderers();
     }
 }
