@@ -29,6 +29,7 @@ public class AerialHellItemGroups
             {
                 entries.add(AerialHellItems.SKY_STICK);
                 entries.add(AerialHellItems.AERIAL_TREE_PLANKS);
+                entries.add(AerialHellItems.AERIAL_TREE_CHEST);
                 entries.add(AerialHellItems.EVIL_COW_SPAWN_EGG);
             })
             .build());
