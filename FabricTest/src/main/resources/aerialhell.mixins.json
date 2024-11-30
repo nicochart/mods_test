@@ -3,7 +3,8 @@
 	"package": "fr.factionbedrock.Mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"NeighborNotifyMixin"
+		"NeighborNotifyMixin",
+		"CustomItemNameRenderMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
