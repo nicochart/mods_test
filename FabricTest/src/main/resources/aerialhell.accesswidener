@@ -15,7 +15,10 @@ accessible field net/minecraft/client/render/block/entity/ChestBlockEntityRender
 accessible field net/minecraft/client/render/block/entity/ChestBlockEntityRenderer doubleChestRightLatch Lnet/minecraft/client/model/ModelPart;
 accessible method net/minecraft/client/render/block/entity/ChestBlockEntityRenderer render (Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;Lnet/minecraft/client/model/ModelPart;FII)V
 
-# Used in CustomItemNameRenderMixin
+# Used in CustomItemNameRenderMixin and CustomHeldItemNameRenderMixin
+accessible field net/minecraft/item/ItemStack components Lnet/minecraft/component/ComponentMapImpl;
+accessible method net/minecraft/item/ItemStack appendTooltip (Lnet/minecraft/component/ComponentType;Lnet/minecraft/item/Item$TooltipContext;Ljava/util/function/Consumer;Lnet/minecraft/item/tooltip/TooltipType;)V
+accessible method net/minecraft/item/ItemStack appendAttributeModifiersTooltip (Ljava/util/function/Consumer;Lnet/minecraft/entity/player/PlayerEntity;)V
 accessible field net/minecraft/client/gui/hud/InGameHud currentStack Lnet/minecraft/item/ItemStack;
 accessible field net/minecraft/client/gui/hud/InGameHud client Lnet/minecraft/client/MinecraftClient;
 accessible field net/minecraft/client/gui/hud/InGameHud heldItemTooltipFade I

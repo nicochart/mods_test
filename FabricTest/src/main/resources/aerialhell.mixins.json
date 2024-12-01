@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"NeighborNotifyMixin",
-		"CustomItemNameRenderMixin"
+		"CustomItemNameRenderMixin",
+		"CustomHeldItemNameRenderMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
