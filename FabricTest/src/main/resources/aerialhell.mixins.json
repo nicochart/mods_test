@@ -6,7 +6,8 @@
 		"NeighborNotifyMixin",
 		"CustomItemNameRenderMixin",
 		"CustomHeldItemNameRenderMixin",
-		"FurnaceFuelItemMixin"
+		"FurnaceFuelItemMixin",
+		"CustomBrewingRecipeMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
