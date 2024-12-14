@@ -1,6 +1,11 @@
 package fr.factionbedrock.Setup;
 
 import fr.factionbedrock.Client.Registry.RenderRegistration;
+import fr.factionbedrock.Client.World.AerialHellDimensionSkyRenderer;
+import fr.factionbedrock.Client.World.AerialHellDimensionSpecialEffects;
+import fr.factionbedrock.Registry.Worldgen.AerialHellDimensions;
+import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
+import net.minecraft.client.render.DimensionEffects;
 
 public class AerialHellClientSetup
 {
@@ -9,5 +14,12 @@ public class AerialHellClientSetup
         RenderRegistration.registerEntityModelLayers();
         RenderRegistration.registerEntityRenderers();
         RenderRegistration.registerBlockEntityRenderers();
+        AerialHellClientSetup.registerDimensionRenderInfo();
+    }
+
+    public static void registerDimensionRenderInfo()
+    {
+        DimensionRenderingRegistry.SkyRenderer renderInfo = new AerialHellDimensionSpecialEffects(Float.NaN, false, DimensionEffects.SkyType.NONE, false, false);
+        DimensionRenderingRegistry.registerSkyRenderer(AerialHellDimensions.AERIAL_HELL_DIMENSION, renderInfo);
     }
 }

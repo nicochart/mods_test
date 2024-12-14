@@ -22,3 +22,5 @@ accessible method net/minecraft/item/ItemStack appendAttributeModifiersTooltip (
 accessible field net/minecraft/client/gui/hud/InGameHud currentStack Lnet/minecraft/item/ItemStack;
 accessible field net/minecraft/client/gui/hud/InGameHud client Lnet/minecraft/client/MinecraftClient;
 accessible field net/minecraft/client/gui/hud/InGameHud heldItemTooltipFade I
+
+accessible field net/minecraft/client/render/WorldRenderer lightSkyBuffer Lnet/minecraft/client/gl/VertexBuffer;
