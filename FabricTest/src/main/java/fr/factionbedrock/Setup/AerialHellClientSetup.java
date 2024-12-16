@@ -1,7 +1,7 @@
 package fr.factionbedrock.Setup;
 
+import fr.factionbedrock.Client.BlockBakedModels.AerialHellShiftingBakedModels;
 import fr.factionbedrock.Client.Registry.RenderRegistration;
-import fr.factionbedrock.Client.World.AerialHellDimensionSkyRenderer;
 import fr.factionbedrock.Client.World.AerialHellDimensionSpecialEffects;
 import fr.factionbedrock.Registry.Worldgen.AerialHellDimensions;
 import net.fabricmc.fabric.api.client.rendering.v1.DimensionRenderingRegistry;
@@ -15,6 +15,7 @@ public class AerialHellClientSetup
         RenderRegistration.registerEntityRenderers();
         RenderRegistration.registerBlockEntityRenderers();
         AerialHellClientSetup.registerDimensionRenderInfo();
+        AerialHellShiftingBakedModels.registerShiftingBakedModels();
     }
 
     public static void registerDimensionRenderInfo()
