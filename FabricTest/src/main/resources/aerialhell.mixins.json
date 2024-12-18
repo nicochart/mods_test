@@ -3,7 +3,10 @@
 	"package": "fr.factionbedrock.Mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"NeighborNotifyMixin",
+		"OnBlockPlacedMixin",
+		"UpdateNeighborsAlwaysServerWorldMixin",
+		"UpdateNeighborsAlwaysWorldMixin",
+		"UpdateNeighborsExceptMixin",
 		"CustomItemNameRenderMixin",
 		"CustomHeldItemNameRenderMixin",
 		"FurnaceFuelItemMixin",

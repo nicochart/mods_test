@@ -1,7 +1,6 @@
 package fr.factionbedrock.Mixin;
 
 import fr.factionbedrock.Registry.Worldgen.AerialHellDimensions;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,7 +10,6 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(Block.class)
-public class NeighborNotifyMixin
+public class OnBlockPlacedMixin
 {
 	//net.minecraft.block.Block.onPlaced
 	@Inject(method = "onPlaced", at = @At("HEAD"), cancellable = true)
