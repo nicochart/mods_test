@@ -10,7 +10,8 @@
 		"CustomItemNameRenderMixin",
 		"CustomHeldItemNameRenderMixin",
 		"FurnaceFuelItemMixin",
-		"CustomBrewingRecipeMixin"
+		"CustomBrewingRecipeMixin",
+		"RenderOverlayMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
