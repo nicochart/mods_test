@@ -11,7 +11,10 @@
 		"CustomHeldItemNameRenderMixin",
 		"FurnaceFuelItemMixin",
 		"CustomBrewingRecipeMixin",
-		"RenderOverlayMixin"
+		"LivingJumpMixin",
+		"SleepFinishMixin",
+		"RenderBlockOverlayMixin",
+		"RenderHudOverlayMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

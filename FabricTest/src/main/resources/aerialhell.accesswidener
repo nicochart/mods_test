@@ -24,3 +24,5 @@ accessible field net/minecraft/client/gui/hud/InGameHud client Lnet/minecraft/cl
 accessible field net/minecraft/client/gui/hud/InGameHud heldItemTooltipFade I
 
 accessible field net/minecraft/client/render/WorldRenderer lightSkyBuffer Lnet/minecraft/client/gl/VertexBuffer;
+
+accessible field net/minecraft/server/world/ServerWorld worldProperties Lnet/minecraft/world/level/ServerWorldProperties;

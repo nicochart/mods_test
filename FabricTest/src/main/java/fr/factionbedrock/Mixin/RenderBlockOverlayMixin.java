@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(InGameOverlayRenderer.class)
-public class RenderOverlayMixin
+public class RenderBlockOverlayMixin
 {
     private static final Identifier ENCHANTED_GLINT = Identifier.ofVanilla("textures/misc/enchanted_glint_entity.png");
 
