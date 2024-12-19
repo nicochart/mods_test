@@ -7,7 +7,6 @@ public class AerialHellSetup
 {
     public static void init()
     {
-        AerialHellRarities.load();
         AerialHellBlocks.load();
         AerialHellBlockEntities.load();
         AerialHellItems.load();

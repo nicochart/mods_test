@@ -7,6 +7,4 @@ import net.minecraft.util.Rarity;
 public class AerialHellRarities
 {
     public static Rarity LEGENDARY = RarityMixin.invokeConstructor("legendary", 4, 4, "aerial_hell_legendary", Formatting.GOLD);
-
-    public static void load() {}
 }
