@@ -11,7 +11,7 @@ import net.minecraft.registry.Registry;
 
 public class AerialHellItems
 {
-    public static final Item SKY_STICK = register("sky_stick", new Item(new Item.Settings()));
+    public static final Item SKY_STICK = register("sky_stick", new Item(new Item.Settings().rarity(AerialHellRarities.LEGENDARY)));
     public static final Item AERIAL_TREE_PLANKS = register("aerial_tree_planks", new BlockItem(AerialHellBlocks.AERIAL_TREE_PLANKS, new Item.Settings()));
     public static final Item AERIAL_TREE_CHEST = register("aerial_tree_chest", new BlockItem(AerialHellBlocks.AERIAL_TREE_CHEST, new Item.Settings().component(DataComponentTypes.CONTAINER, ContainerComponent.DEFAULT)));
     public static final Item EVIL_COW_SPAWN_EGG = register("evil_cow_spawn_egg", new SpawnEggItem(AerialHellEntityTypes.EVIL_COW, -1, -1, new Item.Settings()));

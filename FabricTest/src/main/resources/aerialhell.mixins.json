@@ -13,6 +13,7 @@
 		"CustomBrewingRecipeMixin",
 		"LivingJumpMixin",
 		"SleepFinishMixin",
+		"RarityMixin",
 		"RenderBlockOverlayMixin",
 		"RenderHudOverlayMixin"
 	],

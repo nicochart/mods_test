@@ -31,6 +31,7 @@ public class CustomItemNameRenderMixin
     {
         //edited copy of ItemStack.getTooltip
         ItemStack itemstack = (ItemStack) (Object) this;
+        if (itemstack.isOf(AerialHellItems.SKY_STICK)) {return;} //no custom name render for Sky Stick, to let the modded rarity change the text color
         if (!type.isCreative() && itemstack.contains(DataComponentTypes.HIDE_TOOLTIP)) {cir.setReturnValue(List.of()); return;}
         else
         {
