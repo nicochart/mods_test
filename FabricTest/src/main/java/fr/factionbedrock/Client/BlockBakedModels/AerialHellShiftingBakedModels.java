@@ -10,48 +10,49 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.BlockModels;
 import net.minecraft.client.render.model.BakedModel;
-import net.minecraft.client.render.model.UnbakedModel;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class AerialHellShiftingBakedModels
 {
+    private static final List<Block> toBakeList = new ArrayList<>(Arrays.asList(
+            AerialHellBlocks.AERIAL_TREE_PLANKS
+    ));
+
     public static void registerShiftingBakedModels()
     {
-        ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((initialModel, context) ->
+        ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((original, context) ->
         {
-            if (validateContext(context, AerialHellBlocks.AERIAL_TREE_PLANKS))
+            if (toBakeList.isEmpty()) {return original;}
+            List<Block> bakedList = new ArrayList<>();
+            for (Block block : toBakeList)
             {
+                ModelIdentifier initialIdentifier = BlockModels.getModelId(block.getDefaultState());
                 ModelIdentifier shiftedIdentifier = BlockModels.getModelId(Blocks.GLOWSTONE.getDefaultState());
+                BakedModel initialModel = context.loader().getBakedModelMap().get(initialIdentifier);
                 BakedModel shiftedModel = context.loader().getBakedModelMap().get(shiftedIdentifier);
                 if (initialModel != null && shiftedModel != null)
                 {
-                    return new ShiftingBlockBakedModel(initialModel, shiftedModel, (forceShifted) -> doesCurrentPlayerHaveNightVision() || forceShifted);
+                    BakedModel editedModel = new ShiftingBlockBakedModel(initialModel, shiftedModel, (forceShifted) -> doesCurrentPlayerHaveNightVision() || forceShifted);
+                    context.loader().getBakedModelMap().put(initialIdentifier, editedModel);
+                    bakedList.add(block);
                 }
             }
-            else if (validateContext(context, Blocks.CHERRY_STAIRS))
-            {
-                System.out.println("variant = "+context.topLevelId().getVariant());
-                Identifier shiftedId = Registries.BLOCK.getId(Blocks.BLACKSTONE_STAIRS);
-                ModelIdentifier shiftedIdentifier = new ModelIdentifier(shiftedId, context.topLevelId().getVariant());
-
-                BakedModel shiftedModel = context.loader().getBakedModelMap().get(shiftedIdentifier); //sometimes null : modelBake is not finished, the BakedModelMap is not complete.
-                if (initialModel != null && shiftedModel != null)
-                {
-                    return new ShiftingBlockBakedModel(initialModel, shiftedModel, (forceShifted) -> doesCurrentPlayerHaveNightVision() || forceShifted);
-                }
-                else {System.out.println("NULL FOUND : "+(initialModel == null ? "initialModel " : "")+(shiftedModel == null ? "shiftedModel " : "")+", shiftedIdentifier = "+shiftedIdentifier+", shiftedId = "+shiftedId);}
-            }
-            return initialModel;
+            toBakeList.removeAll(bakedList);
+            return original;
         }));
     }
 
-    private static boolean validateContext(ModelModifier.AfterBake.Context context, Block block)
+    private static ModelIdentifier getModelIdentifierFromContextVariant(ModelModifier.AfterBake.Context context, Block block) //unused
     {
-        if (context.topLevelId() == null) {return false;}
-        return context.topLevelId().id().equals(Registries.BLOCK.getId(block));
+        Identifier identifier = Registries.BLOCK.getId(block);
+        return new ModelIdentifier(identifier, context.topLevelId().getVariant());
     }
 
     public static boolean doesCurrentPlayerHaveNightVision() {return FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT && MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().player.hasStatusEffect(StatusEffects.NIGHT_VISION);}
