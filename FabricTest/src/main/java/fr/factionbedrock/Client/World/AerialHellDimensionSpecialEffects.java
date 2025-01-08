@@ -37,4 +37,9 @@ public class AerialHellDimensionSpecialEffects extends DimensionEffects implemen
         float f = context.tickCounter().getTickDelta(false);
         return () -> BackgroundRenderer.applyFog(context.camera(), BackgroundRenderer.FogType.FOG_SKY, viewDistance, shouldThickenFog, f);
     }
+
+    public static class AerialHellCloudRenderer implements DimensionRenderingRegistry.CloudRenderer
+    {
+        @Override public void render(WorldRenderContext context) {}
+    }
 }
