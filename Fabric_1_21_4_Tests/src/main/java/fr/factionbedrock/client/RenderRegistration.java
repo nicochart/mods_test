@@ -24,6 +24,20 @@ public class RenderRegistration
         }));
     }
 
+    public static void makePressedCeilingStoneButtonRenderLikeGlowstone()
+    {
+        ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((original, context) ->
+        {
+            Baker baker = context.baker();
+            if (context.id().toString().equals("minecraft:block/stone_button_pressed") && context.baker().getModelNameSupplier().get().contains("face=ceiling"))
+            {
+                BakedModel glowstoneBakedModel = baker.bake(Identifier.ofVanilla("block/glowstone"), ModelRotation.X0_Y0);
+                return glowstoneBakedModel;
+            }
+            else {return original;}
+        }));
+    }
+
     public static void makeEveryBlockRenderLikeStone()
     {
         ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((original, context) ->

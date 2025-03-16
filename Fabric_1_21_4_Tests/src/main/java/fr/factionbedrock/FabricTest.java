@@ -33,7 +33,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 	@Override public void onInitializeClient()
 	{
 		LOGGER.info("Hello Client Fabric world!");
-		RenderRegistration.registerShiftingBakedModels();
+		RenderRegistration.makePressedCeilingStoneButtonRenderLikeGlowstone();
 	}
 
 	public static Identifier id(String path) {return Identifier.of(MOD_ID, path);}
