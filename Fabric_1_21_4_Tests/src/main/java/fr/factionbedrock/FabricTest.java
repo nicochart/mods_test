@@ -1,14 +1,16 @@
 package fr.factionbedrock;
 
+import fr.factionbedrock.client.RenderRegistration;
 import fr.factionbedrock.registry.TestBlocks;
 import fr.factionbedrock.registry.TestItems;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class FabricTest implements ModInitializer
+public class FabricTest implements ModInitializer, ClientModInitializer
 {
 	public static final String MOD_ID = "test_mod";
 
@@ -17,8 +19,7 @@ public class FabricTest implements ModInitializer
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	@Override
-	public void onInitialize()
+	@Override public void onInitialize()
 	{
 		TestBlocks.load();
 		TestItems.load();
@@ -27,6 +28,12 @@ public class FabricTest implements ModInitializer
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+	}
+
+	@Override public void onInitializeClient()
+	{
+		LOGGER.info("Hello Client Fabric world!");
+		RenderRegistration.registerShiftingBakedModels();
 	}
 
 	public static Identifier id(String path) {return Identifier.of(MOD_ID, path);}

@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"fr.factionbedrock.FabricTest"
+		],
+		"client": [
+			"fr.factionbedrock.FabricTest"
 		]
 	},
 	"mixins": [
