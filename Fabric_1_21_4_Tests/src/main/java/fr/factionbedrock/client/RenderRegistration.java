@@ -1,5 +1,6 @@
 package fr.factionbedrock.client;
 
+import fr.factionbedrock.FabricTest;
 import fr.factionbedrock.client.bakedmodels.ShiftingBlockBakedModel;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.minecraft.client.MinecraftClient;
@@ -32,6 +33,20 @@ public class RenderRegistration
             if (context.id().toString().equals("minecraft:block/stone_button_pressed") && context.baker().getModelNameSupplier().get().contains("face=ceiling"))
             {
                 BakedModel glowstoneBakedModel = baker.bake(Identifier.ofVanilla("block/glowstone"), ModelRotation.X0_Y0);
+                return glowstoneBakedModel;
+            }
+            else {return original;}
+        }));
+    }
+
+    public static void makeGlowstoneRenderLikePressedCeilingStoneButton()
+    {
+        ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((original, context) ->
+        {
+            Baker baker = context.baker();
+            if (context.id().toString().equals("minecraft:block/glowstone"))
+            {
+                BakedModel glowstoneBakedModel = baker.bake(Identifier.ofVanilla("block/stone_button_pressed"), ModelRotation.X180_Y0); //X180 = ceiling
                 return glowstoneBakedModel;
             }
             else {return original;}
