@@ -3,7 +3,7 @@
 	"package": "fr.factionbedrock.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"PlayerDataTrackerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

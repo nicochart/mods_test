@@ -4,6 +4,7 @@ import fr.factionbedrock.client.RenderRegistration;
 import fr.factionbedrock.registry.TestBlocks;
 import fr.factionbedrock.registry.TestComponents;
 import fr.factionbedrock.registry.TestItems;
+import fr.factionbedrock.registry.TestTrackedData;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
@@ -25,6 +26,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 		TestBlocks.load();
 		TestItems.load();
 		TestComponents.load();
+		TestTrackedData.load();
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.

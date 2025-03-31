@@ -1,6 +1,7 @@
 package fr.factionbedrock.item;
 
 import fr.factionbedrock.registry.TestComponents;
+import fr.factionbedrock.registry.TestTrackedData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,9 +21,13 @@ public class CounterItem extends Item
     @Override public ActionResult use(World world, PlayerEntity user, Hand hand)
     {
         ItemStack stack = user.getStackInHand(hand);
-
         int previousCount = stack.getOrDefault(TestComponents.CLICK_COUNT_COMPONENT, 0);
         stack.set(TestComponents.CLICK_COUNT_COMPONENT, previousCount+1);
+
+        int previousTotalCount = user.getDataTracker().get(TestTrackedData.TOTAL_CLICK_COUNT);
+        user.getDataTracker().set(TestTrackedData.TOTAL_CLICK_COUNT, previousTotalCount+1);
+        System.out.println(user+"total count = "+(previousTotalCount+1));
+
         return ActionResult.SUCCESS;
     }
 
