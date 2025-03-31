@@ -14,5 +14,11 @@ public class TestComponents
             ComponentType.<Integer>builder().codec(Codec.INT).build()
     );
 
+    public static final ComponentType<Integer> TOTAL_CLICK_COUNT_COMPONENT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            FabricTest.id("total_click_count"),
+            ComponentType.<Integer>builder().codec(Codec.INT).build()
+    );
+
     public static void load() {}
 }
