@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"PlayerDataTrackerMixin",
-		"PlayerNbtMixin"
+		"PlayerNbtMixin",
+		"PlayerTickMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
