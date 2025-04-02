@@ -1,11 +1,11 @@
 package fr.factionbedrock.client.registry;
 
 import fr.factionbedrock.FabricTest;
+import fr.factionbedrock.packet.TestNetworking;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 public class TestKeyBinds
@@ -28,7 +28,7 @@ public class TestKeyBinds
             while (TEST_ABILITY_KEY.wasPressed()) {
                 if (client.player != null)
                 {
-                    client.player.sendMessage(Text.literal("Activated ability !"), true);
+                    TestNetworking.sendPacketFromClient(TestNetworking.USE_ABILITY_PACKET);
                 }
             }
         });
