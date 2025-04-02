@@ -1,6 +1,7 @@
 package fr.factionbedrock;
 
 import fr.factionbedrock.client.RenderRegistration;
+import fr.factionbedrock.client.registry.TestKeyBinds;
 import fr.factionbedrock.registry.TestBlocks;
 import fr.factionbedrock.registry.TestComponents;
 import fr.factionbedrock.registry.TestItems;
@@ -36,6 +37,9 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 
 	@Override public void onInitializeClient()
 	{
+		TestKeyBinds.registerKeybinds();
+		TestKeyBinds.registerPressedInteractions();
+
 		LOGGER.info("Hello Client Fabric world!");
 		RenderRegistration.makeGrassBlockRenderUpsideDownWithRandomRotation();
 	}

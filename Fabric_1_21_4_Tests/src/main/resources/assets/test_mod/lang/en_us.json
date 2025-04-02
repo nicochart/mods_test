@@ -2,5 +2,7 @@
   "block.test_mod.example_block" : "Example Block",
   "item.test_mod.counter_item" : "Counter Item",
   "item.test_mod.counter_item.desc" : "Used this clicker %1$s times",
-  "item.test_mod.counter_item.desc.total" : "Clicked a total of %1$s times"
+  "item.test_mod.counter_item.desc.total" : "Clicked a total of %1$s times",
+  "key.test_mod.ability" : "Test Ability",
+  "category.test_mod" : "Test Keybinds"
 }
