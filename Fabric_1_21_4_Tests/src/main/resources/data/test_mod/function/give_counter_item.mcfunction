@@ -1,0 +1,1 @@
+give @s test_mod:counter_item 1

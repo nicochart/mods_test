@@ -1,7 +1,10 @@
 package fr.factionbedrock.mixin;
 
 import fr.factionbedrock.FabricTest;
+import fr.factionbedrock.registry.TestItems;
+import fr.factionbedrock.registry.TestTags;
 import fr.factionbedrock.registry.TestTrackedData;
+import fr.factionbedrock.util.TestHelper;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -30,6 +33,10 @@ public class PlayerTickMixin
     private void updatePlayerAttributes(ServerPlayerEntity player)
     {
         int customValue = player.getDataTracker().get(TestTrackedData.TOTAL_CLICK_COUNT);
+        if (!player.getInventory().contains(TestTags.Items.COUNTER_ITEMS) && player.getInventory().getEmptySlot() != -1)
+        {
+            TestHelper.runFunction(player, "give_counter_item");
+        }
 
         EntityAttributeInstance speedAttribute = player.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
         if (speedAttribute != null)
