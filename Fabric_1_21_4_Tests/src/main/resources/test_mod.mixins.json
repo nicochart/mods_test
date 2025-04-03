@@ -5,7 +5,8 @@
 	"mixins": [
 		"PlayerDataTrackerMixin",
 		"PlayerNbtMixin",
-		"PlayerTickMixin"
+		"PlayerTickMixin",
+		"PlayerDeathMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
