@@ -15,5 +15,6 @@ public class PlayerDataTrackerMixin
 	private void init(DataTracker.Builder builder, CallbackInfo info)
 	{
 		builder.add(TestTrackedData.TOTAL_CLICK_COUNT, 0);
+		builder.add(TestTrackedData.LIVES, 3);
 	}
 }

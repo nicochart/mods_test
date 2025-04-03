@@ -10,6 +10,7 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,6 +29,18 @@ public class PlayerTickMixin
     {
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
         updatePlayerAttributes(player);
+
+        if (player.isCreative())
+        {
+            if (player.getDataTracker().get(TestTrackedData.LIVES) != 3)
+            {
+                player.getDataTracker().set(TestTrackedData.LIVES, 3);
+            }
+        }
+        else if (player.getDataTracker().get(TestTrackedData.LIVES) == 0 && !player.isSpectator())
+        {
+            player.interactionManager.changeGameMode(GameMode.SPECTATOR);
+        }
     }
 
     private void updatePlayerAttributes(ServerPlayerEntity player)
