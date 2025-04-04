@@ -1,7 +1,6 @@
 package fr.factionbedrock.mixin;
 
 import fr.factionbedrock.FabricTest;
-import fr.factionbedrock.registry.TestItems;
 import fr.factionbedrock.registry.TestTags;
 import fr.factionbedrock.registry.TestTrackedData;
 import fr.factionbedrock.util.TestHelper;
@@ -10,11 +9,14 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameMode;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Set;
 
 @Mixin(ServerPlayerEntity.class)
 public class PlayerTickMixin
@@ -30,16 +32,51 @@ public class PlayerTickMixin
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
         updatePlayerAttributes(player);
 
+        int lives = player.getDataTracker().get(TestTrackedData.LIVES);
+        int liveRegainTimer = player.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIMER);
         if (player.isCreative())
         {
-            if (player.getDataTracker().get(TestTrackedData.LIVES) != 3)
+            if (lives != 3)
             {
                 player.getDataTracker().set(TestTrackedData.LIVES, 3);
             }
+            if (liveRegainTimer < 1000)
+            {
+                player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
+            }
         }
-        else if (player.getDataTracker().get(TestTrackedData.LIVES) == 0 && !player.isSpectator())
+        else
         {
-            player.interactionManager.changeGameMode(GameMode.SPECTATOR);
+            if (lives >= 3)
+            {
+                if (liveRegainTimer < 1000)
+                {
+                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
+                }
+            }
+            else
+            {
+                if (liveRegainTimer > 0)
+                {
+                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, liveRegainTimer - 1);
+
+                    if (lives == 0 && !player.isSpectator())
+                    {
+                        player.changeGameMode(GameMode.SPECTATOR);
+                    }
+                }
+                else
+                {
+                    if (lives == 0)
+                    {
+                        BlockPos spawnPos = player.getServerWorld().getSpawnPos();
+                        player.teleport(player.getServerWorld(), spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), Set.of(), player.getYaw(), player.getPitch(), true);
+                        player.changeGameMode(GameMode.SURVIVAL);
+                    }
+                    player.getDataTracker().set(TestTrackedData.LIVES, lives + 1);
+                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
+                }
+            }
         }
     }
 

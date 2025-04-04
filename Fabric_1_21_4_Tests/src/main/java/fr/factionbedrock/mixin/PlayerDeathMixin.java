@@ -32,5 +32,7 @@ public class PlayerDeathMixin
         newPlayer.getDataTracker().set(TestTrackedData.TOTAL_CLICK_COUNT, total_click_count);
         int lives = oldPlayer.getDataTracker().get(TestTrackedData.LIVES);
         newPlayer.getDataTracker().set(TestTrackedData.LIVES, lives);
+        int live_regain_timer = oldPlayer.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIMER);
+        newPlayer.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, live_regain_timer);
     }
 }

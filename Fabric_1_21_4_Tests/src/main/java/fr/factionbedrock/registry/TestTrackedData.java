@@ -9,6 +9,7 @@ public class TestTrackedData
 {
     public static final TrackedData<Integer> TOTAL_CLICK_COUNT = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.INTEGER);
     public static final TrackedData<Integer> LIVES = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    public static final TrackedData<Integer> LIVE_REGAIN_TIMER = DataTracker.registerData(PlayerEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     public static void load() {}
 }
