@@ -14,7 +14,7 @@ public class PlayerNbtMixin
 {
     private static String total_click_count = "total_click_count";
     private static String lives = "lives";
-    private static String live_regain_timer = "live_regain_timer";
+    private static String live_regain_time_marker = "live_regain_time_marker";
 
     @Inject(at = @At("RETURN"), method = "readCustomDataFromNbt")
     private void read(NbtCompound nbt, CallbackInfo info)
@@ -28,9 +28,9 @@ public class PlayerNbtMixin
         {
             player.getDataTracker().set(TestTrackedData.LIVES, nbt.getInt(lives));
         }
-        if (nbt.contains(live_regain_timer, NbtElement.INT_TYPE))
+        if (nbt.contains(live_regain_time_marker, NbtElement.LONG_TYPE))
         {
-            player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, nbt.getInt(live_regain_timer));
+            player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIME_MARKER, nbt.getLong(live_regain_time_marker));
         }
     }
 
@@ -40,6 +40,6 @@ public class PlayerNbtMixin
         PlayerEntity player = (PlayerEntity) (Object) this;
         nbt.putInt(total_click_count, player.getDataTracker().get(TestTrackedData.TOTAL_CLICK_COUNT));
         nbt.putInt(lives, player.getDataTracker().get(TestTrackedData.LIVES));
-        nbt.putInt(live_regain_timer, player.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIMER));
+        nbt.putLong(live_regain_time_marker, player.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIME_MARKER));
     }
 }

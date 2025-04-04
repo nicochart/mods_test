@@ -33,49 +33,35 @@ public class PlayerTickMixin
         updatePlayerAttributes(player);
 
         int lives = player.getDataTracker().get(TestTrackedData.LIVES);
-        int liveRegainTimer = player.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIMER);
+        long liveRegainTimeMarker = player.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIME_MARKER);
         if (player.isCreative())
         {
             if (lives != 3)
             {
                 player.getDataTracker().set(TestTrackedData.LIVES, 3);
             }
-            if (liveRegainTimer < 1000)
-            {
-                player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
-            }
         }
-        else
+        else if (lives != 3)
         {
-            if (lives >= 3)
+            long currentTime = player.getServerWorld().getTime();
+            if (currentTime - liveRegainTimeMarker < 1000)
             {
-                if (liveRegainTimer < 1000)
+                if (lives == 0 && !player.isSpectator())
                 {
-                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
+                    player.changeGameMode(GameMode.SPECTATOR);
                 }
             }
             else
             {
-                if (liveRegainTimer > 0)
+                int livePlayerCanRegain = (int) ((currentTime - liveRegainTimeMarker) / 1000);
+                if (lives == 0)
                 {
-                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, liveRegainTimer - 1);
-
-                    if (lives == 0 && !player.isSpectator())
-                    {
-                        player.changeGameMode(GameMode.SPECTATOR);
-                    }
+                    BlockPos spawnPos = player.getServerWorld().getSpawnPos();
+                    player.teleport(player.getServerWorld(), spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), Set.of(), player.getYaw(), player.getPitch(), true);
+                    player.changeGameMode(GameMode.SURVIVAL);
                 }
-                else
-                {
-                    if (lives == 0)
-                    {
-                        BlockPos spawnPos = player.getServerWorld().getSpawnPos();
-                        player.teleport(player.getServerWorld(), spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), Set.of(), player.getYaw(), player.getPitch(), true);
-                        player.changeGameMode(GameMode.SURVIVAL);
-                    }
-                    player.getDataTracker().set(TestTrackedData.LIVES, lives + 1);
-                    player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
-                }
+                player.getDataTracker().set(TestTrackedData.LIVES, Math.min(3, lives + livePlayerCanRegain));
+                player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIME_MARKER, currentTime);
             }
         }
     }

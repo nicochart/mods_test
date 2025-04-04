@@ -19,6 +19,10 @@ public class PlayerDeathMixin
         int previousLives = player.getDataTracker().get(TestTrackedData.LIVES);
         if (previousLives > 0 && !player.isCreative() && !player.isSpectator())
         {
+            if (previousLives == 3)
+            {
+                player.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIME_MARKER, player.getServerWorld().getTime());
+            }
             player.getDataTracker().set(TestTrackedData.LIVES, previousLives - 1);
         }
     }
@@ -32,7 +36,7 @@ public class PlayerDeathMixin
         newPlayer.getDataTracker().set(TestTrackedData.TOTAL_CLICK_COUNT, total_click_count);
         int lives = oldPlayer.getDataTracker().get(TestTrackedData.LIVES);
         newPlayer.getDataTracker().set(TestTrackedData.LIVES, lives);
-        int live_regain_timer = oldPlayer.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIMER);
-        newPlayer.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIMER, live_regain_timer);
+        long live_regain_timer = oldPlayer.getDataTracker().get(TestTrackedData.LIVE_REGAIN_TIME_MARKER);
+        newPlayer.getDataTracker().set(TestTrackedData.LIVE_REGAIN_TIME_MARKER, live_regain_timer);
     }
 }

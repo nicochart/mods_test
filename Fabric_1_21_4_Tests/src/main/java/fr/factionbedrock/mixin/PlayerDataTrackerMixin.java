@@ -16,6 +16,6 @@ public class PlayerDataTrackerMixin
 	{
 		builder.add(TestTrackedData.TOTAL_CLICK_COUNT, 0);
 		builder.add(TestTrackedData.LIVES, 3);
-		builder.add(TestTrackedData.LIVE_REGAIN_TIMER, 1000);
+		builder.add(TestTrackedData.LIVE_REGAIN_TIME_MARKER, (long)0);
 	}
 }
