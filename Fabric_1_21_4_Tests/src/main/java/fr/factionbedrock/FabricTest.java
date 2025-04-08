@@ -2,7 +2,6 @@ package fr.factionbedrock;
 
 import fr.factionbedrock.client.RenderRegistration;
 import fr.factionbedrock.client.registry.TestKeyBinds;
-import fr.factionbedrock.packet.CustomData;
 import fr.factionbedrock.packet.TestNetworking;
 import fr.factionbedrock.registry.TestBlocks;
 import fr.factionbedrock.registry.TestComponents;
@@ -11,7 +10,6 @@ import fr.factionbedrock.registry.TestTrackedData;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +26,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 		TestItems.load();
 		TestComponents.load();
 		TestTrackedData.load();
-		PayloadTypeRegistry.playC2S().register(CustomData.ID, CustomData.CODEC);
+		TestNetworking.registerData();
 		TestNetworking.registerServerReceiver();
 
 		LOGGER.info("Hello Fabric world!");
@@ -38,7 +36,6 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 	{
 		TestKeyBinds.registerKeybinds();
 		TestKeyBinds.registerPressedInteractions();
-		PayloadTypeRegistry.playS2C().register(CustomData.ID, CustomData.CODEC);
 		TestNetworking.registerClientReceiver();
 		RenderRegistration.makeGrassBlockRenderUpsideDownWithRandomRotation();
 
