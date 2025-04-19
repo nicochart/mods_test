@@ -1,5 +1,6 @@
 package fr.factionbedrock.packet;
 
+import fr.factionbedrock.util.TestHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -34,6 +35,7 @@ public class TestNetworking
             if (payload.name().equals(USE_ABILITY_PACKET.name()))
             {
                 context.player().sendMessage(Text.literal("Activated ability !"), false);
+                TestHelper.messageLoadedModsToPlayer(context.player());
                 sendPacketFromServer(context.player(), RECEIVED_PACKET);
             }
         });
@@ -46,6 +48,7 @@ public class TestNetworking
             if (payload.name().equals(RECEIVED_PACKET.name()))
             {
                 context.player().sendMessage(Text.literal("Received packet from server !"), false);
+                TestHelper.messageLoadedModsToPlayer(context.player());
             }
         });
     }
