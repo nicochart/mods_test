@@ -18,11 +18,6 @@ public class TestNetworking
         PayloadTypeRegistry.playS2C().register(CustomData.ID, CustomData.CODEC);
     }
 
-    public static void sendPacketFromClient(CustomData payload)
-    {
-        ClientPlayNetworking.send(payload);
-    }
-
     public static void sendPacketFromServer(ServerPlayerEntity serverPlayer, CustomData payload)
     {
         ServerPlayNetworking.send(serverPlayer, payload);
@@ -37,18 +32,6 @@ public class TestNetworking
                 context.player().sendMessage(Text.literal("Activated ability !"), false);
                 TestHelper.messageLoadedModsToPlayer(context.player());
                 sendPacketFromServer(context.player(), RECEIVED_PACKET);
-            }
-        });
-    }
-
-    public static void registerClientReceiver()
-    {
-        ClientPlayNetworking.registerGlobalReceiver(CustomData.ID, (payload, context) ->
-        {
-            if (payload.name().equals(RECEIVED_PACKET.name()))
-            {
-                context.player().sendMessage(Text.literal("Received packet from server !"), false);
-                TestHelper.messageLoadedModsToPlayer(context.player());
             }
         });
     }

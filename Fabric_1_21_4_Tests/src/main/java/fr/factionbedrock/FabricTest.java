@@ -1,6 +1,7 @@
 package fr.factionbedrock;
 
 import fr.factionbedrock.client.RenderRegistration;
+import fr.factionbedrock.client.packet.ClientTestNetworking;
 import fr.factionbedrock.client.registry.TestKeyBinds;
 import fr.factionbedrock.packet.TestNetworking;
 import fr.factionbedrock.registry.TestBlocks;
@@ -36,7 +37,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 	{
 		TestKeyBinds.registerKeybinds();
 		TestKeyBinds.registerPressedInteractions();
-		TestNetworking.registerClientReceiver();
+		ClientTestNetworking.registerClientReceiver();
 		RenderRegistration.makeGrassBlockRenderUpsideDownWithRandomRotation();
 
 		LOGGER.info("Hello Client Fabric world!");

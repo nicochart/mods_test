@@ -1,6 +1,7 @@
 package fr.factionbedrock.client.registry;
 
 import fr.factionbedrock.FabricTest;
+import fr.factionbedrock.client.packet.ClientTestNetworking;
 import fr.factionbedrock.packet.TestNetworking;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -28,7 +29,7 @@ public class TestKeyBinds
             while (TEST_ABILITY_KEY.wasPressed()) {
                 if (client.player != null)
                 {
-                    TestNetworking.sendPacketFromClient(TestNetworking.USE_ABILITY_PACKET);
+                    ClientTestNetworking.sendPacketFromClient(TestNetworking.USE_ABILITY_PACKET);
                 }
             }
         });
