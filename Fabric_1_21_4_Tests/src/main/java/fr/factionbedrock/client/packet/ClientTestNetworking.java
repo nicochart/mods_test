@@ -4,6 +4,7 @@ import fr.factionbedrock.packet.CustomData;
 import fr.factionbedrock.packet.TestNetworking;
 import fr.factionbedrock.util.TestHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
 
 public class ClientTestNetworking
@@ -21,6 +22,7 @@ public class ClientTestNetworking
             {
                 context.player().sendMessage(Text.literal("Received packet from server !"), false);
                 TestHelper.messageLoadedModsToPlayer(context.player());
+                TestHelper.messageLoadedResourcePacksToPlayer(MinecraftClient.getInstance().getResourcePackManager(), context.player());
             }
         });
     }

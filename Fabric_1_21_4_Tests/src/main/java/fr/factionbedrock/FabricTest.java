@@ -3,6 +3,7 @@ package fr.factionbedrock;
 import fr.factionbedrock.client.RenderRegistration;
 import fr.factionbedrock.client.packet.ClientTestNetworking;
 import fr.factionbedrock.client.registry.TestKeyBinds;
+import fr.factionbedrock.events.TestPlayerEvents;
 import fr.factionbedrock.packet.TestNetworking;
 import fr.factionbedrock.registry.TestBlocks;
 import fr.factionbedrock.registry.TestComponents;
@@ -29,6 +30,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 		TestTrackedData.load();
 		TestNetworking.registerData();
 		TestNetworking.registerServerReceiver();
+		TestPlayerEvents.registerPlayerEvents();
 
 		LOGGER.info("Hello Fabric world!");
 	}
