@@ -19,8 +19,14 @@ public class HandshakeTimeoutScheduler
         {
             server.execute(() ->
             {
-                if (PendingHandshakeTracker.isStillWaiting(playerId)) {player.networkHandler.disconnect(Text.literal("Kicked for not receiving mod list. Contact server administrator."));}
+                if (!player.isDisconnected() && PendingHandshakeTracker.isStillWaiting(playerId))
+                {
+                    PendingHandshakeTracker.unmark(player.getUuid());
+                    player.networkHandler.disconnect(Text.literal("Kicked for not receiving mod list. Contact server administrator."));
+                }
             });
         }, 5, TimeUnit.SECONDS);
     }
+
+    public static void shutdownScheduler() {scheduler.shutdownNow();}
 }
