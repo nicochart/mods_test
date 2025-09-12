@@ -1,31 +1,25 @@
-modLoader="javafml" #mandatory
-loaderVersion="${loader_version_range}"
-
 license="${mod_license}"
 
-### Modlist
 [[mods]] #mandatory
 modId="${mod_id}" #mandatory
 version="${mod_version}" #mandatory
-displayName="${mod_name}"
-authors="nicochart"
+displayName="${mod_name}" #mandatory
+authors="${mod_authors}" #optional
 
-description='''
-Just adds some Bedrock Stuff
-Bedrock Ore, Scrap, Ingot
-Bedrock Tools and Armor
-'''
+description='''${mod_description}'''
 
-### Dependances
-[[dependencies.bedrockstuff]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="${forge_version_range}" #mandatory
+#[[mixins]]
+#config="${mod_id}.mixins.json"
+
+# Dependances
+[[dependencies.${mod_id}]]
+    type="required" #mandatory
+    versionRange="[${neo_version},)" #mandatory
     ordering="NONE"
     side="BOTH"
-[[dependencies.bedrockstuff]]
+[[dependencies.${mod_id}]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
