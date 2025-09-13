@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "aerialhell:item/bedrock_helmet",
+    "layer0": "bedrockstuff:item/bedrock_helmet",
     "layer1": "minecraft:trims/items/helmet_trim_gold"
   }
 }
