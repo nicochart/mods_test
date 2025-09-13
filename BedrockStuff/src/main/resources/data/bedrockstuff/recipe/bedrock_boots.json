@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:netherite_boots",
+  "addition": "bedrockstuff:bedrock_ingot",
+  "result": {
+    "id": "bedrockstuff:bedrock_boots"
+  },
+  "template": "bedrockstuff:bedrock_upgrade_smithing_template"
+}

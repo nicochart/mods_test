@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "bedrockstuff:bedrock_scrap",
+    "X": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "id": "bedrockstuff:bedrock_upgrade_smithing_template"
+  },
+  "show_notification": true
+}

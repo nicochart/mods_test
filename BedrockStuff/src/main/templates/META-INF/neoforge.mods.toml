@@ -13,6 +13,7 @@ description='''${mod_description}'''
 
 # Dependances
 [[dependencies.${mod_id}]]
+    modId="neoforge" #mandatory
     type="required" #mandatory
     versionRange="[${neo_version},)" #mandatory
     ordering="NONE"

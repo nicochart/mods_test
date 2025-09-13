@@ -1,65 +1,57 @@
 package fr.factionbedrock.bedrockstuff.Event;
 
-import fr.factionbedrock.bedrockstuff.BedrockStuff;
-import fr.factionbedrock.bedrockstuff.Register.RegisterArmor;
 import fr.factionbedrock.bedrockstuff.Register.RegisterCreativeModeTabs;
 import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
-import fr.factionbedrock.bedrockstuff.Register.RegisterTools;
 import net.minecraft.world.item.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = BedrockStuff.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class CreativeTabEvent
 {
-    @SubscribeEvent
     public static void buildContents(BuildCreativeModeTabContentsEvent event)
     {
         List<Item> itemsToAdd = new ArrayList<Item>();
         if(event.getTabKey() == CreativeModeTabs.COMBAT)
         {
-            itemsToAdd.add(RegisterTools.bedrockSword.get());
-            itemsToAdd.add(RegisterArmor.bedrockHelmet.get());
-            itemsToAdd.add(RegisterArmor.bedrockChestplate.get());
-            itemsToAdd.add(RegisterArmor.bedrockLeggings.get());
-            itemsToAdd.add(RegisterArmor.bedrockBoots.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SWORD.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_HELMET.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_CHESTPLATE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_LEGGINGS.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_BOOTS.get());
         }
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
         {
-            itemsToAdd.add(RegisterTools.bedrockAxe.get());
-            itemsToAdd.add(RegisterTools.bedrockHoe.get());
-            itemsToAdd.add(RegisterTools.bedrockPickaxe.get());
-            itemsToAdd.add(RegisterTools.bedrockShovel.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_AXE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_HOE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_PICKAXE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SHOVEL.get());
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {
-            itemsToAdd.add(RegisterItems.bedrockIngot.get());
-            itemsToAdd.add(RegisterItems.bedrockScrap.get());
-            itemsToAdd.add(RegisterItems.bedrockOre.get());
-            itemsToAdd.add(RegisterItems.deepslateBedrockOre.get());
-            itemsToAdd.add(RegisterItems.bedrockUpgradeSmithingTemplate.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_INGOT.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SCRAP.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_ORE.get());
+            itemsToAdd.add(RegisterItems.DEEPSLATE_BEDROCK_ORE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_UPGRADE_SMITHING_TEMPLATE.get());
         }
         if (event.getTabKey() == RegisterCreativeModeTabs.BEDROCKSTUFF.getKey())
         {
-            itemsToAdd.add(RegisterItems.bedrockOre.get());
-            itemsToAdd.add(RegisterItems.deepslateBedrockOre.get());
-            itemsToAdd.add(RegisterItems.bedrockIngot.get());
-            itemsToAdd.add(RegisterItems.bedrockScrap.get());
-            itemsToAdd.add(RegisterItems.bedrockUpgradeSmithingTemplate.get());
-            itemsToAdd.add(RegisterTools.bedrockAxe.get());
-            itemsToAdd.add(RegisterTools.bedrockHoe.get());
-            itemsToAdd.add(RegisterTools.bedrockPickaxe.get());
-            itemsToAdd.add(RegisterTools.bedrockShovel.get());
-            itemsToAdd.add(RegisterTools.bedrockSword.get());
-            itemsToAdd.add(RegisterArmor.bedrockHelmet.get());
-            itemsToAdd.add(RegisterArmor.bedrockChestplate.get());
-            itemsToAdd.add(RegisterArmor.bedrockLeggings.get());
-            itemsToAdd.add(RegisterArmor.bedrockBoots.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_ORE.get());
+            itemsToAdd.add(RegisterItems.DEEPSLATE_BEDROCK_ORE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_INGOT.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SCRAP.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_UPGRADE_SMITHING_TEMPLATE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_AXE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_HOE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_PICKAXE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SHOVEL.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_SWORD.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_HELMET.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_CHESTPLATE.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_LEGGINGS.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_BOOTS.get());
         }
         addAllItemsToTab(event, itemsToAdd);
     }
@@ -68,7 +60,7 @@ public class CreativeTabEvent
     {
         for (Item item : itemList)
         {
-            event.getEntries().put(item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(item.getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 }

@@ -1,0 +1,18 @@
+{
+  "parent": "bedrockstuff:bedrock_ore",
+  "display": {
+    "icon": {"id": "bedrockstuff:bedrock_ingot"},
+    "title": {"translate": "advancements.bedrock_ingot.title"},
+    "description": {"translate": "advancements.bedrock_ingot.desc"},
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "br_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {"items": [{"items": ["bedrockstuff:bedrock_ingot"]}]}
+    }
+  },
+  "requirements": [["br_ingot"]]
+}

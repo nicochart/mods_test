@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:netherite_pickaxe",
+  "addition": "bedrockstuff:bedrock_ingot",
+  "result": {
+    "id": "bedrockstuff:bedrock_pickaxe"
+  },
+  "template": "bedrockstuff:bedrock_upgrade_smithing_template"
+}

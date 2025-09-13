@@ -1,92 +1,48 @@
 package fr.factionbedrock.bedrockstuff.Basis;
 
 import java.util.EnumMap;
-import java.util.function.Supplier;
 
 import fr.factionbedrock.bedrockstuff.BedrockStuff;
-import fr.factionbedrock.bedrockstuff.Register.RegisterItems;
+import fr.factionbedrock.bedrockstuff.Tags.BedrockStuffTags;
 import net.minecraft.Util;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.util.LazyLoadedValue;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.item.equipment.EquipmentAsset;
 
 public class BasisArmorMaterial
 {
-	public final static ArmorMaterial bedrock = new BedrockStuffArmorMaterial
-			(
-					BedrockStuff.MODID + ":bedrock", //Nom du materiau
-					42, //Facteur de degats, permet de calculer la durabilite avec le Max_Damage_Array
-                    Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-                        map.put(ArmorItem.Type.BOOTS, 4);
-                        map.put(ArmorItem.Type.LEGGINGS, 7);
-                        map.put(ArmorItem.Type.CHESTPLATE, 10);
-                        map.put(ArmorItem.Type.HELMET, 3);
-                    }),
-					15, //Enchantabilite
-					SoundEvents.ARMOR_EQUIP_NETHERITE, //Son lorsqu'on equipe
-					4, //Robustesse
-					0.1F, //Resistance au recul
-					() -> Ingredient.of(RegisterItems.bedrockIngot.get()) //Materiaux de reparation
-			);
-	
-	private static class BedrockStuffArmorMaterial implements ArmorMaterial
-	{
-        private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
-            p_266653_.put(ArmorItem.Type.BOOTS, 13);
-            p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
-            p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
-            p_266653_.put(ArmorItem.Type.HELMET, 11);
+    public final static ArmorMaterial BEDROCK = new ArmorMaterial(
+            42,
+            createProtectionMap(4, 7, 10, 3, 7),
+            15,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,
+            4.0F,
+            0.1F,
+            BedrockStuffTags.Items.REPAIRS_BEDROCK_MATERIAL,
+            EquipmentAssets.BEDROCK
+    );
+
+    private static EnumMap<ArmorType, Integer> createProtectionMap(int boots, int leggings, int chestplate, int helmet, int body)
+    {
+        return Util.make(new EnumMap<>(ArmorType.class), map -> {
+            map.put(ArmorType.BOOTS, boots);
+            map.put(ArmorType.LEGGINGS, leggings);
+            map.put(ArmorType.CHESTPLATE, chestplate);
+            map.put(ArmorType.HELMET, helmet);
+            map.put(ArmorType.BODY, body);
         });
-        private final String name;
-        private final int maxDamageFactor;
-        private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
-        private final int enchantability;
-        private final SoundEvent soundEvent;
-        private final float toughness;
-        private final float knockbackResistance;
-        private final LazyLoadedValue<Ingredient> repairMaterial;
+    }
 
-        public BedrockStuffArmorMaterial(String name, int maxDamageFactor, EnumMap<ArmorItem.Type, Integer> protectionFunctionForType, int enchantability, SoundEvent soundEvent, double toughness, float knockbackResistance, Supplier<Ingredient> supplier)
+    public static class EquipmentAssets
+    {
+        public static ResourceKey<EquipmentAsset> BEDROCK = createId("bedrock");
+
+        static ResourceKey<EquipmentAsset> createId(String name)
         {
-            this.name = name;
-            this.maxDamageFactor = maxDamageFactor;
-            this.protectionFunctionForType = protectionFunctionForType;
-            this.enchantability = enchantability;
-            this.soundEvent = soundEvent;
-            this.toughness = (float)toughness;
-            this.knockbackResistance = knockbackResistance;
-            this.repairMaterial = new LazyLoadedValue<Ingredient>(supplier);
+            return ResourceKey.create(net.minecraft.world.item.equipment.EquipmentAssets.ROOT_ID, ResourceLocation.fromNamespaceAndPath(BedrockStuff.MODID, name));
         }
-
-        //getters
-        @Override
-        public int getDurabilityForType(ArmorItem.Type type) {return HEALTH_FUNCTION_FOR_TYPE.get(type) * this.maxDamageFactor;}
-
-        @Override
-        public int getDefenseForType(ArmorItem.Type type) {return this.protectionFunctionForType.get(type);}
-
-        @Override
-        public int getEnchantmentValue() {return enchantability;}
-
-        @Override
-        public SoundEvent getEquipSound(){return soundEvent;}
-
-        @Override
-        public Ingredient getRepairIngredient() {return repairMaterial.get();}
-
-        @OnlyIn(Dist.CLIENT)
-        @Override
-        public String getName() {return name;}
-
-        @Override
-        public float getToughness() {return toughness;}
-
-        @Override
-        public float getKnockbackResistance() {return this.knockbackResistance;}
     }
 }

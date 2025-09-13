@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": "#bedrockstuff:bedrock_ore",
+  "result": {
+    "id": "bedrockstuff:bedrock_scrap"
+  },
+  "experience": 2.5,
+  "cookingtime": 200
+}

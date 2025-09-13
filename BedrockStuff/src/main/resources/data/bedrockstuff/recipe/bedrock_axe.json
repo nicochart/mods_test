@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:netherite_axe",
+  "addition": "bedrockstuff:bedrock_ingot",
+  "result": {
+    "id": "bedrockstuff:bedrock_axe"
+  },
+  "template": "bedrockstuff:bedrock_upgrade_smithing_template"
+}

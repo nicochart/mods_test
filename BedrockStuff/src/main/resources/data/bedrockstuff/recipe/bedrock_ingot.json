@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "bedrockstuff:bedrock_scrap",
+    "bedrockstuff:bedrock_scrap",
+    "bedrockstuff:bedrock_scrap",
+    "bedrockstuff:bedrock_scrap"
+  ],
+  "result": {
+    "id": "bedrockstuff:bedrock_ingot"
+  }
+}
