@@ -30,16 +30,18 @@ public class CreativeTabEvent
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS)
         {
+            itemsToAdd.add(RegisterItems.RAW_BEDROCK.get());
             itemsToAdd.add(RegisterItems.BEDROCK_INGOT.get());
             itemsToAdd.add(RegisterItems.BEDROCK_SCRAP.get());
-            itemsToAdd.add(RegisterItems.BEDROCK_ORE.get());
-            itemsToAdd.add(RegisterItems.DEEPSLATE_BEDROCK_ORE.get());
             itemsToAdd.add(RegisterItems.BEDROCK_UPGRADE_SMITHING_TEMPLATE.get());
         }
         if (event.getTabKey() == RegisterCreativeModeTabs.BEDROCKSTUFF.getKey())
         {
             itemsToAdd.add(RegisterItems.BEDROCK_ORE.get());
             itemsToAdd.add(RegisterItems.DEEPSLATE_BEDROCK_ORE.get());
+            itemsToAdd.add(RegisterItems.RAW_BEDROCK_BLOCK.get());
+            itemsToAdd.add(RegisterItems.BEDROCK_BLOCK.get());
+            itemsToAdd.add(RegisterItems.RAW_BEDROCK.get());
             itemsToAdd.add(RegisterItems.BEDROCK_INGOT.get());
             itemsToAdd.add(RegisterItems.BEDROCK_SCRAP.get());
             itemsToAdd.add(RegisterItems.BEDROCK_UPGRADE_SMITHING_TEMPLATE.get());

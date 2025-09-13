@@ -37,10 +37,32 @@ public class RegisterBlocks
 					.requiresCorrectToolForDrops()
 	));
 
+	public static final DeferredBlock<Block> RAW_BEDROCK_BLOCK = BLOCKS.register(Keys.RAW_BEDROCK_BLOCK.location().getPath(), () -> new Block
+	(
+			BlockBehaviour.Properties.of()
+					.setId(Keys.RAW_BEDROCK_BLOCK)
+					.mapColor(MapColor.STONE)
+					.strength(90f, 100f)
+					.sound(SoundType.STONE)
+					.requiresCorrectToolForDrops()
+	));
+
+	public static final DeferredBlock<Block> BEDROCK_BLOCK = BLOCKS.register(Keys.BEDROCK_BLOCK.location().getPath(), () -> new Block
+	(
+			BlockBehaviour.Properties.of()
+					.setId(Keys.BEDROCK_BLOCK)
+					.mapColor(MapColor.STONE)
+					.strength(120f, 100f)
+					.sound(SoundType.STONE)
+					.requiresCorrectToolForDrops()
+	));
+
 	public static class Keys
 	{
 		public static final ResourceKey<Block> BEDROCK_ORE = createKey("bedrock_ore");
 		public static final ResourceKey<Block> DEEPSLATE_BEDROCK_ORE = createKey("deepslate_bedrock_ore");
+		public static final ResourceKey<Block> RAW_BEDROCK_BLOCK = createKey("raw_bedrock_block");
+		public static final ResourceKey<Block> BEDROCK_BLOCK = createKey("bedrock_block");
 
 		private static ResourceKey<Block> createKey(String name)
 		{

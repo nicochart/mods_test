@@ -14,6 +14,9 @@
   "item.bedrockstuff.bedrock_ingot" : "§8Lingot de Bedrock",
   "block.bedrockstuff.bedrock_ore" : "§8Minerai de Bedrock",
   "block.bedrockstuff.deepslate_bedrock_ore" : "§8Minerai de Bedrock des abîmes",
+  "block.bedrockstuff.raw_bedrock_block" : "§8Bloc de Bedrock Brute",
+  "block.bedrockstuff.bedrock_block" : "§8Bloc de Bedrock",
+  "item.bedrockstuff.raw_bedrock" : "§8Bedrock Brute",
 
   "item.bedrockstuff.smithing_template.bedrock_upgrade.additions_slot_description": "Ajoutez un Lingot de Bedrock",
   "item.bedrockstuff.smithing_template.bedrock_upgrade.applies_to": "Équipement en Netherite",

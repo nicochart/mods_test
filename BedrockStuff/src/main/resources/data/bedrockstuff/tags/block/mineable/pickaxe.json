@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#bedrockstuff:bedrock_ore",
+    "bedrockstuff:raw_bedrock_block",
+    "bedrockstuff:bedrock_block"
+  ]
+}

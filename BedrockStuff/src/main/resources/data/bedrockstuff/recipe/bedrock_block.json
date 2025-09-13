@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": "bedrockstuff:bedrock_ingot"
+  },
+  "result": {
+    "id": "bedrockstuff:bedrock_block"
+  }
+}

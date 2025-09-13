@@ -22,7 +22,10 @@ public class RegisterItems
     public static final DeferredItem<Item> BEDROCK_INGOT = ITEMS.register(Keys.BEDROCK_INGOT.location().getPath(), () -> new Item(new Item.Properties().setId(Keys.BEDROCK_INGOT)));
     public static final DeferredItem<Item> BEDROCK_ORE = ITEMS.register(Keys.BEDROCK_ORE.location().getPath(), () -> new BlockItem(RegisterBlocks.BEDROCK_ORE.get(), new Item.Properties().setId(Keys.BEDROCK_ORE).useBlockDescriptionPrefix()));
     public static final DeferredItem<Item> DEEPSLATE_BEDROCK_ORE = ITEMS.register(Keys.DEEPSLATE_BEDROCK_ORE.location().getPath(), () -> new BlockItem(RegisterBlocks.DEEPSLATE_BEDROCK_ORE.get(), new Item.Properties().setId(Keys.DEEPSLATE_BEDROCK_ORE).useBlockDescriptionPrefix()));
+    public static final DeferredItem<Item> RAW_BEDROCK_BLOCK = ITEMS.register(Keys.RAW_BEDROCK_BLOCK.location().getPath(), () -> new BlockItem(RegisterBlocks.RAW_BEDROCK_BLOCK.get(), new Item.Properties().setId(Keys.RAW_BEDROCK_BLOCK).useBlockDescriptionPrefix()));
+    public static final DeferredItem<Item> BEDROCK_BLOCK = ITEMS.register(Keys.BEDROCK_BLOCK.location().getPath(), () -> new BlockItem(RegisterBlocks.BEDROCK_BLOCK.get(), new Item.Properties().setId(Keys.BEDROCK_BLOCK).useBlockDescriptionPrefix()));
     public static final DeferredItem<Item> BEDROCK_UPGRADE_SMITHING_TEMPLATE = ITEMS.register(Keys.BEDROCK_UPGRADE_SMITHING_TEMPLATE.location().getPath(), () -> createBedrockUpgradeTemplate(new Item.Properties().setId(Keys.BEDROCK_UPGRADE_SMITHING_TEMPLATE)));
+    public static final DeferredItem<Item> RAW_BEDROCK = ITEMS.register(Keys.RAW_BEDROCK.location().getPath(), () -> new Item(new Item.Properties().setId(Keys.RAW_BEDROCK)));
 
     public static final DeferredItem<Item> BEDROCK_HELMET = ITEMS.register(Keys.BEDROCK_HELMET.location().getPath(), () -> new Item(new Item.Properties().setId(Keys.BEDROCK_HELMET).humanoidArmor(BasisArmorMaterial.BEDROCK, ArmorType.HELMET)));
     public static final DeferredItem<Item> BEDROCK_CHESTPLATE = ITEMS.register(Keys.BEDROCK_CHESTPLATE.location().getPath(), () -> new Item(new Item.Properties().setId(Keys.BEDROCK_CHESTPLATE).humanoidArmor(BasisArmorMaterial.BEDROCK, ArmorType.CHESTPLATE)));
@@ -52,7 +55,10 @@ public class RegisterItems
         public static final ResourceKey<Item> BEDROCK_INGOT = createKey("bedrock_ingot");
         public static final ResourceKey<Item> BEDROCK_ORE = createKey("bedrock_ore");
         public static final ResourceKey<Item> DEEPSLATE_BEDROCK_ORE = createKey("deepslate_bedrock_ore");
+        public static final ResourceKey<Item> RAW_BEDROCK_BLOCK = createKey("raw_bedrock_block");
+        public static final ResourceKey<Item> BEDROCK_BLOCK = createKey("bedrock_block");
         public static final ResourceKey<Item> BEDROCK_UPGRADE_SMITHING_TEMPLATE = createKey("bedrock_upgrade_smithing_template");
+        public static final ResourceKey<Item> RAW_BEDROCK = createKey("raw_bedrock");
 
         public static final ResourceKey<Item> BEDROCK_HELMET = createKey("bedrock_helmet");
         public static final ResourceKey<Item> BEDROCK_CHESTPLATE = createKey("bedrock_chestplate");

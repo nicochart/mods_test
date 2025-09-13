@@ -14,6 +14,9 @@
   "item.bedrockstuff.bedrock_ingot" : "§8Bedrock Ingot",
   "block.bedrockstuff.bedrock_ore" : "§8Bedrock Ore",
   "block.bedrockstuff.deepslate_bedrock_ore" : "§8Bedrock Ore",
+  "block.bedrockstuff.raw_bedrock_block" : "§8Raw Bedrock Block",
+  "block.bedrockstuff.bedrock_block" : "§8Bedrock Block",
+  "item.bedrockstuff.raw_bedrock" : "§8Raw Bedrock",
 
   "item.bedrockstuff.smithing_template.bedrock_upgrade.additions_slot_description": "Add Bedrock Ingot",
   "item.bedrockstuff.smithing_template.bedrock_upgrade.applies_to": "Netherite Equipment",

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:blasting",
-  "ingredient": "#bedrockstuff:bedrock_ore",
+  "ingredient": "bedrockstuff:raw_bedrock",
   "result": {
     "id": "bedrockstuff:bedrock_scrap"
   },
