@@ -6,10 +6,7 @@ import fr.factionbedrock.client.registry.TestKeyBinds;
 import fr.factionbedrock.events.TestPlayerEvents;
 import fr.factionbedrock.events.TestServerEvents;
 import fr.factionbedrock.packet.TestNetworking;
-import fr.factionbedrock.registry.TestBlocks;
-import fr.factionbedrock.registry.TestComponents;
-import fr.factionbedrock.registry.TestItems;
-import fr.factionbedrock.registry.TestTrackedData;
+import fr.factionbedrock.registry.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 
@@ -27,6 +24,7 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 	{
 		TestBlocks.load();
 		TestItems.load();
+		TestEntities.load();
 		TestComponents.load();
 		TestTrackedData.load();
 		TestNetworking.registerData();
@@ -43,6 +41,8 @@ public class FabricTest implements ModInitializer, ClientModInitializer
 		TestKeyBinds.registerPressedInteractions();
 		ClientTestNetworking.registerClientReceiver();
 		RenderRegistration.makeGrassBlockRenderUpsideDownWithRandomRotation();
+		RenderRegistration.registerLayerDefinitions();
+		RenderRegistration.registerRenderers();
 
 		LOGGER.info("Hello Client Fabric world!");
 	}

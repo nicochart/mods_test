@@ -1,0 +1,3 @@
+accessWidener v2 named
+
+extendable method net/minecraft/client/model/Model render (Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumer;III)V

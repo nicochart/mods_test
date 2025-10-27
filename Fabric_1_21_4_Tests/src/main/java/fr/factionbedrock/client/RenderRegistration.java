@@ -2,7 +2,13 @@ package fr.factionbedrock.client;
 
 import fr.factionbedrock.FabricTest;
 import fr.factionbedrock.client.bakedmodels.ShiftingBlockBakedModel;
+import fr.factionbedrock.client.entityrender.model.CubeModel;
+import fr.factionbedrock.client.entityrender.model.TestModelLayers;
+import fr.factionbedrock.client.entityrender.renderer.CubeRender;
+import fr.factionbedrock.registry.TestEntities;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.model.*;
 import net.minecraft.entity.effect.StatusEffects;
@@ -13,6 +19,16 @@ import java.util.List;
 
 public class RenderRegistration
 {
+    public static void registerRenderers()
+    {
+        EntityRendererRegistry.register(TestEntities.CUBE, CubeRender::new);
+    }
+
+    public static void registerLayerDefinitions()
+    {
+        EntityModelLayerRegistry.registerModelLayer(TestModelLayers.CUBE, CubeModel::createBodyLayer);
+    }
+
     public static void registerShiftingBakedModels()
     {
         ModelLoadingPlugin.register(plugin -> plugin.modifyModelAfterBake().register((original, context) ->
