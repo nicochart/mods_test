@@ -2,6 +2,7 @@ package fr.factionbedrock.registry;
 
 import fr.factionbedrock.FabricTest;
 import fr.factionbedrock.entity.CubeEntity;
+import fr.factionbedrock.entity.PartEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.*;
 import net.minecraft.registry.Registries;
@@ -11,7 +12,8 @@ import net.minecraft.registry.RegistryKeys;
 
 public class TestEntities
 {
-	public static final EntityType<CubeEntity> CUBE = register(Keys.CUBE, CubeEntity::new, 0.9F,2.1F, SpawnGroup.MONSTER);
+	public static final EntityType<CubeEntity> CUBE = register(Keys.CUBE, CubeEntity::new, 0.5F,0.5F, SpawnGroup.MONSTER);
+	public static final EntityType<PartEntity> PART = register(Keys.PART, PartEntity::new, 0.5F,0.5F, SpawnGroup.MISC);
 
 	public static <E extends Entity> EntityType<E> register(RegistryKey<EntityType<?>> key, EntityType.EntityFactory<E> factory, float width, float height, SpawnGroup group)
 	{
@@ -23,6 +25,7 @@ public class TestEntities
 	public static class Keys
 	{
 		public static RegistryKey<EntityType<?>> CUBE = key("cube");
+		public static RegistryKey<EntityType<?>> PART = key("part");
 
 		private static RegistryKey<EntityType<?>> key(String name)
 		{
@@ -33,5 +36,6 @@ public class TestEntities
 	public static void load()
 	{
 		FabricDefaultAttributeRegistry.register(CUBE, CubeEntity.registerAttributes());
+		FabricDefaultAttributeRegistry.register(PART, CubeEntity.registerAttributes());
 	}
 }

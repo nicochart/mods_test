@@ -22,6 +22,7 @@ public class RenderRegistration
     public static void registerRenderers()
     {
         EntityRendererRegistry.register(TestEntities.CUBE, CubeRender::new);
+        EntityRendererRegistry.register(TestEntities.PART, CubeRender::new);
     }
 
     public static void registerLayerDefinitions()
