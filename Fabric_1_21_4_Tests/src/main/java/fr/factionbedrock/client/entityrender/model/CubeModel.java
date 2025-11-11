@@ -12,18 +12,18 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 {
-	private final ModelPart head;
+	private final ModelPart cube;
 
 	public CubeModel(ModelPart root)
 	{
 		super(root);
-		this.head = root.getChild("head");
+		this.cube = root.getChild("cube");
 	}
 	public static TexturedModelData createBodyLayer()
 	{
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).mirrored().cuboid(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData cube = modelPartData.addChild("cube", ModelPartBuilder.create().uv(0, 0).mirrored().cuboid(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
 		return TexturedModelData.of(modelData, 32, 16);
 	}
 
@@ -33,6 +33,6 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 
 	@Override public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int tint)
 	{
-		head.render(matrices, vertexConsumer, packedLight, packedOverlay, tint);
+		cube.render(matrices, vertexConsumer, packedLight, packedOverlay, tint);
 	}
 }

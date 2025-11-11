@@ -27,7 +27,7 @@ public class PartEntity extends HostileEntity
 
     @Override public void tick()
     {
-        if (this.owner == null || this.owner.isDead())
+        if (this.owner == null || this.owner.isDead() || this.owner.isRemoved())
         {
             this.serverDamage(this.getDamageSources().outOfWorld(), this.getMaxHealth());
         }
@@ -38,10 +38,17 @@ public class PartEntity extends HostileEntity
 
     @Override public boolean canHit() {return true;}
 
+    public final boolean damagePart(ServerWorld world, DamageSource source, float amount, boolean forceLocalDamage)
+    {
+        if (forceLocalDamage) {return super.damage(world, source, amount);}
+        else {return this.damage(world, source, amount);}
+    }
+
     @Override public final boolean damage(ServerWorld world, DamageSource source, float amount)
     {
-        if (this.owner == null) {super.damage(world, source, amount); return true;}
-        return this.isAlwaysInvulnerableTo(source) ? false : this.owner.damage(world, source, amount);
+        if (this.owner == null || this.owner.isDead()) {return super.damage(world, source, amount);}
+        boolean damaged = this.isAlwaysInvulnerableTo(source) ? false : this.owner.damage(world, source, amount);
+        return damaged;
     }
 
     @Override public boolean isPartOf(Entity entity) {return this == entity || this.owner == entity;}

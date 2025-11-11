@@ -7,8 +7,10 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -56,15 +58,24 @@ public class CubeEntity extends HostileEntity
 	private void tickAboveMovement()
 	{
 		if (this.above == null) {return;}
-		Vec3d prevPos = this.above.getPos();
-		double prevX = getTruncated(prevPos.getX()), prevY = getTruncated(prevPos.getY()), prevZ = getTruncated(prevPos.getZ());
 		this.above.setPos(this.getX(), this.getY() + 1.0F, this.getZ());
-		Vec3d newPos = this.above.getPos();
-		double x = getTruncated(newPos.getX()), y = getTruncated(newPos.getY()), z = getTruncated(newPos.getZ());
-		System.out.println("Above prev pos = "+prevX+", "+prevY+", "+prevZ+", new pos = "+x+", "+y+", "+z);
+		this.above.bodyYaw = this.bodyYaw;
+		this.above.headYaw = this.headYaw;
+		this.above.setPitch(this.getPitch());
+		this.above.setYaw(this.getYaw());
 	}
 
-	private double getTruncated(double value) {return Math.floor(value * 10) / 10;}
+	@Override public final boolean damage(ServerWorld world, DamageSource source, float amount)
+	{
+		boolean damaged = super.damage(world, source, amount);
+		if (damaged)
+		{
+			//attacking other parts just for attack animation (red overlay)
+			this.above.damagePart(world, source, 0.5F, true);
+			this.above.heal(0.5F);
+		}
+		return damaged;
+	}
 
 	@Override protected void initGoals()
 	{
