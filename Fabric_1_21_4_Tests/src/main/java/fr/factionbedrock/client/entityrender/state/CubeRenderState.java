@@ -6,4 +6,5 @@ import net.minecraft.util.Identifier;
 public class CubeRenderState extends LivingEntityRenderState
 {
     public Identifier texture;
+    public boolean isHead;
 }

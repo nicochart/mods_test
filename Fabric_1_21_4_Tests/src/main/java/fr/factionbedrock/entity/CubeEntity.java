@@ -31,6 +31,7 @@ public class CubeEntity extends HostileEntity
 	{
 		this.above = this.summonNewPart();
 		this.head = this.summonNewPart();
+		this.head.setHead(true);
 		return entityData;
 	}
 

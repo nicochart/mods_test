@@ -11,11 +11,13 @@ import net.minecraft.world.World;
 public class PartEntity extends HostileEntity
 {
     private CubeEntity owner;
+    private boolean isHead;
 
     public PartEntity(EntityType<? extends HostileEntity> type, World world)
     {
         super(type, world);
         this.owner = null;
+        this.isHead = false;
     }
 
     public boolean setOwner(CubeEntity owner)
@@ -61,5 +63,9 @@ public class PartEntity extends HostileEntity
 
     //@Override public boolean isCollidable() {return true;} block-like collision
 
+
     @Override public boolean isAttackable() {return true;}
+
+    public boolean isHead() {return this.isHead;}
+    public void setHead(boolean isHead) {this.isHead = isHead;}
 }

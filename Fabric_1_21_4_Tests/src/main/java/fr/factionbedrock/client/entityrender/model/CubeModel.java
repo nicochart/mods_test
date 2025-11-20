@@ -29,6 +29,11 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 
 	@Override public void setAngles(S renderState)
 	{
+		if (renderState.isHead)
+		{
+			this.cube.yaw = renderState.yawDegrees / 57.3F;
+			this.cube.pitch = renderState.pitch / 57.3F;
+		}
 	}
 
 	@Override public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int tint)

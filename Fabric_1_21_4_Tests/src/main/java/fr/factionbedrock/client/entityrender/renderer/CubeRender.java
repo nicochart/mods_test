@@ -4,6 +4,7 @@ import fr.factionbedrock.FabricTest;
 import fr.factionbedrock.client.entityrender.model.CubeModel;
 import fr.factionbedrock.client.entityrender.model.TestModelLayers;
 import fr.factionbedrock.client.entityrender.state.CubeRenderState;
+import fr.factionbedrock.entity.PartEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.entity.mob.HostileEntity;
@@ -24,6 +25,12 @@ public class CubeRender<T extends HostileEntity> extends MobEntityRenderer<T, Cu
 	{
 		super.updateRenderState(entity, renderState, f);
 		renderState.texture = getTexture(entity);
+		renderState.isHead = isHead(entity);
+	}
+
+	public boolean isHead(T entity)
+	{
+		return entity instanceof PartEntity partEntity && partEntity.isHead();
 	}
 
 	public Identifier getTexture(T entity)
