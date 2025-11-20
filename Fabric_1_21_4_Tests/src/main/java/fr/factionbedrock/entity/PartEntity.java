@@ -25,6 +25,12 @@ public class PartEntity extends HostileEntity
         return canSet;
     }
 
+    @Override public void pushAwayFrom(Entity other)
+    {
+        if (other.isPartOf(this.owner)) {return;}
+        super.pushAwayFrom(other);
+    }
+
     @Override public void tick()
     {
         if (this.owner == null || this.owner.isDead() || this.owner.isRemoved())
@@ -53,7 +59,7 @@ public class PartEntity extends HostileEntity
 
     @Override public boolean isPartOf(Entity entity) {return this == entity || this.owner == entity;}
 
-    @Override public boolean isCollidable() {return true;}
+    //@Override public boolean isCollidable() {return true;} block-like collision
 
     @Override public boolean isAttackable() {return true;}
 }
