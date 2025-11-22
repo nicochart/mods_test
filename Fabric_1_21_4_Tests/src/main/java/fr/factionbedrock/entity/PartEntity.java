@@ -4,12 +4,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 public class PartEntity extends HostileEntity
 {
+    private static final TrackedData<Boolean> IS_HEAD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private CubeEntity owner;
     private boolean isHead;
 
@@ -42,7 +45,11 @@ public class PartEntity extends HostileEntity
         super.tick();
     }
 
-    @Override protected void initDataTracker(DataTracker.Builder builder) {super.initDataTracker(builder);}
+    @Override protected void initDataTracker(DataTracker.Builder builder)
+    {
+        super.initDataTracker(builder);
+        builder.add(IS_HEAD, false);
+    }
 
     @Override public boolean canHit() {return true;}
 
@@ -63,9 +70,8 @@ public class PartEntity extends HostileEntity
 
     //@Override public boolean isCollidable() {return true;} block-like collision
 
-
     @Override public boolean isAttackable() {return true;}
 
-    public boolean isHead() {return this.isHead;}
-    public void setHead(boolean isHead) {this.isHead = isHead;}
+    public boolean isHead() {return this.getDataTracker().get(IS_HEAD);}
+    public void setHead(boolean isHead) {this.getDataTracker().set(IS_HEAD, isHead);}
 }

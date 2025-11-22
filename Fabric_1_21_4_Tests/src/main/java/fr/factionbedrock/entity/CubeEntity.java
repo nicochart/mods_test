@@ -115,4 +115,10 @@ public class CubeEntity extends HostileEntity
 				.add(EntityAttributes.ATTACK_DAMAGE, 5.0D)
 				.add(EntityAttributes.MOVEMENT_SPEED, 0.23D);
 	}
+
+
+	@Override public double getEyeY()
+	{
+		return this.getPos().y + 1.25F;
+	}
 }

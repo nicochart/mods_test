@@ -19,16 +19,19 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 		super(root);
 		this.cube = root.getChild("cube");
 	}
+
 	public static TexturedModelData createBodyLayer()
 	{
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData cube = modelPartData.addChild("cube", ModelPartBuilder.create().uv(0, 0).mirrored().cuboid(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+		ModelPartData cube = modelPartData.addChild("cube", ModelPartBuilder.create().uv(0, 0).mirrored().cuboid(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(0.0F, 20.0F, 0.0F));
 		return TexturedModelData.of(modelData, 32, 16);
 	}
 
 	@Override public void setAngles(S renderState)
 	{
+		this.cube.yaw = 0.0F;
+		this.cube.pitch = 0.0F;
 		if (renderState.isHead)
 		{
 			this.cube.yaw = renderState.yawDegrees / 57.3F;
