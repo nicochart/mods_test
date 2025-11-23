@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 public class PartEntity extends HostileEntity
 {
     private static final TrackedData<Boolean> IS_HEAD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
+    private static final TrackedData<Boolean> IS_INVULNERABLE = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private CubeEntity owner;
     private boolean isHead;
 
@@ -49,6 +50,7 @@ public class PartEntity extends HostileEntity
     {
         super.initDataTracker(builder);
         builder.add(IS_HEAD, false);
+        builder.add(IS_INVULNERABLE, false);
     }
 
     @Override public boolean canHit() {return true;}
@@ -62,6 +64,7 @@ public class PartEntity extends HostileEntity
     @Override public final boolean damage(ServerWorld world, DamageSource source, float amount)
     {
         if (this.owner == null || this.owner.isDead()) {return super.damage(world, source, amount);}
+        if (this.isInvulnerable()) {return false;}
         boolean damaged = this.isAlwaysInvulnerableTo(source) ? false : this.owner.damage(world, source, amount);
         return damaged;
     }
@@ -74,4 +77,11 @@ public class PartEntity extends HostileEntity
 
     public boolean isHead() {return this.getDataTracker().get(IS_HEAD);}
     public void setHead(boolean isHead) {this.getDataTracker().set(IS_HEAD, isHead);}
+    public boolean isInvulnerable() {return this.getDataTracker().get(IS_INVULNERABLE);}
+    public void setInvulnerable(boolean isHead) {this.getDataTracker().set(IS_INVULNERABLE, isHead);}
+
+    @Override public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource)
+    {
+        return false;
+    }
 }

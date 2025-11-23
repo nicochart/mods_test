@@ -30,6 +30,7 @@ public class CubeEntity extends HostileEntity
 	@Override @Nullable public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData)
 	{
 		this.above = this.summonNewPart();
+		this.above.setInvulnerable(true);
 		this.head = this.summonNewPart();
 		this.head.setHead(true);
 		return entityData;
