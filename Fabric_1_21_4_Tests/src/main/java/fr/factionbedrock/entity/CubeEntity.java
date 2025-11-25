@@ -12,6 +12,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -21,6 +22,8 @@ public class CubeEntity extends HostileEntity
 {
 	private PartEntity above;
 	private PartEntity head;
+	private PartEntity leftArm;
+	private PartEntity rightArm;
 
 	public CubeEntity(EntityType<? extends HostileEntity> type, World world)
 	{
@@ -33,6 +36,8 @@ public class CubeEntity extends HostileEntity
 		this.above.setInvulnerable(true);
 		this.head = this.summonNewPart();
 		this.head.setHead(true);
+		this.leftArm = this.summonNewPart();
+		this.rightArm = this.summonNewPart();
 		return entityData;
 	}
 
@@ -64,6 +69,8 @@ public class CubeEntity extends HostileEntity
 		super.tickMovement();
 		this.tickAboveMovement();
 		this.tickHeadMovement();
+		this.tickLeftArmMovement();
+		this.tickRightArmMovement();
 	}
 
 	private void tickAboveMovement()
@@ -86,6 +93,34 @@ public class CubeEntity extends HostileEntity
 		this.head.setYaw(this.getYaw());
 	}
 
+	private void tickLeftArmMovement()
+	{
+		if (this.leftArm == null) {return;}
+		this.leftArm.setPitch(this.getPitch());
+		this.leftArm.setYaw(this.getYaw());
+		this.leftArm.bodyYaw = this.bodyYaw;
+		this.leftArm.headYaw = this.headYaw;
+
+		Vec3d leftArmOffset = new Vec3d(-0.5F, 0.5F, 0.0F);
+		float yawRad = (float) Math.toRadians(this.getBodyYaw());
+		Vec3d rotatedLeft  = leftArmOffset.rotateY(-yawRad);
+		this.leftArm.setPos(this.getX() + rotatedLeft.x, this.getY() + rotatedLeft.y, this.getZ() + rotatedLeft.z);
+	}
+
+	private void tickRightArmMovement()
+	{
+		if (this.rightArm == null) {return;}
+		this.rightArm.setPitch(this.getPitch());
+		this.rightArm.setYaw(this.getYaw());
+		this.rightArm.bodyYaw = this.bodyYaw;
+		this.rightArm.headYaw = this.headYaw;
+
+		Vec3d rightArmOffset = new Vec3d(0.5F, 0.5F, 0.0F);
+		float yawRad = (float) Math.toRadians(this.getBodyYaw());
+		Vec3d rotatedRight = rightArmOffset.rotateY(-yawRad);
+		this.rightArm.setPos(this.getX() + rotatedRight.x, this.getY() + rotatedRight.y, this.getZ() + rotatedRight.z);
+	}
+
 	@Override public final boolean damage(ServerWorld world, DamageSource source, float amount)
 	{
 		boolean damaged = super.damage(world, source, amount);
@@ -96,6 +131,10 @@ public class CubeEntity extends HostileEntity
 			this.above.heal(0.5F);
 			this.head.damagePart(world, source, 0.5F, true);
 			this.head.heal(0.5F);
+			this.leftArm.damagePart(world, source, 0.5F, true);
+			this.leftArm.heal(0.5F);
+			this.rightArm.damagePart(world, source, 0.5F, true);
+			this.rightArm.heal(0.5F);
 		}
 		return damaged;
 	}
