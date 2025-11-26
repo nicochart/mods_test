@@ -32,6 +32,7 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 	{
 		this.cube.yaw = 0.0F;
 		this.cube.pitch = 0.0F;
+		//if (renderState.isLeftArm || renderState.isRightArm) {this.cube.yaw = renderState.bodyYaw / 57.3F;}
 		if (renderState.isHead)
 		{
 			this.cube.yaw = renderState.yawDegrees / 57.3F;

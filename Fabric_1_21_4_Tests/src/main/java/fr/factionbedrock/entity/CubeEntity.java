@@ -37,7 +37,9 @@ public class CubeEntity extends HostileEntity
 		this.head = this.summonNewPart();
 		this.head.setHead(true);
 		this.leftArm = this.summonNewPart();
+		this.leftArm.setLeftArm(true);
 		this.rightArm = this.summonNewPart();
+		this.rightArm.setRightArm(true);
 		return entityData;
 	}
 
@@ -69,8 +71,8 @@ public class CubeEntity extends HostileEntity
 		super.tickMovement();
 		this.tickAboveMovement();
 		this.tickHeadMovement();
-		this.tickLeftArmMovement();
-		this.tickRightArmMovement();
+		//this.rotateArms();
+		this.tickArmsMovement();
 	}
 
 	private void tickAboveMovement()
@@ -93,32 +95,112 @@ public class CubeEntity extends HostileEntity
 		this.head.setYaw(this.getYaw());
 	}
 
+	private void tickArmsMovement()
+	{
+		this.tickLeftArmMovement();
+		this.tickRightArmMovement();
+	}
+
 	private void tickLeftArmMovement()
 	{
 		if (this.leftArm == null) {return;}
-		this.leftArm.setPitch(this.getPitch());
-		this.leftArm.setYaw(this.getYaw());
-		this.leftArm.bodyYaw = this.bodyYaw;
-		this.leftArm.headYaw = this.headYaw;
 
-		Vec3d leftArmOffset = new Vec3d(-0.5F, 0.5F, 0.0F);
+		Vec3d armOffset = new Vec3d(1.5F, 0.5F, 0.0F);
 		float yawRad = (float) Math.toRadians(this.getBodyYaw());
-		Vec3d rotatedLeft  = leftArmOffset.rotateY(-yawRad);
-		this.leftArm.setPos(this.getX() + rotatedLeft.x, this.getY() + rotatedLeft.y, this.getZ() + rotatedLeft.z);
+		Vec3d rotatedOffset = armOffset.rotateY(-yawRad);
+		this.leftArm.setPos(this.getX() + rotatedOffset.x, this.getY() + rotatedOffset.y, this.getZ() + rotatedOffset.z);
+
+		//outward orientation
+		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
+		Vec3d armPos = this.leftArm.getPos();
+		Vec3d outwardVector = armPos.subtract(center);
+
+		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float pitch = 0.0F;
+
+		this.leftArm.setYaw(yaw);
+		this.leftArm.setPitch(pitch);
+		this.leftArm.bodyYaw = yaw;
+		this.leftArm.headYaw = this.leftArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
 	}
 
 	private void tickRightArmMovement()
 	{
 		if (this.rightArm == null) {return;}
-		this.rightArm.setPitch(this.getPitch());
-		this.rightArm.setYaw(this.getYaw());
-		this.rightArm.bodyYaw = this.bodyYaw;
-		this.rightArm.headYaw = this.headYaw;
 
-		Vec3d rightArmOffset = new Vec3d(0.5F, 0.5F, 0.0F);
+		Vec3d armOffset = new Vec3d(-1.5F, 0.5F, 0.0F);
 		float yawRad = (float) Math.toRadians(this.getBodyYaw());
-		Vec3d rotatedRight = rightArmOffset.rotateY(-yawRad);
-		this.rightArm.setPos(this.getX() + rotatedRight.x, this.getY() + rotatedRight.y, this.getZ() + rotatedRight.z);
+		Vec3d rotatedOffset = armOffset.rotateY(-yawRad);
+		this.rightArm.setPos(this.getX() + rotatedOffset.x, this.getY() + rotatedOffset.y, this.getZ() + rotatedOffset.z);
+
+		//outward orientation
+		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
+		Vec3d armPos = this.leftArm.getPos();
+		Vec3d outwardVector = armPos.subtract(center);
+
+		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float pitch = 0.0F;
+
+		this.rightArm.setYaw(yaw);
+		this.rightArm.setPitch(pitch);
+		this.rightArm.bodyYaw = yaw;
+		this.rightArm.headYaw = this.rightArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
+	}
+
+	private void rotateArms()
+	{
+		this.rotateLeftArm();
+		this.rotateRightArm();
+	}
+
+	private void rotateLeftArm()
+	{
+		if (this.leftArm == null) {return;}
+
+		//rotating position
+		float radius = 1.2f;
+		float angle = this.age * 0.1f;
+		float x = (float) Math.cos(angle) * radius;
+		float z = (float) Math.sin(angle) * radius;
+		this.leftArm.setPos(this.getX() + x, this.getY() + 0.5F, this.getZ() + z);
+
+		//outward orientation
+		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
+		Vec3d armPos = this.leftArm.getPos();
+		Vec3d outwardVector = armPos.subtract(center);
+
+		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float pitch = 0.0F;
+
+		this.leftArm.setYaw(yaw);
+		this.leftArm.setPitch(pitch);
+		this.leftArm.bodyYaw = yaw;
+		this.leftArm.headYaw = this.leftArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
+	}
+
+	private void rotateRightArm()
+	{
+		if (this.rightArm == null) {return;}
+
+		//rotating position
+		float radius = 1.2f;
+		float angle = this.age * 0.1f;
+		float x = (float) Math.cos(angle + (float)Math.PI) * radius;
+		float z = (float) Math.sin(angle + (float)Math.PI) * radius;
+		this.rightArm.setPos(this.getX() + x, this.getY() + 0.5F, this.getZ() + z);
+
+		//outward orientation
+		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
+		Vec3d armPos = this.rightArm.getPos();
+		Vec3d outwardVector = armPos.subtract(center);
+
+		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float pitch = 0.0F;
+
+		this.rightArm.setYaw(yaw);
+		this.rightArm.setPitch(pitch);
+		this.rightArm.bodyYaw = yaw;
+		this.rightArm.headYaw = this.rightArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
 	}
 
 	@Override public final boolean damage(ServerWorld world, DamageSource source, float amount)

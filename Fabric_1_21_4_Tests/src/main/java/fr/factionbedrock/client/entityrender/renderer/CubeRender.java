@@ -25,13 +25,14 @@ public class CubeRender<T extends HostileEntity> extends MobEntityRenderer<T, Cu
 	{
 		super.updateRenderState(entity, renderState, f);
 		renderState.texture = getTexture(entity);
+		renderState.isLeftArm = isLeftArm(entity);
+		renderState.isRightArm = isRightArm(entity);
 		renderState.isHead = isHead(entity);
 	}
 
-	public boolean isHead(T entity)
-	{
-		return entity instanceof PartEntity partEntity && partEntity.isHead();
-	}
+	public boolean isLeftArm(T entity) {return entity instanceof PartEntity partEntity && partEntity.isLeftArm();}
+	public boolean isRightArm(T entity) {return entity instanceof PartEntity partEntity && partEntity.isRightArm();}
+	public boolean isHead(T entity) {return entity instanceof PartEntity partEntity && partEntity.isHead();}
 
 	public Identifier getTexture(T entity)
 	{

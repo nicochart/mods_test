@@ -12,16 +12,16 @@ import net.minecraft.world.World;
 
 public class PartEntity extends HostileEntity
 {
+    private static final TrackedData<Boolean> IS_RIGHT_ARM = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
+    private static final TrackedData<Boolean> IS_LEFT_ARM = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_HEAD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_INVULNERABLE = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private CubeEntity owner;
-    private boolean isHead;
 
     public PartEntity(EntityType<? extends HostileEntity> type, World world)
     {
         super(type, world);
         this.owner = null;
-        this.isHead = false;
     }
 
     public boolean setOwner(CubeEntity owner)
@@ -49,6 +49,8 @@ public class PartEntity extends HostileEntity
     @Override protected void initDataTracker(DataTracker.Builder builder)
     {
         super.initDataTracker(builder);
+        builder.add(IS_LEFT_ARM, false);
+        builder.add(IS_RIGHT_ARM, false);
         builder.add(IS_HEAD, false);
         builder.add(IS_INVULNERABLE, false);
     }
@@ -75,6 +77,10 @@ public class PartEntity extends HostileEntity
 
     @Override public boolean isAttackable() {return true;}
 
+    public boolean isLeftArm() {return this.getDataTracker().get(IS_LEFT_ARM);}
+    public void setLeftArm(boolean isHead) {this.getDataTracker().set(IS_LEFT_ARM, isHead);}
+    public boolean isRightArm() {return this.getDataTracker().get(IS_RIGHT_ARM);}
+    public void setRightArm(boolean isHead) {this.getDataTracker().set(IS_RIGHT_ARM, isHead);}
     public boolean isHead() {return this.getDataTracker().get(IS_HEAD);}
     public void setHead(boolean isHead) {this.getDataTracker().set(IS_HEAD, isHead);}
     public boolean isInvulnerable() {return this.getDataTracker().get(IS_INVULNERABLE);}
