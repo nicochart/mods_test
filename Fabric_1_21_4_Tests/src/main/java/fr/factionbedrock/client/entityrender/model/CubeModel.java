@@ -9,6 +9,7 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 
 public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 {
@@ -32,7 +33,12 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 	{
 		this.cube.yaw = 0.0F;
 		this.cube.pitch = 0.0F;
-		//if (renderState.isLeftArm || renderState.isRightArm) {this.cube.yaw = renderState.bodyYaw / 57.3F;}
+		if (renderState.isLeftArm || renderState.isRightArm)
+		{
+			float multiplier = renderState.isLeftArm ? 1.0F : -1.0F;
+			float armPitch = multiplier * MathHelper.cos(renderState.limbFrequency * 0.6662F) * 0.5F * renderState.limbAmplitudeMultiplier;
+			this.cube.pitch = armPitch;
+		}
 		if (renderState.isHead)
 		{
 			this.cube.yaw = renderState.yawDegrees / 57.3F;

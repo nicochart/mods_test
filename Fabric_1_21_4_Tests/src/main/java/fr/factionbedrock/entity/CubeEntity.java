@@ -105,17 +105,18 @@ public class CubeEntity extends HostileEntity
 	{
 		if (this.leftArm == null) {return;}
 
-		Vec3d armOffset = new Vec3d(1.5F, 0.5F, 0.0F);
+		Vec3d armOffset = new Vec3d(0.5F, 0.5F, 0.0F);
 		float yawRad = (float) Math.toRadians(this.getBodyYaw());
 		Vec3d rotatedOffset = armOffset.rotateY(-yawRad);
 		this.leftArm.setPos(this.getX() + rotatedOffset.x, this.getY() + rotatedOffset.y, this.getZ() + rotatedOffset.z);
 
-		//outward orientation
+		//forward orientation
 		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
 		Vec3d armPos = this.leftArm.getPos();
 		Vec3d outwardVector = armPos.subtract(center);
+		Vec3d forwardVector = outwardVector.rotateY((float)Math.PI / 2);
 
-		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float yaw = (float)(Math.atan2(forwardVector.z, forwardVector.x) * 180.0 / Math.PI) + 90.0F;
 		float pitch = 0.0F;
 
 		this.leftArm.setYaw(yaw);
@@ -128,17 +129,18 @@ public class CubeEntity extends HostileEntity
 	{
 		if (this.rightArm == null) {return;}
 
-		Vec3d armOffset = new Vec3d(-1.5F, 0.5F, 0.0F);
+		Vec3d armOffset = new Vec3d(-0.5F, 0.5F, 0.0F);
 		float yawRad = (float) Math.toRadians(this.getBodyYaw());
 		Vec3d rotatedOffset = armOffset.rotateY(-yawRad);
 		this.rightArm.setPos(this.getX() + rotatedOffset.x, this.getY() + rotatedOffset.y, this.getZ() + rotatedOffset.z);
 
-		//outward orientation
+		//forward orientation
 		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
-		Vec3d armPos = this.leftArm.getPos();
+		Vec3d armPos = this.rightArm.getPos();
 		Vec3d outwardVector = armPos.subtract(center);
+		Vec3d forwardVector = outwardVector.rotateY((float)- Math.PI / 2);
 
-		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+		float yaw = (float)(Math.atan2(forwardVector.z, forwardVector.x) * 180.0 / Math.PI) + 90.0F;
 		float pitch = 0.0F;
 
 		this.rightArm.setYaw(yaw);
