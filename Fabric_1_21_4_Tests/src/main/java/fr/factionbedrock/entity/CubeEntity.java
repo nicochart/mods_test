@@ -1,10 +1,7 @@
 package fr.factionbedrock.entity;
 
 import fr.factionbedrock.registry.TestEntities;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -12,6 +9,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -240,6 +238,11 @@ public class CubeEntity extends HostileEntity
 				.add(EntityAttributes.MOVEMENT_SPEED, 0.23D);
 	}
 
+	public Box getBlockCollisionBoundingBox()
+	{
+		float value = 0.5F;
+		return super.getBoundingBox().expand(0.0F, value, 0.0F).offset(0.0F, value, 0.0F);
+	}
 
 	@Override public double getEyeY()
 	{

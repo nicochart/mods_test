@@ -71,6 +71,8 @@ public class PartEntity extends HostileEntity
         return damaged;
     }
 
+    @Override public boolean isInsideWall() {return false;}
+
     @Override public boolean isPartOf(Entity entity) {return this == entity || this.owner == entity;}
 
     //@Override public boolean isCollidable() {return true;} block-like collision

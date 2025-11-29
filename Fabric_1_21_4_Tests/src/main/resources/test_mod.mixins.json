@@ -6,7 +6,8 @@
 		"PlayerDataTrackerMixin",
 		"PlayerNbtMixin",
 		"PlayerTickMixin",
-		"PlayerDeathMixin"
+		"PlayerDeathMixin",
+		"EntityAdjustMovementForCollisionMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
