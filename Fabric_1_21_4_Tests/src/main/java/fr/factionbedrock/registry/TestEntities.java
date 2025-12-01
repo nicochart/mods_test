@@ -12,7 +12,7 @@ import net.minecraft.registry.RegistryKeys;
 
 public class TestEntities
 {
-	public static final EntityType<CubeEntity> CUBE = register(Keys.CUBE, CubeEntity::new, 0.5F,0.5F, SpawnGroup.MONSTER);
+	public static final EntityType<CubeEntity> CUBE = register(Keys.CUBE, CubeEntity::new, 0.95F,1.5F, SpawnGroup.MONSTER);
 	public static final EntityType<PartEntity> PART = register(Keys.PART, PartEntity::new, 0.5F,0.5F, SpawnGroup.MISC);
 
 	public static <E extends Entity> EntityType<E> register(RegistryKey<EntityType<?>> key, EntityType.EntityFactory<E> factory, float width, float height, SpawnGroup group)

@@ -9,4 +9,5 @@ public class CubeRenderState extends LivingEntityRenderState
     public boolean isLeftArm;
     public boolean isRightArm;
     public boolean isHead;
+    public int packedLight;
 }

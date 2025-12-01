@@ -18,7 +18,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class CubeEntity extends HostileEntity
 {
-	private PartEntity above;
+	private PartEntity bottom;
+	private PartEntity body;
 	private PartEntity head;
 	private PartEntity leftArm;
 	private PartEntity rightArm;
@@ -30,8 +31,9 @@ public class CubeEntity extends HostileEntity
 
 	@Override @Nullable public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData)
 	{
-		this.above = this.summonNewPart();
-		this.above.setInvulnerable(true);
+		this.bottom = this.summonNewPart();
+		this.body = this.summonNewPart();
+		this.body.setInvulnerable(true);
 		this.head = this.summonNewPart();
 		this.head.setHead(true);
 		this.leftArm = this.summonNewPart();
@@ -67,20 +69,31 @@ public class CubeEntity extends HostileEntity
 	@Override public void tickMovement()
 	{
 		super.tickMovement();
-		this.tickAboveMovement();
+		this.tickBottomMovement();
+		this.tickBodyMovement();
 		this.tickHeadMovement();
 		//this.rotateArms();
 		this.tickArmsMovement();
 	}
 
-	private void tickAboveMovement()
+	private void tickBottomMovement()
 	{
-		if (this.above == null) {return;}
-		this.above.setPos(this.getX(), this.getY() + 0.5F, this.getZ());
-		this.above.bodyYaw = this.bodyYaw;
-		this.above.headYaw = this.headYaw;
-		this.above.setPitch(this.getPitch());
-		this.above.setYaw(this.getYaw());
+		if (this.bottom == null) {return;}
+		this.bottom.setPos(this.getX(), this.getY(), this.getZ());
+		this.bottom.bodyYaw = this.bodyYaw;
+		this.bottom.headYaw = this.headYaw;
+		this.bottom.setPitch(this.getPitch());
+		this.bottom.setYaw(this.getYaw());
+	}
+
+	private void tickBodyMovement()
+	{
+		if (this.body == null) {return;}
+		this.body.setPos(this.getX(), this.getY() + 0.5F, this.getZ());
+		this.body.bodyYaw = this.bodyYaw;
+		this.body.headYaw = this.headYaw;
+		this.body.setPitch(this.getPitch());
+		this.body.setYaw(this.getYaw());
 	}
 
 	private void tickHeadMovement()
@@ -209,8 +222,10 @@ public class CubeEntity extends HostileEntity
 		if (damaged)
 		{
 			//attacking other parts just for attack animation (red overlay)
-			this.above.damagePart(world, source, 0.5F, true);
-			this.above.heal(0.5F);
+			this.bottom.damagePart(world, source, 0.5F, true);
+			this.bottom.heal(0.5F);
+			this.body.damagePart(world, source, 0.5F, true);
+			this.body.heal(0.5F);
 			this.head.damagePart(world, source, 0.5F, true);
 			this.head.heal(0.5F);
 			this.leftArm.damagePart(world, source, 0.5F, true);
@@ -221,12 +236,16 @@ public class CubeEntity extends HostileEntity
 		return damaged;
 	}
 
+	@Override public boolean isAttackable() {return false;} //TODO hitbox is still blocking attacks. Find a way to disable this hitbox collision
+
 	@Override protected void initGoals()
 	{
 		this.goalSelector.add(0, new SwimGoal(this));
+		this.goalSelector.add(1, new MeleeAttackGoal(this, 1.25D, false));
 		this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0));
 		this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
 		this.goalSelector.add(8, new LookAroundGoal(this));
+		this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
 	}
 
 	public static DefaultAttributeContainer.Builder registerAttributes()
@@ -236,12 +255,6 @@ public class CubeEntity extends HostileEntity
 				.add(EntityAttributes.ARMOR, 3.0D)
 				.add(EntityAttributes.ATTACK_DAMAGE, 5.0D)
 				.add(EntityAttributes.MOVEMENT_SPEED, 0.23D);
-	}
-
-	public Box getBlockCollisionBoundingBox()
-	{
-		float value = 0.5F;
-		return super.getBoundingBox().expand(0.0F, value, 0.0F).offset(0.0F, value, 0.0F);
 	}
 
 	@Override public double getEyeY()

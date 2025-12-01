@@ -24,6 +24,7 @@ public class PartEntity extends HostileEntity
         this.owner = null;
     }
 
+    public CubeEntity getOwner() {return this.owner;}
     public boolean setOwner(CubeEntity owner)
     {
         boolean canSet = this.owner == null;

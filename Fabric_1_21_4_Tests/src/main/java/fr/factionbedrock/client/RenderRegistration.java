@@ -5,6 +5,7 @@ import fr.factionbedrock.client.bakedmodels.ShiftingBlockBakedModel;
 import fr.factionbedrock.client.entityrender.model.CubeModel;
 import fr.factionbedrock.client.entityrender.model.TestModelLayers;
 import fr.factionbedrock.client.entityrender.renderer.CubeRender;
+import fr.factionbedrock.client.entityrender.renderer.EmptyRender;
 import fr.factionbedrock.registry.TestEntities;
 import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -21,7 +22,7 @@ public class RenderRegistration
 {
     public static void registerRenderers()
     {
-        EntityRendererRegistry.register(TestEntities.CUBE, CubeRender::new);
+        EntityRendererRegistry.register(TestEntities.CUBE, EmptyRender::new);
         EntityRendererRegistry.register(TestEntities.PART, CubeRender::new);
     }
 
