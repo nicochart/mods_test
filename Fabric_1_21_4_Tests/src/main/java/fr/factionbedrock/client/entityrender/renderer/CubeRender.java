@@ -40,7 +40,7 @@ public class CubeRender<T extends PartEntity> extends MobEntityRenderer<T, CubeR
 		renderState.isLeftArm = isLeftArm(entity);
 		renderState.isRightArm = isRightArm(entity);
 		renderState.isHead = isHead(entity);
-		renderState.packedLight = entity.getOwner() == null ? 0 : this.getOwnerLight(entity.getOwner(), f); //TODO owner is always null. Fix this
+		renderState.packedLight = entity.getOwner() == null ? 0 : this.getOwnerLight(entity.getOwner(), f);
 	}
 
 	//copy of net.minecraft.client.render.entity.EntityRenderer getLight but using generic Entity instead of T

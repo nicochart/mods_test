@@ -7,8 +7,12 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class PartEntity extends HostileEntity
 {
@@ -16,6 +20,7 @@ public class PartEntity extends HostileEntity
     private static final TrackedData<Boolean> IS_LEFT_ARM = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_HEAD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_INVULNERABLE = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
+    private static final TrackedData<String> OWNER_UUID = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.STRING);;
     private CubeEntity owner;
 
     public PartEntity(EntityType<? extends HostileEntity> type, World world)
@@ -28,7 +33,11 @@ public class PartEntity extends HostileEntity
     public boolean setOwner(CubeEntity owner)
     {
         boolean canSet = this.owner == null;
-        if (canSet) {this.owner = owner;}
+        if (canSet)
+        {
+            this.owner = owner;
+            this.setOwnerUUID(this.owner.getUuidAsString());
+        }
         return canSet;
     }
 
@@ -40,6 +49,7 @@ public class PartEntity extends HostileEntity
 
     @Override public void tick()
     {
+        if (this.owner == null) {this.owner = this.getOwnerByUUID();}
         if (this.owner == null || this.owner.isDead() || this.owner.isRemoved())
         {
             this.serverDamage(this.getDamageSources().outOfWorld(), this.getMaxHealth());
@@ -54,6 +64,7 @@ public class PartEntity extends HostileEntity
         builder.add(IS_RIGHT_ARM, false);
         builder.add(IS_HEAD, false);
         builder.add(IS_INVULNERABLE, false);
+        builder.add(OWNER_UUID, "");
     }
 
     @Override public boolean canHit() {return true;}
@@ -88,6 +99,19 @@ public class PartEntity extends HostileEntity
     public void setHead(boolean isHead) {this.getDataTracker().set(IS_HEAD, isHead);}
     public boolean isInvulnerable() {return this.getDataTracker().get(IS_INVULNERABLE);}
     public void setInvulnerable(boolean isHead) {this.getDataTracker().set(IS_INVULNERABLE, isHead);}
+    public CubeEntity getOwnerByUUID() {return this.getOwnerByUUID(this.getOwnerUUID());}
+    public String getOwnerUUID() {return this.getDataTracker().get(OWNER_UUID);}
+    public void setOwnerUUID(String uuid) {this.getDataTracker().set(OWNER_UUID, uuid);}
+
+    @Nullable public CubeEntity getOwnerByUUID(String stringUUID)
+    {
+        List<CubeEntity> nearbyEntities = this.getWorld().getEntitiesByClass(CubeEntity.class, this.getBoundingBox().expand(5), EntityPredicates.maxDistance(this.getX(), this.getY(), this.getZ(), 5));
+        for (CubeEntity entity : nearbyEntities)
+        {
+            if (entity.getUuidAsString().equals(stringUUID)) {return entity;}
+        }
+        return null;
+    }
 
     @Override public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource)
     {
