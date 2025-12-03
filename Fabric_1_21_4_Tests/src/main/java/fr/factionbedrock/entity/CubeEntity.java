@@ -9,6 +9,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -22,6 +23,12 @@ public class CubeEntity extends HostileEntity
 	private PartEntity head;
 	private PartEntity leftArm;
 	private PartEntity rightArm;
+	private PartEntity firstYShield;
+	private PartEntity secondYShield;
+	private PartEntity firstXShield;
+	private PartEntity secondXShield;
+	private PartEntity firstZShield;
+	private PartEntity secondZShield;
 
 	public CubeEntity(EntityType<? extends HostileEntity> type, World world)
 	{
@@ -32,13 +39,24 @@ public class CubeEntity extends HostileEntity
 	{
 		this.bottom = this.summonNewPart();
 		this.body = this.summonNewPart();
-		this.body.setInvulnerable(true);
 		this.head = this.summonNewPart();
 		this.head.setHead(true);
 		this.leftArm = this.summonNewPart();
 		this.leftArm.setLeftArm(true);
 		this.rightArm = this.summonNewPart();
 		this.rightArm.setRightArm(true);
+		this.firstYShield = this.summonNewPart();
+		this.firstYShield.setInvulnerable(true);
+		this.secondYShield = this.summonNewPart();
+		this.secondYShield.setInvulnerable(true);
+		this.firstXShield = this.summonNewPart();
+		this.firstXShield.setInvulnerable(true);
+		this.secondXShield = this.summonNewPart();
+		this.secondXShield.setInvulnerable(true);
+		this.firstZShield = this.summonNewPart();
+		this.firstZShield.setInvulnerable(true);
+		this.secondZShield = this.summonNewPart();
+		this.secondZShield.setInvulnerable(true);
 		return entityData;
 	}
 
@@ -71,7 +89,7 @@ public class CubeEntity extends HostileEntity
 		this.tickBottomMovement();
 		this.tickBodyMovement();
 		this.tickHeadMovement();
-		//this.rotateArms();
+		this.rotateShields();
 		this.tickArmsMovement();
 	}
 
@@ -159,60 +177,57 @@ public class CubeEntity extends HostileEntity
 		this.rightArm.headYaw = this.rightArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
 	}
 
-	private void rotateArms()
+	private void rotateShields()
 	{
-		this.rotateLeftArm();
-		this.rotateRightArm();
+		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
+		rotatePart(this.firstYShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Y);
+		rotatePart(this.secondYShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Y);
+		rotatePart(this.firstXShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.X);
+		rotatePart(this.secondXShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.X);
+		rotatePart(this.firstZShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Z);
+		rotatePart(this.secondZShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Z);
+		//TODO : fix X and Z shields "outward orientation".
 	}
 
-	private void rotateLeftArm()
+	private static void rotatePart(@Nullable PartEntity part, Vec3d rotationCenter, float angle, float radius, float offset, Direction.Axis axis)
 	{
-		if (this.leftArm == null) {return;}
-
+		if (part == null) {return;}
 		//rotating position
-		float radius = 1.2f;
-		float angle = this.age * 0.1f;
-		float x = (float) Math.cos(angle) * radius;
-		float z = (float) Math.sin(angle) * radius;
-		this.leftArm.setPos(this.getX() + x, this.getY() + 0.5F, this.getZ() + z);
+		float x = 0, y = 0, z = 0;
+		switch (axis)
+		{
+			case X :
+			{
+				y = (float) Math.cos(angle + offset) * radius;
+				z = (float) Math.sin(angle + offset) * radius;
+				break;
+			}
+			case Y :
+			{
+				x = (float) Math.cos(angle + offset) * radius;
+				z = (float) Math.sin(angle + offset) * radius;
+				break;
+			}
+			case Z :
+			{
+				x = (float) Math.cos(angle + offset) * radius;
+				y = (float) Math.sin(angle + offset) * radius;
+				break;
+			}
+		}
+		part.setPos(rotationCenter.getX() + x, rotationCenter.getY() + y, rotationCenter.getZ() + z);
 
 		//outward orientation
-		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
-		Vec3d armPos = this.leftArm.getPos();
-		Vec3d outwardVector = armPos.subtract(center);
+		Vec3d armPos = part.getPos();
+		Vec3d outwardVector = armPos.subtract(rotationCenter).multiply(-1.0F, -1.0F, -1.0F);
 
 		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
 		float pitch = 0.0F;
 
-		this.leftArm.setYaw(yaw);
-		this.leftArm.setPitch(pitch);
-		this.leftArm.bodyYaw = yaw;
-		this.leftArm.headYaw = this.leftArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
-	}
-
-	private void rotateRightArm()
-	{
-		if (this.rightArm == null) {return;}
-
-		//rotating position
-		float radius = 1.2f;
-		float angle = this.age * 0.1f;
-		float x = (float) Math.cos(angle + (float)Math.PI) * radius;
-		float z = (float) Math.sin(angle + (float)Math.PI) * radius;
-		this.rightArm.setPos(this.getX() + x, this.getY() + 0.5F, this.getZ() + z);
-
-		//outward orientation
-		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
-		Vec3d armPos = this.rightArm.getPos();
-		Vec3d outwardVector = armPos.subtract(center);
-
-		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
-		float pitch = 0.0F;
-
-		this.rightArm.setYaw(yaw);
-		this.rightArm.setPitch(pitch);
-		this.rightArm.bodyYaw = yaw;
-		this.rightArm.headYaw = this.rightArm.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
+		part.setYaw(yaw);
+		part.setPitch(pitch);
+		part.bodyYaw = yaw;
+		part.headYaw = part.bodyYaw; //if headYaw is different, the body will follow (interpolate) after being still for some ticks.
 	}
 
 	@Override public final boolean damage(ServerWorld world, DamageSource source, float amount)
@@ -231,6 +246,18 @@ public class CubeEntity extends HostileEntity
 			this.leftArm.heal(0.5F);
 			this.rightArm.damagePart(world, source, 0.5F, true);
 			this.rightArm.heal(0.5F);
+			this.firstYShield.damagePart(world, source, 0.5F, true);
+			this.firstYShield.heal(0.5F);
+			this.secondYShield.damagePart(world, source, 0.5F, true);
+			this.secondYShield.heal(0.5F);
+			this.firstXShield.damagePart(world, source, 0.5F, true);
+			this.firstXShield.heal(0.5F);
+			this.secondXShield.damagePart(world, source, 0.5F, true);
+			this.secondXShield.heal(0.5F);
+			this.firstZShield.damagePart(world, source, 0.5F, true);
+			this.firstZShield.heal(0.5F);
+			this.secondZShield.damagePart(world, source, 0.5F, true);
+			this.secondZShield.heal(0.5F);
 		}
 		return damaged;
 	}
