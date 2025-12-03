@@ -9,7 +9,6 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -236,7 +235,8 @@ public class CubeEntity extends HostileEntity
 		return damaged;
 	}
 
-	@Override public boolean isAttackable() {return false;} //TODO hitbox is still blocking attacks. Find a way to disable this hitbox collision
+	@Override public boolean isAttackable() {return false;} //makes damage is not called when a player left-clicks on the hitbox, but the left-click hitbox collision still happen
+	@Override public boolean canHit() {return false;} //disables left-click hitbox collision
 
 	@Override protected void initGoals()
 	{
