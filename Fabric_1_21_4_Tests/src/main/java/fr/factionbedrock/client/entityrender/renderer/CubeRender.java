@@ -39,6 +39,7 @@ public class CubeRender<T extends PartEntity> extends MobEntityRenderer<T, CubeR
 		renderState.texture = getTexture(entity);
 		renderState.isLeftArm = isLeftArm(entity);
 		renderState.isRightArm = isRightArm(entity);
+		renderState.isShield = isShield(entity);
 		renderState.isHead = isHead(entity);
 		renderState.packedLight = entity.getOwner() == null ? 0 : this.getOwnerLight(entity.getOwner(), f);
 	}
@@ -64,6 +65,7 @@ public class CubeRender<T extends PartEntity> extends MobEntityRenderer<T, CubeR
 
 	public boolean isLeftArm(T entity) {return entity.isLeftArm();}
 	public boolean isRightArm(T entity) {return entity.isRightArm();}
+	public boolean isShield(T entity) {return entity.isShield();}
 	public boolean isHead(T entity) {return entity.isHead();}
 
 	public Identifier getTexture(T entity)

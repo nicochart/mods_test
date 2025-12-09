@@ -8,6 +8,7 @@ public class CubeRenderState extends LivingEntityRenderState
     public Identifier texture;
     public boolean isLeftArm;
     public boolean isRightArm;
+    public boolean isShield;
     public boolean isHead;
     public int packedLight;
 }

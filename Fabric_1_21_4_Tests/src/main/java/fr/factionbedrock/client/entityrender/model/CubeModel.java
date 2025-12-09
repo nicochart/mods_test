@@ -39,7 +39,7 @@ public class CubeModel<S extends CubeRenderState> extends EntityModel<S>
 			float armPitch = multiplier * MathHelper.cos(renderState.limbFrequency * 0.6662F) * 0.5F * renderState.limbAmplitudeMultiplier;
 			this.cube.pitch = armPitch;
 		}
-		if (renderState.isHead)
+		if (renderState.isHead || renderState.isShield)
 		{
 			this.cube.yaw = renderState.yawDegrees / 57.3F;
 			this.cube.pitch = renderState.pitch / 57.3F;

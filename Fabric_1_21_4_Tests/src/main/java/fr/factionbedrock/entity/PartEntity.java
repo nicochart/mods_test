@@ -18,6 +18,7 @@ public class PartEntity extends HostileEntity
 {
     private static final TrackedData<Boolean> IS_RIGHT_ARM = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_LEFT_ARM = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
+    private static final TrackedData<Boolean> IS_SHIELD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_HEAD = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<Boolean> IS_INVULNERABLE = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.BOOLEAN);;
     private static final TrackedData<String> OWNER_UUID = DataTracker.registerData(PartEntity.class, TrackedDataHandlerRegistry.STRING);;
@@ -62,6 +63,7 @@ public class PartEntity extends HostileEntity
         super.initDataTracker(builder);
         builder.add(IS_LEFT_ARM, false);
         builder.add(IS_RIGHT_ARM, false);
+        builder.add(IS_SHIELD, false);
         builder.add(IS_HEAD, false);
         builder.add(IS_INVULNERABLE, false);
         builder.add(OWNER_UUID, "");
@@ -92,13 +94,15 @@ public class PartEntity extends HostileEntity
     @Override public boolean isAttackable() {return true;}
 
     public boolean isLeftArm() {return this.getDataTracker().get(IS_LEFT_ARM);}
-    public void setLeftArm(boolean isHead) {this.getDataTracker().set(IS_LEFT_ARM, isHead);}
+    public void setLeftArm(boolean isArm) {this.getDataTracker().set(IS_LEFT_ARM, isArm);}
     public boolean isRightArm() {return this.getDataTracker().get(IS_RIGHT_ARM);}
-    public void setRightArm(boolean isHead) {this.getDataTracker().set(IS_RIGHT_ARM, isHead);}
+    public void setRightArm(boolean isArm) {this.getDataTracker().set(IS_RIGHT_ARM, isArm);}
+    public boolean isShield() {return this.getDataTracker().get(IS_SHIELD);}
+    public void setShield(boolean isShield) {this.getDataTracker().set(IS_SHIELD, isShield);}
     public boolean isHead() {return this.getDataTracker().get(IS_HEAD);}
     public void setHead(boolean isHead) {this.getDataTracker().set(IS_HEAD, isHead);}
     public boolean isInvulnerable() {return this.getDataTracker().get(IS_INVULNERABLE);}
-    public void setInvulnerable(boolean isHead) {this.getDataTracker().set(IS_INVULNERABLE, isHead);}
+    public void setInvulnerable(boolean isInvulnerable) {this.getDataTracker().set(IS_INVULNERABLE, isInvulnerable);}
     public CubeEntity getOwnerByUUID() {return this.getOwnerByUUID(this.getOwnerUUID());}
     public String getOwnerUUID() {return this.getDataTracker().get(OWNER_UUID);}
     public void setOwnerUUID(String uuid) {this.getDataTracker().set(OWNER_UUID, uuid);}

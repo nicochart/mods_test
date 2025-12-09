@@ -47,16 +47,22 @@ public class CubeEntity extends HostileEntity
 		this.rightArm.setRightArm(true);
 		this.firstYShield = this.summonNewPart();
 		this.firstYShield.setInvulnerable(true);
+		this.firstYShield.setShield(true);
 		this.secondYShield = this.summonNewPart();
 		this.secondYShield.setInvulnerable(true);
+		this.secondYShield.setShield(true);
 		this.firstXShield = this.summonNewPart();
 		this.firstXShield.setInvulnerable(true);
+		this.firstXShield.setShield(true);
 		this.secondXShield = this.summonNewPart();
 		this.secondXShield.setInvulnerable(true);
+		this.secondXShield.setShield(true);
 		this.firstZShield = this.summonNewPart();
 		this.firstZShield.setInvulnerable(true);
+		this.firstZShield.setShield(true);
 		this.secondZShield = this.summonNewPart();
 		this.secondZShield.setInvulnerable(true);
+		this.secondZShield.setShield(true);
 		return entityData;
 	}
 
@@ -186,7 +192,6 @@ public class CubeEntity extends HostileEntity
 		rotatePart(this.secondXShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.X);
 		rotatePart(this.firstZShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Z);
 		rotatePart(this.secondZShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Z);
-		//TODO : fix X and Z shields "outward orientation".
 	}
 
 	private static void rotatePart(@Nullable PartEntity part, Vec3d rotationCenter, float angle, float radius, float offset, Direction.Axis axis)
@@ -221,8 +226,9 @@ public class CubeEntity extends HostileEntity
 		Vec3d armPos = part.getPos();
 		Vec3d outwardVector = armPos.subtract(rotationCenter).multiply(-1.0F, -1.0F, -1.0F);
 
-		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
-		float pitch = 0.0F;
+		float horizontalLength = (float)Math.sqrt(outwardVector.x * outwardVector.x + outwardVector.z * outwardVector.z);
+		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F; //working perfectly for y, but for x and z the shields are "rotating" (half turn) when at the lowest and highest position (top and bottom).
+		float pitch = (float)(Math.atan2(outwardVector.y, horizontalLength) * 180.0 / Math.PI);
 
 		part.setYaw(yaw);
 		part.setPitch(pitch);
