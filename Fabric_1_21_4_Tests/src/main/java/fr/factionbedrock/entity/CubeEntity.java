@@ -198,13 +198,13 @@ public class CubeEntity extends HostileEntity
 	{
 		if (part == null) {return;}
 		//rotating position
-		float x = 0, y = 0, z = 0;
+		float x = 0.0F, y = 0.0F, z = 0.0F;
 		switch (axis)
 		{
 			case X :
 			{
-				y = (float) Math.cos(angle + offset) * radius;
-				z = (float) Math.sin(angle + offset) * radius;
+				y = (float) Math.sin(angle + offset) * radius; //inverting those two (y = cos and x = sin) will make the shields unsync (nicer effect) for orientation will be offset by pi/2
+				z = (float) Math.cos(angle + offset) * radius;
 				break;
 			}
 			case Y :
@@ -227,8 +227,29 @@ public class CubeEntity extends HostileEntity
 		Vec3d outwardVector = armPos.subtract(rotationCenter).multiply(-1.0F, -1.0F, -1.0F);
 
 		float horizontalLength = (float)Math.sqrt(outwardVector.x * outwardVector.x + outwardVector.z * outwardVector.z);
-		float yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F; //working perfectly for y, but for x and z the shields are "rotating" (half turn) when at the lowest and highest position (top and bottom).
-		float pitch = (float)(Math.atan2(outwardVector.y, horizontalLength) * 180.0 / Math.PI);
+		float yaw = 0.0F, pitch = 0.0F;
+		float pitchOffset = (offset == 0.0F) ? ((float)Math.PI) : 0.0F;
+		switch (axis)
+		{
+			case X :
+			{
+				yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+				pitch = (float) Math.sin(angle + pitchOffset) * 90.0F;//(float)(Math.atan2(outwardVector.y, horizontalLength) * 180.0 / Math.PI);
+				break;
+			}
+			case Y :
+			{
+				yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+				pitch = 0.0F;
+				break;
+			}
+			case Z :
+			{
+				yaw = (float)(Math.atan2(outwardVector.z, outwardVector.x) * 180.0 / Math.PI) + 90.0F;
+				pitch = (float) Math.sin(angle + pitchOffset) * 90.0F;//(float)(Math.atan2(outwardVector.y, horizontalLength) * 180.0 / Math.PI);
+				break;
+			}
+		}
 
 		part.setYaw(yaw);
 		part.setPitch(pitch);
@@ -242,30 +263,28 @@ public class CubeEntity extends HostileEntity
 		if (damaged)
 		{
 			//attacking other parts just for attack animation (red overlay)
-			this.bottom.damagePart(world, source, 0.5F, true);
-			this.bottom.heal(0.5F);
-			this.body.damagePart(world, source, 0.5F, true);
-			this.body.heal(0.5F);
-			this.head.damagePart(world, source, 0.5F, true);
-			this.head.heal(0.5F);
-			this.leftArm.damagePart(world, source, 0.5F, true);
-			this.leftArm.heal(0.5F);
-			this.rightArm.damagePart(world, source, 0.5F, true);
-			this.rightArm.heal(0.5F);
-			this.firstYShield.damagePart(world, source, 0.5F, true);
-			this.firstYShield.heal(0.5F);
-			this.secondYShield.damagePart(world, source, 0.5F, true);
-			this.secondYShield.heal(0.5F);
-			this.firstXShield.damagePart(world, source, 0.5F, true);
-			this.firstXShield.heal(0.5F);
-			this.secondXShield.damagePart(world, source, 0.5F, true);
-			this.secondXShield.heal(0.5F);
-			this.firstZShield.damagePart(world, source, 0.5F, true);
-			this.firstZShield.heal(0.5F);
-			this.secondZShield.damagePart(world, source, 0.5F, true);
-			this.secondZShield.heal(0.5F);
+			falseAttackForRedAnimation(this.bottom, world, source);
+			falseAttackForRedAnimation(this.body, world, source);
+			falseAttackForRedAnimation(this.head, world, source);
+			falseAttackForRedAnimation(this.leftArm, world, source);
+			falseAttackForRedAnimation(this.rightArm, world, source);
+			falseAttackForRedAnimation(this.firstYShield, world, source);
+			falseAttackForRedAnimation(this.secondYShield, world, source);
+			falseAttackForRedAnimation(this.firstXShield, world, source);
+			falseAttackForRedAnimation(this.secondXShield, world, source);
+			falseAttackForRedAnimation(this.firstZShield, world, source);
+			falseAttackForRedAnimation(this.secondZShield, world, source);
 		}
 		return damaged;
+	}
+
+	private static void falseAttackForRedAnimation(@Nullable PartEntity part, ServerWorld world, DamageSource source)
+	{
+		if (part != null)
+		{
+			part.damagePart(world, source, 0.5F, true);
+			part.heal(0.5F);
+		}
 	}
 
 	@Override public boolean isAttackable() {return false;} //makes damage is not called when a player left-clicks on the hitbox, but the left-click hitbox collision still happen
