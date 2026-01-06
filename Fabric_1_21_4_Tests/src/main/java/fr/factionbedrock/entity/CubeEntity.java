@@ -25,10 +25,16 @@ public class CubeEntity extends HostileEntity
 	private PartEntity rightArm;
 	private PartEntity firstYShield;
 	private PartEntity secondYShield;
+	private PartEntity thirdYShield;
+	private PartEntity fourthYShield;
 	private PartEntity firstXShield;
 	private PartEntity secondXShield;
+	private PartEntity thirdXShield;
+	private PartEntity fourthXShield;
 	private PartEntity firstZShield;
 	private PartEntity secondZShield;
+	private PartEntity thirdZShield;
+	private PartEntity fourthZShield;
 
 	public CubeEntity(EntityType<? extends HostileEntity> type, World world)
 	{
@@ -45,25 +51,27 @@ public class CubeEntity extends HostileEntity
 		this.leftArm.setLeftArm(true);
 		this.rightArm = this.summonNewPart();
 		this.rightArm.setRightArm(true);
-		this.firstYShield = this.summonNewPart();
-		this.firstYShield.setInvulnerable(true);
-		this.firstYShield.setShield(true);
-		this.secondYShield = this.summonNewPart();
-		this.secondYShield.setInvulnerable(true);
-		this.secondYShield.setShield(true);
-		this.firstXShield = this.summonNewPart();
-		this.firstXShield.setInvulnerable(true);
-		this.firstXShield.setShield(true);
-		this.secondXShield = this.summonNewPart();
-		this.secondXShield.setInvulnerable(true);
-		this.secondXShield.setShield(true);
-		this.firstZShield = this.summonNewPart();
-		this.firstZShield.setInvulnerable(true);
-		this.firstZShield.setShield(true);
-		this.secondZShield = this.summonNewPart();
-		this.secondZShield.setInvulnerable(true);
-		this.secondZShield.setShield(true);
+		this.firstYShield = this.summonNewShield();
+		this.secondYShield = this.summonNewShield();
+		this.thirdYShield = this.summonNewShield();
+		this.fourthYShield = this.summonNewShield();
+		this.firstXShield = this.summonNewShield();
+		this.secondXShield = this.summonNewShield();
+		this.thirdXShield = this.summonNewShield();
+		this.fourthXShield = this.summonNewShield();
+		this.firstZShield = this.summonNewShield();
+		this.secondZShield = this.summonNewShield();
+		this.thirdZShield = this.summonNewShield();
+		this.fourthZShield = this.summonNewShield();
 		return entityData;
+	}
+
+	private PartEntity summonNewShield()
+	{
+		PartEntity shield = this.summonNewPart();
+		shield.setInvulnerable(true);
+		shield.setShield(true);
+		return shield;
 	}
 
 	@Override public void pushAwayFrom(Entity other)
@@ -188,10 +196,16 @@ public class CubeEntity extends HostileEntity
 		Vec3d center = this.getPos().add(0.0F, 0.5F, 0.0F);
 		rotatePart(this.firstYShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Y);
 		rotatePart(this.secondYShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Y);
+		rotatePart(this.thirdYShield, center, - this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Y);
+		rotatePart(this.fourthYShield, center, - this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Y);
 		rotatePart(this.firstXShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.X);
 		rotatePart(this.secondXShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.X);
+		rotatePart(this.thirdXShield, center, - this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.X);
+		rotatePart(this.fourthXShield, center, - this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.X);
 		rotatePart(this.firstZShield, center, this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Z);
 		rotatePart(this.secondZShield, center, this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Z);
+		rotatePart(this.thirdZShield, center, - this.age * 0.1f, 1.2f, 0.0F, Direction.Axis.Z);
+		rotatePart(this.fourthZShield, center, - this.age * 0.1f, 1.2f, (float)Math.PI, Direction.Axis.Z);
 	}
 
 	private static void rotatePart(@Nullable PartEntity part, Vec3d rotationCenter, float angle, float radius, float offset, Direction.Axis axis)
@@ -270,10 +284,16 @@ public class CubeEntity extends HostileEntity
 			falseAttackForRedAnimation(this.rightArm, world, source);
 			falseAttackForRedAnimation(this.firstYShield, world, source);
 			falseAttackForRedAnimation(this.secondYShield, world, source);
+			falseAttackForRedAnimation(this.thirdYShield, world, source);
+			falseAttackForRedAnimation(this.fourthYShield, world, source);
 			falseAttackForRedAnimation(this.firstXShield, world, source);
 			falseAttackForRedAnimation(this.secondXShield, world, source);
+			falseAttackForRedAnimation(this.thirdXShield, world, source);
+			falseAttackForRedAnimation(this.fourthXShield, world, source);
 			falseAttackForRedAnimation(this.firstZShield, world, source);
 			falseAttackForRedAnimation(this.secondZShield, world, source);
+			falseAttackForRedAnimation(this.thirdZShield, world, source);
+			falseAttackForRedAnimation(this.fourthZShield, world, source);
 		}
 		return damaged;
 	}
